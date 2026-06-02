@@ -1,0 +1,29 @@
+{
+  "fixture": "canvas_sample/pilot_course",
+  "classification": "sanitized placeholder only; no real WTS data",
+  "real_sanitized_sample_status": "BLOCKER: missing",
+  "mocked_only_data_policy": "mocked-only data prohibited for Tasks 5, 8, and 11 production-quality implementation",
+  "sources": [
+    "DAP",
+    "REST",
+    "course export",
+    "file download"
+  ],
+  "entity_families": [
+    "users",
+    "terms",
+    "courses",
+    "sections",
+    "enrollments",
+    "modules",
+    "pages",
+    "announcements",
+    "assignments",
+    "assignment groups",
+    "submissions",
+    "grades",
+    "attachments/files",
+    "comments",
+    "legacy Canvas ID mappings"
+  ]
+}
