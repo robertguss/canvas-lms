@@ -1,0 +1,14 @@
+{
+  "source": "file download",
+  "classification": "sanitized placeholder only; no real WTS data",
+  "limitation": "File bytes must come from REST URLs, course export resources, or explicit downloads; DAP metadata alone is insufficient unless official docs later prove file byte delivery.",
+  "expected_manifest_fields": [
+    "legacy_canvas_attachment_id",
+    "source_url_or_export_path",
+    "sha256",
+    "byte_size",
+    "content_type",
+    "sanitization_status"
+  ],
+  "real_sanitized_sample_gate": "BLOCKER: add checksum and byte-size rows for every pilot course file and submission attachment."
+}
