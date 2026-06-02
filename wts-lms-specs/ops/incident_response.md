@@ -2,7 +2,7 @@
 
 ## Scope
 
-This provider-neutral runbook defines incident response for WTS Phoenix LMS pilot operations. It covers managed-cloud availability, managed Postgres, S3-compatible storage, email, secrets, logs, monitoring, Oban queues, health check failures, backup restore failures, FERPA/privacy constraints, audit handling, and rollback/fallback coordination.
+This runbook defines incident response for WTS Phoenix LMS pilot operations hosted on Fly.io. It covers Fly.io app and Machine availability, managed Postgres, S3-compatible storage, email, secrets, logs, monitoring, Oban queues, health check failures, backup restore failures, FERPA/privacy constraints, audit handling, and rollback/fallback coordination.
 
 ## Roles
 
@@ -13,9 +13,9 @@ This provider-neutral runbook defines incident response for WTS Phoenix LMS pilo
 | Privacy officer | Reviews FERPA risk, protected-record exposure, audit/log access, and required notifications. |
 | Pilot lead | Coordinates Student, Teacher, and Admin impact for the 2-3 pilot courses and decides instructional fallback timing with WTS leadership. |
 | Communications lead | Sends approved status updates and internal notifications without exposing protected educational records. |
-| Vendor liaison | Contacts the selected hosting provider or email provider after the DECISION NEEDED gates are resolved. |
+| Vendor liaison | Contacts Fly.io for hosting incidents and the selected email provider after the email gate is resolved. |
 
-DECISION NEEDED: hosting provider remains unresolved, so provider escalation paths must be filled in only after WTS approves a provider.
+Fly.io is the selected pilot hosting provider. Fill in Fly.io support plan, provider escalation contact placeholders, severity mapping, app placeholders, and safe evidence-sharing rules before launch; do not commit private app names, production URLs, account identifiers, tokens, or secret values.
 DECISION NEEDED: email provider remains unresolved, so delivery escalation paths must be filled in only after WTS approves a provider.
 
 ## Severity Levels
@@ -31,7 +31,7 @@ DECISION NEEDED: email provider remains unresolved, so delivery escalation paths
 
 Declare an incident when any of these occur:
 
-- Web or API health check failure affects pilot users.
+- Fly.io app, Fly Machine, release health check, web, or API health check failure affects pilot users.
 - Managed Postgres connectivity, backup, point-in-time recovery, or migration execution fails.
 - S3-compatible storage cannot read, write, or restore required files or submission attachments.
 - Email provider delivery, event ingestion, bounce handling, or suppression handling fails for pilot notifications.
@@ -47,10 +47,10 @@ Declare an incident when any of these occur:
 1. Detect the alert through monitoring, health check dashboards, operator report, or pilot-user escalation.
 2. Assign an incident commander and severity level.
 3. Open an incident record with timestamp, correlation IDs, affected environment, release identifier, suspected service area, and current user impact.
-4. Preserve evidence: logs, metrics, deployment records, Oban job state, managed Postgres status, S3 object status, email provider events, auth callback events, and backup restore records.
-5. Apply FERPA handling before sharing evidence. Remove or avoid passwords, SAML assertions, secrets, access tokens, full file contents, full submission bodies, unnecessary grade details, and private URLs.
+4. Preserve evidence: Fly.io deploy/release records, app and Machine status, logs, metrics, Oban job state, managed Postgres status, S3 object status, email provider events, auth callback events, and backup restore records.
+5. Apply FERPA handling before sharing evidence. Remove or avoid passwords, SAML assertions, secrets, credential-bearing tokens, full file contents, full submission bodies, unnecessary grade details, and private URLs.
 6. Decide whether immediate rollback/fallback is required using the criteria below.
-7. Mitigate the incident with the least risky action: pause a queue, disable a notification path, roll back a release, restore from backup, switch affected courses to hosted Canvas/archive access, or involve the selected provider.
+7. Mitigate the incident with the least risky action: pause a queue, disable a notification path, roll back a Fly.io release, restore from backup, switch affected courses to hosted Canvas/archive access, or involve Fly.io or the selected provider for the affected service.
 8. Communicate status using approved templates and avoid protected educational record details.
 9. Continue monitoring until health check probes, metrics, and affected user workflows return to acceptable state.
 10. Close only after root cause, corrective action, privacy review, rollback/fallback status, and follow-up owners are recorded.
@@ -58,7 +58,7 @@ Declare an incident when any of these occur:
 ## Privacy And Audit Constraints
 
 - Treat grades, submissions, comments, enrollment status, course membership, identity mappings, files, and audit trails as protected educational records.
-- Logs must not include passwords, SAML assertions, secrets, access tokens, full file contents, full submission bodies, or unnecessary grade details.
+- Logs must not include passwords, SAML assertions, secrets, credential-bearing tokens, full file contents, full submission bodies, or unnecessary grade details.
 - Audit events must identify who accessed or changed protected records, when, from where, and why, using correlation IDs and reason codes.
 - Incident evidence must be stored in the approved evidence location with least-privilege access.
 - Operator access during incidents must be time-limited, reason-coded, and reviewed by the privacy officer when protected records may be involved.
@@ -79,10 +79,10 @@ Rollback or fallback is required when any condition is true:
 Rollback/fallback steps:
 
 1. Incident commander confirms affected courses, users, and workflows with the pilot lead.
-2. Technical lead identifies the safest rollback point: previous release, restored managed Postgres point, restored S3-compatible object state, paused Oban queue, or disabled email path.
+2. Technical lead identifies the safest rollback point: previous Fly.io release or image, restored managed Postgres point, restored S3-compatible object state, paused Oban queue, or disabled email path.
 3. Privacy officer reviews whether rollback/fallback evidence contains protected records.
 4. Pilot lead coordinates instructor and student communication for hosted Canvas or read-only archive fallback.
-5. Technical lead executes rollback or restore and runs health check probes for web, API, managed Postgres, S3, email, Oban, auth callback, monitoring, and archive fallback.
+5. Technical lead executes Fly.io rollback or restore and runs release health checks plus probes for web, API, managed Postgres, S3, email, Oban, auth callback, monitoring, and archive fallback.
 6. Communications lead sends status update and expected next update time.
 7. Incident commander records whether Phoenix remains paused, partially available, or fully restored.
 
@@ -117,7 +117,7 @@ Complete within five business days for SEV1/SEV2 and same planning cycle for SEV
 
 - Timeline from detection through closure.
 - Root cause and contributing factors.
-- Affected managed-cloud components: hosting, managed Postgres, S3-compatible storage, email, secrets, logs, monitoring, Oban queues, health checks, backup restore, auth callback, or archive fallback.
+- Affected managed-cloud components: Fly.io hosting, Fly apps, Fly Machines, managed Postgres, S3-compatible storage, email, secrets, logs, monitoring, Oban queues, health checks, backup restore, auth callback, or archive fallback.
 - FERPA/privacy assessment and audit/log handling review.
 - Rollback/fallback decision and outcome.
 - Corrective actions with owners and due dates.
