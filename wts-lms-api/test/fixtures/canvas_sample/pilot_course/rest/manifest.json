@@ -1,0 +1,16 @@
+{
+  "source": "Canvas REST API",
+  "classification": "sanitized placeholder only; no real WTS data",
+  "expected_endpoints": [
+    "GET /api/v1/courses/:course_id",
+    "GET /api/v1/courses/:course_id/users",
+    "GET /api/v1/courses/:course_id/enrollments",
+    "GET /api/v1/courses/:course_id/modules?include[]=items",
+    "GET /api/v1/courses/:course_id/pages/:url",
+    "GET /api/v1/announcements?context_codes[]=course_:course_id",
+    "GET /api/v1/courses/:course_id/assignment_groups?include[]=assignments",
+    "GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions?include[]=submission_comments&include[]=submission_history",
+    "GET /api/v1/courses/:course_id/files"
+  ],
+  "real_sanitized_sample_gate": "BLOCKER: add scrubbed REST JSON responses for runtime semantics and source gaps."
+}
