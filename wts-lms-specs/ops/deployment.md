@@ -2,12 +2,12 @@
 
 ## Scope
 
-This runbook defines the Fly.io managed-cloud baseline for the WTS Phoenix LMS pilot. It supports Core Coursework only for Student, Teacher, and Admin workflows. Fly.io is the selected pilot hosting provider; object storage and email provider decisions remain separate readiness gates.
+This runbook defines the Fly.io managed-cloud baseline for the WTS Phoenix LMS pilot. It supports Core Coursework only for Student, Teacher, and Admin workflows. Fly.io is the selected pilot hosting provider and Postmark is the selected pilot transactional email provider. Object storage remains a separate readiness gate.
 
 ## Provider Decision Gates
 
 - Hosting provider selected for pilot: Fly.io. Provision Phoenix API and React web runtime as Fly apps backed by Fly Machines, with `fly.toml` definitions, managed TLS, documented VM size/count settings, release health checks, deployment evidence, rollback commands, and Fly.io provider escalation placeholders recorded before launch.
-- DECISION NEEDED: email provider must be selected before production notification testing. The provider must support authenticated sending, bounce and complaint reporting, delivery event logs, suppression handling, rate controls, and FERPA-safe operational visibility.
+- Email provider selected for pilot: Postmark. Provision a Postmark account reference, transactional Message Stream placeholder, verified sender domain, API token secret reference, webhook signing secret reference, bounce and complaint reporting, suppression handling, delivery event logs, rate controls, and FERPA-safe operational visibility before production notification testing.
 - Managed Postgres readiness path: use Fly Postgres as the pilot candidate when it satisfies backup, point-in-time recovery, encryption, access-control, private-networking, and restore-drill requirements in `backup_restore.md`; otherwise record the exception and selected managed Postgres alternative before launch.
 - DECISION NEEDED: S3-compatible object storage provider can be the same hosting provider or a separate object storage provider, but it must support private buckets, object versioning or immutable snapshots, lifecycle policy controls, server-side encryption, access logs, and restore evidence.
 
@@ -29,7 +29,7 @@ Required environment variables must be provided through Fly secrets or an equiva
 | Application | runtime environment, public base URL placeholder, release identifier, Fly app placeholder names, `fly.toml` path | Fly deployment records include version, environment, app name placeholder, Machine count/size, and release command evidence. |
 | Database | Fly Postgres or selected managed Postgres connection reference, pool size, migration mode | Connection uses Fly secrets, service identity, or secret reference, not inline credentials. |
 | Object storage | S3-compatible endpoint reference, bucket name placeholders, region/zone, upload size limit | Buckets are private and object recovery is tested; provider selection remains separate from Fly.io hosting. |
-| Email | provider account reference, sender domain, webhook secret reference | DECISION NEEDED: email provider gate resolved before pilot email testing; store runtime references in Fly secrets or equivalent. |
+| Email | Postmark account reference, verified sender domain placeholder, transactional Message Stream placeholder, API token secret reference, webhook signing secret reference | Store runtime references in Fly secrets or equivalent; readiness evidence records names/placeholders only, never values. |
 | Auth | Populi SAML metadata reference, callback URL, certificate reference | Auth callback health check and auth failure metrics are visible. |
 | Jobs | Oban queue names, concurrency, retry limits | Queue depth and job failure alerts are configured. |
 | Logging | correlation ID header, reason-code taxonomy, log sink reference | Logs omit FERPA-sensitive content and include operational traceability. |
@@ -49,19 +49,24 @@ Required environment variables must be provided through Fly secrets or an equiva
 - File retrieval and upload paths must emit correlation IDs and reason codes without logging full file contents.
 - Migration readiness is not complete until real sanitized active-course samples prove file byte acquisition and checksum validation.
 
-## Email Provider Readiness
+## Postmark Email Readiness
 
-- DECISION NEEDED: email provider must remain unresolved until WTS approves a provider.
-- The selected provider must support transactional notification delivery, delivery event logs, bounce and complaint handling, suppression list review, SPF/DKIM/DMARC alignment, and rate limits suitable for the pilot.
-- Email health check coverage must verify provider reachability and delivery-event ingestion without sending protected educational records in test messages.
-- Operational logs may record recipient identifiers only when necessary for support and must avoid full message bodies, grade details, submission text, or secret tokens.
+- Postmark is selected for pilot transactional email. Use a dedicated transactional Message Stream placeholder such as `<postmark-transactional-message-stream>` and keep marketing, SMS, mobile push, and broad notification preferences out of pilot scope.
+- Runtime configuration must use secret references only, such as `POSTMARK_API_TOKEN`, `POSTMARK_WEBHOOK_SIGNING_SECRET`, `POSTMARK_MESSAGE_STREAM`, `EMAIL_FROM_DOMAIN`, `EMAIL_FROM_ADDRESS`, and `EMAIL_REPLY_TO_ADDRESS`. Values are stored in Fly secrets or an equivalent managed secret store and are never committed.
+- Sender-domain setup must verify the WTS-approved sending domain through Postmark domain or sender-signature records, including SPF, DKIM, and DMARC alignment evidence. Evidence may include sanitized DNS record names/status, not private account identifiers or production-only URLs.
+- Webhook setup must use a placeholder callback such as `<phoenix-api>/ops/postmark/events`, protected by the webhook signing secret reference, and ingest Postmark delivery, bounce, spam complaint, open/click-if-enabled, and subscription-change events only when FERPA-safe for the pilot.
+- Bounce and complaint handling must pause affected recipient notification sends, record a reason-coded notification status, route the case to support/privacy review when coursework access could be affected, and avoid exposing the message body in tickets or evidence.
+- Suppression review must be a least-privilege operator workflow that inspects Postmark suppression status by sanitized recipient reference or internal user ID, documents the business reason, and avoids committing recipient addresses.
+- Rate controls must cap pilot sends by environment, course, and job queue; staging must use sandboxed or disabled sends except for non-sensitive probes; production must pause notification jobs when Postmark health, bounce lag, complaint rate, suppression review, or delivery event ingestion thresholds fail.
+- Delivery logs must reconcile Phoenix notification records with Postmark event identifiers, Message Stream placeholder, event type, timestamp, correlation ID, and sanitized recipient reference. Do not log full message bodies, grade details, submission text, protected records, API tokens, or webhook secret values.
+- Email health check coverage must verify Postmark API reachability and webhook-event ingestion with non-sensitive test identifiers; it must not send protected educational records in test messages.
 
 ## Oban Queue Readiness
 
 | Queue | Purpose | Required monitoring | Failure action |
 | --- | --- | --- | --- |
 | `migration` | import and diff pilot course data | queue depth, job age, retry count, failed jobs | stop launch if required records or files are missing |
-| `notifications` | email and in-app notification delivery | provider response, bounce event lag, retry count | pause sends and escalate if email provider health fails |
+| `notifications` | Postmark email and in-app notification delivery | Postmark API response, delivery event lag, bounce event lag, complaint event count, suppression review backlog, retry count | pause sends and escalate if Postmark health fails |
 | `sis_sync` | SIS/Registrar mirror updates | sync duration, add/drop propagation lag, conflicts | block launch if unresolved session/SIS decisions affect access |
 | `audit` | audit event persistence and export | write failures, lag, dropped events | treat dropped FERPA audit events as incident response input |
 | `maintenance` | backups, retention checks, health probes | last successful run, duration, failure count | escalate if backup restore evidence becomes stale |
@@ -74,7 +79,7 @@ Each health check must be safe to expose to authenticated operators or provider 
 - API health check: confirms API process readiness, dependency status aggregation, correlation ID propagation, and Fly.io release health check compatibility.
 - Database health check: confirms managed Postgres connectivity with a low-impact query through the real Ecto Repo.
 - S3 health check: confirms S3-compatible storage list/read/write probe against a non-sensitive sentinel object.
-- Email health check: confirms provider API reachability and event webhook processing with non-sensitive test identifiers.
+- Email health check: confirms Postmark API reachability, transactional Message Stream availability, and webhook event processing with non-sensitive test identifiers.
 - Oban health check: confirms queue supervision, queue depth thresholds, retry pressure, and stale job detection.
 - Auth callback health check: confirms Populi SAML metadata availability and callback route observability without accepting fake assertions as real login.
 - Archive fallback health check: confirms hosted Canvas or export archive access path remains available for rollback/fallback coordination.
@@ -96,7 +101,7 @@ Required logs and metrics:
 Before pilot launch:
 
 1. Confirm Fly.io hosting is provisioned with safe placeholder records for app names, `fly.toml` files, Machines sizing/count, release commands, private-network dependencies, deploy evidence, rollback commands, and provider escalation contacts.
-2. Confirm unresolved non-hosting provider gates, including email and S3-compatible storage, are resolved or explicitly recorded as blocking decisions.
+2. Confirm Postmark email readiness is complete and any unresolved non-hosting provider gates, including S3-compatible storage, are resolved or explicitly recorded as blocking decisions.
 3. Confirm current release artifact, environment variables, Fly secrets references, and secret references are recorded without secret values.
 4. Confirm managed Postgres, S3-compatible storage, email, Oban, auth callback, logs, monitoring, and health check dashboards pass staging checks.
 5. Confirm `backup_restore.md` restore drill has current pass evidence.
@@ -114,7 +119,7 @@ Safe readiness records may include placeholders only, never private app names, p
 | Fly app names | `<wts-lms-api-staging>`, `<wts-lms-web-staging>`, `<wts-lms-api-production>`, `<wts-lms-web-production>` | App inventory records map placeholders to real Fly.io apps in the private operator vault. |
 | `fly.toml` | app placeholder, primary region placeholder, process definitions, HTTP service health check path, release command placeholder | Reviewed config is stored without secrets and matches deployed Fly apps. |
 | Fly Machines | VM size/count placeholders per environment | Capacity review records pilot limits and scale/rollback thresholds. |
-| Fly secrets | names only, such as `DATABASE_URL`, `SECRET_KEY_BASE`, `S3_ENDPOINT`, `S3_BUCKET`, `EMAIL_PROVIDER_API_KEY`, `POPULI_SAML_METADATA_URL` | Secret values are set through Fly secrets or equivalent and never committed. |
+| Fly secrets | names only, such as `DATABASE_URL`, `SECRET_KEY_BASE`, `S3_ENDPOINT`, `S3_BUCKET`, `POSTMARK_API_TOKEN`, `POSTMARK_WEBHOOK_SIGNING_SECRET`, `POSTMARK_MESSAGE_STREAM`, `POPULI_SAML_METADATA_URL` | Secret values are set through Fly secrets or equivalent and never committed. |
 | Release command | `mix ecto.migrate` or approved release task placeholder | Deploy evidence shows migration result and post-release health checks. |
 | Rollback command | previous Fly release/image rollback placeholder plus database restore decision gate | Rollback evidence includes command transcript with private values redacted. |
 | Provider escalation | Fly.io support plan/contact placeholder and incident severity mapping | Incident response records show who may contact Fly.io and what evidence is safe to share. |
