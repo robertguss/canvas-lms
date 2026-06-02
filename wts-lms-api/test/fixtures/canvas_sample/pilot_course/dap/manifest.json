@@ -1,0 +1,28 @@
+{
+  "source": "DAP",
+  "classification": "sanitized placeholder only; no real WTS data",
+  "limitation": "DAP provides table-like Canvas records and metadata; this fixture does not prove file bytes are available from DAP.",
+  "expected_tables": [
+    "users",
+    "pseudonyms",
+    "enrollment_terms",
+    "courses",
+    "course_sections",
+    "enrollments",
+    "context_modules",
+    "content_tags",
+    "wiki_pages",
+    "discussion_topics",
+    "assignments",
+    "assignment_groups",
+    "submissions",
+    "submission_versions",
+    "scores",
+    "submission_scores",
+    "attachments",
+    "folders",
+    "attachment_associations",
+    "submission_comments"
+  ],
+  "real_sanitized_sample_gate": "BLOCKER: replace placeholders with scrubbed DAP extracts for one active course."
+}
