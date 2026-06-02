@@ -1,54 +1,275 @@
 defmodule WtsLms.Repo.Migrations.CreateWtsLmsCoreDomainSchema do
-  @moduledoc """
-  Migration manifest for the clean WTS LMS Phoenix domain schema.
+  use Ecto.Migration
 
-  This scaffold is dependency-free until the real Repo/adapter decision lands,
-  so the file records the Ecto migration contract deterministically. When Ecto
-  SQL is introduced, these table definitions should become `create table(...)`
-  statements with the same names, fields, foreign keys, and indexes.
-  """
+  def change do
+    create table(:accounts, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:name, :string, null: false)
+      add(:sis_account_id, :string)
+      add(:status, :string, null: false, default: "active")
+      add_legacy_fields()
 
-  @legacy_fields [:legacy_canvas_id, :source_system, :import_batch_id, :last_imported_at, :source_updated_at]
+      timestamps(type: :utc_datetime)
+    end
 
-  @tables [
-    accounts: [:name, :sis_account_id, :status] ++ @legacy_fields,
-    academic_terms: [:account_id, :name, :sis_term_id, :starts_at, :ends_at, :status] ++ @legacy_fields,
-    users: [:sis_user_id, :display_name, :email, :saml_name_id, :status, :role_ids] ++ @legacy_fields,
-    roles: [:account_id, :name, :kind] ++ @legacy_fields,
-    courses: [:account_id, :term_id, :sis_course_id, :name, :code, :syllabus_html, :status] ++ @legacy_fields,
-    sections: [:course_id, :sis_section_id, :name, :status] ++ @legacy_fields,
-    enrollments: [:course_id, :section_id, :user_id, :role_id, :state, :owner_system, :enrolled_at, :dropped_at] ++ @legacy_fields,
-    learning_modules: [:course_id, :title, :position, :status] ++ @legacy_fields,
-    pages: [:course_id, :module_id, :title, :slug, :body_html, :status] ++ @legacy_fields,
-    content_files: [:course_id, :submission_id, :uploaded_by_user_id, :display_name, :storage_key, :content_type, :byte_size, :checksum, :visibility] ++ @legacy_fields,
-    assignment_groups: [:course_id, :name, :weight, :position, :drop_rule, :status] ++ @legacy_fields,
-    assignments: [:course_id, :assignment_group_id, :title, :description_html, :submission_types, :points_possible, :due_at, :available_at, :lock_at, :status] ++ @legacy_fields,
-    submissions: [:assignment_id, :user_id, :enrollment_id, :attempt, :state, :body_html, :attachment_file_ids, :submitted_at, :late_at, :comments] ++ @legacy_fields,
-    grade_items: [:course_id, :assignment_id, :assignment_group_id, :title, :points_possible, :status] ++ @legacy_fields,
-    grades: [:grade_item_id, :submission_id, :student_user_id, :grader_user_id, :points, :state, :posted_at, :grading_comments, :audit_note] ++ @legacy_fields,
-    notifications: [:user_id, :course_id, :subject_type, :subject_id, :channel, :state, :sent_at],
-    legacy_mappings: [:entity_type, :entity_id, :source_system, :legacy_canvas_id, :import_batch_id, :last_imported_at, :source_updated_at]
-  ]
+    create table(:academic_terms, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:account_id, :string, null: false)
+      add(:name, :string, null: false)
+      add(:sis_term_id, :string)
+      add(:starts_at, :utc_datetime)
+      add(:ends_at, :utc_datetime)
+      add(:status, :string, null: false, default: "active")
+      add_legacy_fields()
 
-  @indexes [
-    unique_legacy_mapping_index: [:legacy_mappings, [:source_system, :entity_type, :legacy_canvas_id]],
-    accounts_legacy_canvas_id_index: [:accounts, [:source_system, :legacy_canvas_id]],
-    academic_terms_legacy_canvas_id_index: [:academic_terms, [:source_system, :legacy_canvas_id]],
-    users_legacy_canvas_id_index: [:users, [:source_system, :legacy_canvas_id]],
-    roles_legacy_canvas_id_index: [:roles, [:source_system, :legacy_canvas_id]],
-    courses_legacy_canvas_id_index: [:courses, [:source_system, :legacy_canvas_id]],
-    sections_legacy_canvas_id_index: [:sections, [:source_system, :legacy_canvas_id]],
-    enrollments_legacy_canvas_id_index: [:enrollments, [:source_system, :legacy_canvas_id]],
-    learning_modules_legacy_canvas_id_index: [:learning_modules, [:source_system, :legacy_canvas_id]],
-    pages_legacy_canvas_id_index: [:pages, [:source_system, :legacy_canvas_id]],
-    content_files_legacy_canvas_id_index: [:content_files, [:source_system, :legacy_canvas_id]],
-    assignment_groups_legacy_canvas_id_index: [:assignment_groups, [:source_system, :legacy_canvas_id]],
-    assignments_legacy_canvas_id_index: [:assignments, [:source_system, :legacy_canvas_id]],
-    submissions_legacy_canvas_id_index: [:submissions, [:source_system, :legacy_canvas_id]],
-    grade_items_legacy_canvas_id_index: [:grade_items, [:source_system, :legacy_canvas_id]],
-    grades_legacy_canvas_id_index: [:grades, [:source_system, :legacy_canvas_id]]
-  ]
+      timestamps(type: :utc_datetime)
+    end
 
-  def tables, do: @tables
-  def indexes, do: @indexes
+    create table(:users, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:sis_user_id, :string)
+      add(:display_name, :string, null: false)
+      add(:email, :string, null: false)
+      add(:saml_name_id, :string)
+      add(:status, :string, null: false, default: "active")
+      add(:role_ids, {:array, :string}, null: false, default: [])
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:roles, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:account_id, :string, null: false)
+      add(:name, :string, null: false)
+      add(:kind, :string, null: false)
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:courses, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:account_id, :string, null: false)
+      add(:term_id, :string, null: false)
+      add(:sis_course_id, :string)
+      add(:name, :string, null: false)
+      add(:code, :string)
+      add(:syllabus_html, :text)
+      add(:status, :string, null: false, default: "active")
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:sections, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:course_id, :string, null: false)
+      add(:sis_section_id, :string)
+      add(:name, :string, null: false)
+      add(:status, :string, null: false, default: "active")
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:enrollments, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:course_id, :string, null: false)
+      add(:section_id, :string, null: false)
+      add(:user_id, :string, null: false)
+      add(:role_id, :string, null: false)
+      add(:state, :string, null: false, default: "active")
+      add(:owner_system, :string, null: false, default: "sis")
+      add(:enrolled_at, :utc_datetime)
+      add(:dropped_at, :utc_datetime)
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:learning_modules, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:course_id, :string, null: false)
+      add(:title, :string, null: false)
+      add(:position, :integer)
+      add(:status, :string, null: false, default: "published")
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:pages, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:course_id, :string, null: false)
+      add(:module_id, :string)
+      add(:title, :string, null: false)
+      add(:slug, :string, null: false)
+      add(:body_html, :text)
+      add(:status, :string, null: false, default: "published")
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:content_files, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:course_id, :string, null: false)
+      add(:submission_id, :string)
+      add(:uploaded_by_user_id, :string)
+      add(:display_name, :string, null: false)
+      add(:storage_key, :string, null: false)
+      add(:content_type, :string)
+      add(:byte_size, :bigint)
+      add(:checksum, :string)
+      add(:visibility, :string, null: false, default: "course")
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:assignment_groups, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:course_id, :string, null: false)
+      add(:name, :string, null: false)
+      add(:weight, :decimal)
+      add(:position, :integer)
+      add(:drop_rule, :map)
+      add(:status, :string, null: false, default: "active")
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:assignments, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:course_id, :string, null: false)
+      add(:assignment_group_id, :string)
+      add(:title, :string, null: false)
+      add(:description_html, :text)
+      add(:submission_types, {:array, :string}, null: false, default: [])
+      add(:points_possible, :decimal)
+      add(:due_at, :utc_datetime)
+      add(:available_at, :utc_datetime)
+      add(:lock_at, :utc_datetime)
+      add(:status, :string, null: false, default: "published")
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:submissions, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:assignment_id, :string, null: false)
+      add(:user_id, :string, null: false)
+      add(:enrollment_id, :string, null: false)
+      add(:attempt, :integer, null: false, default: 1)
+      add(:state, :string, null: false, default: "unsubmitted")
+      add(:body_html, :text)
+      add(:attachment_file_ids, {:array, :string}, null: false, default: [])
+      add(:submitted_at, :utc_datetime)
+      add(:late_at, :utc_datetime)
+      add(:comments, {:array, :map}, null: false, default: [])
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:grade_items, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:course_id, :string, null: false)
+      add(:assignment_id, :string)
+      add(:assignment_group_id, :string)
+      add(:title, :string, null: false)
+      add(:points_possible, :decimal)
+      add(:status, :string, null: false, default: "active")
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:grades, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:grade_item_id, :string, null: false)
+      add(:submission_id, :string)
+      add(:student_user_id, :string, null: false)
+      add(:grader_user_id, :string)
+      add(:points, :decimal)
+      add(:state, :string, null: false, default: "unposted")
+      add(:posted_at, :utc_datetime)
+      add(:grading_comments, {:array, :map}, null: false, default: [])
+      add(:audit_note, :text)
+      add_legacy_fields()
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:notifications, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:user_id, :string, null: false)
+      add(:course_id, :string)
+      add(:subject_type, :string, null: false)
+      add(:subject_id, :string, null: false)
+      add(:channel, :string, null: false, default: "email")
+      add(:state, :string, null: false, default: "queued")
+      add(:sent_at, :utc_datetime)
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create table(:legacy_mappings, primary_key: false) do
+      add(:id, :string, primary_key: true)
+      add(:entity_type, :string, null: false)
+      add(:entity_id, :string, null: false)
+      add(:source_system, :string, null: false)
+      add(:legacy_canvas_id, :string, null: false)
+      add(:import_batch_id, :string)
+      add(:last_imported_at, :utc_datetime)
+      add(:source_updated_at, :utc_datetime)
+
+      timestamps(type: :utc_datetime)
+    end
+
+    create_legacy_indexes()
+
+    create(
+      unique_index(:legacy_mappings, [:source_system, :entity_type, :legacy_canvas_id],
+        name: :unique_legacy_mapping_index
+      )
+    )
+  end
+
+  defp add_legacy_fields do
+    add(:legacy_canvas_id, :string)
+    add(:source_system, :string, null: false, default: "canvas")
+    add(:import_batch_id, :string)
+    add(:last_imported_at, :utc_datetime)
+    add(:source_updated_at, :utc_datetime)
+  end
+
+  defp create_legacy_indexes do
+    for table <- [
+          :accounts,
+          :academic_terms,
+          :users,
+          :roles,
+          :courses,
+          :sections,
+          :enrollments,
+          :learning_modules,
+          :pages,
+          :content_files,
+          :assignment_groups,
+          :assignments,
+          :submissions,
+          :grade_items,
+          :grades
+        ] do
+      create(
+        index(table, [:source_system, :legacy_canvas_id],
+          name: String.to_atom("#{table}_legacy_canvas_id_index")
+        )
+      )
+    end
+  end
 end
