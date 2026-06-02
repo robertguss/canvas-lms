@@ -1,0 +1,36 @@
+## 2026-06-02 Task 5b: Ecto/Postgres error evidence
+
+Working directory: `wts-lms-api`
+
+### initial mix ecto.create failure
+
+Command: `mix ecto.create`
+
+Result: FAIL, then resolved
+
+Output excerpt:
+```text
+[error] Postgrex.Protocol (#PID<0.191.0> ("db_conn_1")) failed to connect: ** (Postgrex.Error) FATAL 28000 (invalid_authorization_specification) role "postgres" does not exist
+** (Mix) The database for WtsLms.Repo couldn't be created: killed
+```
+
+Resolution:
+- Updated dev/test Repo config to default to `System.get_env("USER", "postgres")` with an empty password while preserving `WTS_LMS_DB_*` and `WTS_LMS_TEST_DB_*` environment overrides.
+- Re-ran `mix ecto.create`; the dev database was created successfully.
+
+### initial targeted test failure
+
+Command: `mix test test/wts_lms/schema_contract_test.exs test/wts_lms/legacy_mapping_test.exs`
+
+Result: FAIL, then resolved
+
+Output excerpt:
+```text
+** (Ecto.ConstraintError) constraint error when attempting to insert struct:
+
+    * "legacy_mappings_pkey" (unique_constraint)
+```
+
+Resolution:
+- Updated generated legacy mapping IDs to include `entity_id`, so duplicate Canvas mappings collide on `unique_legacy_mapping_index` instead of the primary key.
+- Re-ran the targeted tests; result was `6 tests, 0 failures`.

@@ -1,0 +1,183 @@
+# task-2-source-inventory.txt
+$ test -f wts-lms-specs/migration/source_inventory.md
+exit=0
+
+$ test -d wts-lms-api/test/fixtures/canvas_sample
+exit=0
+
+$ grep -R "DAP\|REST\|file download\|course export" wts-lms-specs/migration/source_inventory.md
+exit=0
+wts-lms-specs/migration/source_inventory.md:- DAP provides table-like records and metadata for Canvas Data 2 tables. DAP has attachment records and metadata, but this task found no official proof that DAP provides file bytes. File bytes must be collected through Canvas REST API URLs, course export packages, or explicit file download manifests unless official documentation later proves otherwise.
+wts-lms-specs/migration/source_inventory.md:| Entity family | Primary source | Required DAP or source tables/endpoints | Fallback/source limitation note | Gate for Tasks 5, 8, 11 |
+wts-lms-specs/migration/source_inventory.md:| users | SIS, DAP | SIS user extract; DAP `users`, `pseudonyms`, `communication_channels` metadata when available | SIS/Registrar remains authoritative for academic identity. DAP/REST can map legacy Canvas user IDs but must not override SIS status. | BLOCKER: provide real sanitized sample for Student, Teacher, and Admin identities plus legacy Canvas user ID mappings. |
+wts-lms-specs/migration/source_inventory.md:| terms | SIS, DAP | SIS term extract; DAP `enrollment_terms` | SIS is primary for term names, dates, and active status. DAP is a Canvas mapping/cross-check source. | BLOCKER: provide real sanitized sample with current pilot term and Canvas term ID. |
+wts-lms-specs/migration/source_inventory.md:| courses | SIS, DAP, REST | SIS course extract; DAP `courses`; Canvas REST course detail for syllabus/settings used by WTS | SIS owns course identity and offering status. REST/course export may be needed for syllabus/body fields not represented as needed in DAP. | BLOCKER: provide real sanitized sample for one active course before course schema/import work leaves fixture mode. |
+wts-lms-specs/migration/source_inventory.md:| sections | SIS, DAP | SIS section extract; DAP `course_sections` | SIS owns section membership and active status. DAP preserves Canvas section IDs for mapping. | BLOCKER: provide real sanitized sample with every active pilot section and Canvas section ID. |
+wts-lms-specs/migration/source_inventory.md:| enrollments | SIS, DAP | SIS enrollment extract; DAP `enrollments` | SIS add/drop state is authoritative. DAP helps audit Canvas role/workflow state and legacy enrollment IDs. | BLOCKER: provide real sanitized sample for active/dropped Student and Teacher enrollment cases. |
+wts-lms-specs/migration/source_inventory.md:| modules | DAP, REST, course export | DAP `context_modules`, `content_tags`; Canvas REST modules/items; course export module metadata | DAP provides module records and item metadata. REST/export may be needed for display ordering and item URLs as Canvas presents them. | BLOCKER: provide real sanitized sample for at least one module containing a page, assignment, and file item. |
+wts-lms-specs/migration/source_inventory.md:| pages | DAP, REST, course export | DAP `wiki_pages`/wiki metadata; Canvas REST pages; course export HTML/resources | DAP can provide page records/metadata. REST or course export is the fallback for normalized HTML body fidelity and embedded file links. | BLOCKER: provide real sanitized sample for page body, title, workflow state, and legacy Canvas page ID. |
+wts-lms-specs/migration/source_inventory.md:| announcements | DAP, REST, course export | DAP `discussion_topics`/announcement metadata when scoped as announcements; Canvas REST announcements; course export discussion/announcement resources | Day-one preserves announcements but excludes broad discussions. Filter to Canvas announcement records only. | BLOCKER: provide real sanitized sample with at least one announcement or record an explicit no-announcement pilot gap. |
+wts-lms-specs/migration/source_inventory.md:| assignments | DAP, REST, course export | DAP `assignments`, `assignment_overrides`; Canvas REST assignments; course export assignment metadata | DAP covers core assignment records, dates, points, submission types, group, description metadata. REST/export validates runtime presentation and HTML body fidelity. | BLOCKER: provide real sanitized sample for text-entry, file-upload, and no-submission assignments or remove missing types from pilot scope. |
+wts-lms-specs/migration/source_inventory.md:| assignment groups | DAP, REST | DAP `assignment_groups`; Canvas REST assignment groups | DAP includes group name, weight, position, workflow state, and rules metadata. REST cross-checks Canvas gradebook presentation. | BLOCKER: provide real sanitized sample for weighted and unweighted group behavior used by the pilot gradebook. |
+wts-lms-specs/migration/source_inventory.md:| submissions | DAP, REST, file download | DAP `submissions`, `submission_versions`, `attachment_associations`; Canvas REST submissions and submission attachments | DAP provides table-like submission records and metadata. Text bodies and attachment associations must be verified against REST; file bytes require REST/file download. | BLOCKER: provide real sanitized sample for submitted, missing, late, graded, and file-upload submissions before Task 8/11 production implementation. |
+wts-lms-specs/migration/source_inventory.md:| grades | DAP, REST | DAP `scores`, `submission_scores`, `enrollment_states`, `submissions`; Canvas REST gradebook/submission views | Grade calculation must follow `gradebook_rules.md`. DAP/REST are source inputs, not acceptance by themselves; diff must match final percentage and letter display. | BLOCKER: provide real sanitized sample with points, weighted groups, posted grade, hidden/missing/late examples, and CSV comparison. |
+wts-lms-specs/migration/source_inventory.md:| attachments/files | DAP, REST, course export, file download | DAP `attachments`, `folders`, `attachment_associations`; Canvas REST files; course export resource files; file download manifest | DAP gives metadata such as ID, context, filename, size, content type, hash/uuid when present, but file bytes require REST, course export, or file download unless proven otherwise. | BLOCKER: provide real sanitized sample manifest with checksum/byte-size for every pilot course file and submission attachment. |
+wts-lms-specs/migration/source_inventory.md:| comments | DAP, REST | DAP `submission_comments`/comment metadata where available; Canvas REST submission comments | Comments are FERPA-sensitive. Use REST to verify author, timestamp, visibility, and grading-comment semantics when DAP metadata is insufficient. | BLOCKER: provide real sanitized sample with scrubbed student/teacher comments and grading comments, or record pilot course has none. |
+wts-lms-specs/migration/source_inventory.md:| legacy Canvas ID mappings | Mixed | Stable Canvas IDs from DAP tables, REST endpoints, course export identifiers, and file download manifest rows | Each Phoenix record imported from Canvas keeps a legacy Canvas ID mapping. SIS-owned rows also keep SIS IDs. Mixed sources must reconcile to one mapping table. | BLOCKER: provide real sanitized sample mapping for users, terms, courses, sections, enrollments, modules, pages, announcements, assignments, assignment groups, submissions, grades, attachments, comments. |
+wts-lms-specs/migration/source_inventory.md:| `dap/manifest.json` | Lists DAP Canvas namespace tables expected for the pilot course and marks placeholders as sanitized. | Real sanitized DAP extracts for every entity table in the matrix. |
+wts-lms-specs/migration/source_inventory.md:| `rest/manifest.json` | Lists Canvas REST endpoints needed to verify runtime semantics and source gaps. | Real sanitized REST responses with PII/body/file values scrubbed. |
+wts-lms-specs/migration/source_inventory.md:| `course_export/manifest.json` | Lists course export package metadata needed for content body/resources verification. | Real sanitized course export metadata and scrubbed HTML/resource references. |
+wts-lms-specs/migration/source_inventory.md:| `file_download/manifest.json` | Lists file byte acquisition and checksum expectations. | Real sanitized file download manifest with checksums/byte sizes and no private file bytes committed unless explicitly approved. |
+wts-lms-specs/migration/source_inventory.md:- BLOCKER: File payload verification cannot rely on DAP alone. Owner: migration lead. Next action: prove Canvas REST/course export/file download path for each pilot course file and submission attachment, then update `file_download/manifest.json` with checksums and byte sizes.
+
+$ grep -R "BLOCKER\|real sanitized sample\|mocked-only data prohibited" wts-lms-specs/migration/source_inventory.md
+exit=0
+wts-lms-specs/migration/source_inventory.md:- BLOCKER: Tasks 5, 8, and 11 must not proceed to production-quality schema, importer, file, submission, or gradebook implementation from mocked-only data prohibited inputs.
+wts-lms-specs/migration/source_inventory.md:- BLOCKER: Each pilot entity below requires a real sanitized sample from one active course, or a recorded owner and next action for the missing source, before the downstream task can mark its production path unblocked.
+wts-lms-specs/migration/source_inventory.md:- real sanitized sample means data exported from Canvas/WTS systems and scrubbed of student, faculty, course, file, grade, submission, comment, and identity details before entering this repository.
+wts-lms-specs/migration/source_inventory.md:- The placeholder files under `wts-lms-api/test/fixtures/canvas_sample/pilot_course/` are non-sensitive shape markers only. They do not satisfy the real sanitized sample gate.
+wts-lms-specs/migration/source_inventory.md:| users | SIS, DAP | SIS user extract; DAP `users`, `pseudonyms`, `communication_channels` metadata when available | SIS/Registrar remains authoritative for academic identity. DAP/REST can map legacy Canvas user IDs but must not override SIS status. | BLOCKER: provide real sanitized sample for Student, Teacher, and Admin identities plus legacy Canvas user ID mappings. |
+wts-lms-specs/migration/source_inventory.md:| terms | SIS, DAP | SIS term extract; DAP `enrollment_terms` | SIS is primary for term names, dates, and active status. DAP is a Canvas mapping/cross-check source. | BLOCKER: provide real sanitized sample with current pilot term and Canvas term ID. |
+wts-lms-specs/migration/source_inventory.md:| courses | SIS, DAP, REST | SIS course extract; DAP `courses`; Canvas REST course detail for syllabus/settings used by WTS | SIS owns course identity and offering status. REST/course export may be needed for syllabus/body fields not represented as needed in DAP. | BLOCKER: provide real sanitized sample for one active course before course schema/import work leaves fixture mode. |
+wts-lms-specs/migration/source_inventory.md:| sections | SIS, DAP | SIS section extract; DAP `course_sections` | SIS owns section membership and active status. DAP preserves Canvas section IDs for mapping. | BLOCKER: provide real sanitized sample with every active pilot section and Canvas section ID. |
+wts-lms-specs/migration/source_inventory.md:| enrollments | SIS, DAP | SIS enrollment extract; DAP `enrollments` | SIS add/drop state is authoritative. DAP helps audit Canvas role/workflow state and legacy enrollment IDs. | BLOCKER: provide real sanitized sample for active/dropped Student and Teacher enrollment cases. |
+wts-lms-specs/migration/source_inventory.md:| modules | DAP, REST, course export | DAP `context_modules`, `content_tags`; Canvas REST modules/items; course export module metadata | DAP provides module records and item metadata. REST/export may be needed for display ordering and item URLs as Canvas presents them. | BLOCKER: provide real sanitized sample for at least one module containing a page, assignment, and file item. |
+wts-lms-specs/migration/source_inventory.md:| pages | DAP, REST, course export | DAP `wiki_pages`/wiki metadata; Canvas REST pages; course export HTML/resources | DAP can provide page records/metadata. REST or course export is the fallback for normalized HTML body fidelity and embedded file links. | BLOCKER: provide real sanitized sample for page body, title, workflow state, and legacy Canvas page ID. |
+wts-lms-specs/migration/source_inventory.md:| announcements | DAP, REST, course export | DAP `discussion_topics`/announcement metadata when scoped as announcements; Canvas REST announcements; course export discussion/announcement resources | Day-one preserves announcements but excludes broad discussions. Filter to Canvas announcement records only. | BLOCKER: provide real sanitized sample with at least one announcement or record an explicit no-announcement pilot gap. |
+wts-lms-specs/migration/source_inventory.md:| assignments | DAP, REST, course export | DAP `assignments`, `assignment_overrides`; Canvas REST assignments; course export assignment metadata | DAP covers core assignment records, dates, points, submission types, group, description metadata. REST/export validates runtime presentation and HTML body fidelity. | BLOCKER: provide real sanitized sample for text-entry, file-upload, and no-submission assignments or remove missing types from pilot scope. |
+wts-lms-specs/migration/source_inventory.md:| assignment groups | DAP, REST | DAP `assignment_groups`; Canvas REST assignment groups | DAP includes group name, weight, position, workflow state, and rules metadata. REST cross-checks Canvas gradebook presentation. | BLOCKER: provide real sanitized sample for weighted and unweighted group behavior used by the pilot gradebook. |
+wts-lms-specs/migration/source_inventory.md:| submissions | DAP, REST, file download | DAP `submissions`, `submission_versions`, `attachment_associations`; Canvas REST submissions and submission attachments | DAP provides table-like submission records and metadata. Text bodies and attachment associations must be verified against REST; file bytes require REST/file download. | BLOCKER: provide real sanitized sample for submitted, missing, late, graded, and file-upload submissions before Task 8/11 production implementation. |
+wts-lms-specs/migration/source_inventory.md:| grades | DAP, REST | DAP `scores`, `submission_scores`, `enrollment_states`, `submissions`; Canvas REST gradebook/submission views | Grade calculation must follow `gradebook_rules.md`. DAP/REST are source inputs, not acceptance by themselves; diff must match final percentage and letter display. | BLOCKER: provide real sanitized sample with points, weighted groups, posted grade, hidden/missing/late examples, and CSV comparison. |
+wts-lms-specs/migration/source_inventory.md:| attachments/files | DAP, REST, course export, file download | DAP `attachments`, `folders`, `attachment_associations`; Canvas REST files; course export resource files; file download manifest | DAP gives metadata such as ID, context, filename, size, content type, hash/uuid when present, but file bytes require REST, course export, or file download unless proven otherwise. | BLOCKER: provide real sanitized sample manifest with checksum/byte-size for every pilot course file and submission attachment. |
+wts-lms-specs/migration/source_inventory.md:| comments | DAP, REST | DAP `submission_comments`/comment metadata where available; Canvas REST submission comments | Comments are FERPA-sensitive. Use REST to verify author, timestamp, visibility, and grading-comment semantics when DAP metadata is insufficient. | BLOCKER: provide real sanitized sample with scrubbed student/teacher comments and grading comments, or record pilot course has none. |
+wts-lms-specs/migration/source_inventory.md:| legacy Canvas ID mappings | Mixed | Stable Canvas IDs from DAP tables, REST endpoints, course export identifiers, and file download manifest rows | Each Phoenix record imported from Canvas keeps a legacy Canvas ID mapping. SIS-owned rows also keep SIS IDs. Mixed sources must reconcile to one mapping table. | BLOCKER: provide real sanitized sample mapping for users, terms, courses, sections, enrollments, modules, pages, announcements, assignments, assignment groups, submissions, grades, attachments, comments. |
+wts-lms-specs/migration/source_inventory.md:- BLOCKER: No real sanitized sample has been committed for the representative active course yet. Owner: migration lead. Next action: export and sanitize one active WTS Core Coursework course into the fixture shape, or document why the course cannot be used.
+wts-lms-specs/migration/source_inventory.md:- BLOCKER: File payload verification cannot rely on DAP alone. Owner: migration lead. Next action: prove Canvas REST/course export/file download path for each pilot course file and submission attachment, then update `file_download/manifest.json` with checksums and byte sizes.
+wts-lms-specs/migration/source_inventory.md:- BLOCKER: Tasks 5, 8, and 11 remain blocked from production-quality implementation if they only consume mocked placeholders; mocked-only data prohibited until real sanitized sample evidence exists or an explicit owner/next action is recorded here.
+
+$ grep -E "courses|users|enrollments|assignments|submissions|grades|attachments|modules|pages" wts-lms-specs/migration/source_inventory.md
+exit=0
+| users | SIS, DAP | SIS user extract; DAP `users`, `pseudonyms`, `communication_channels` metadata when available | SIS/Registrar remains authoritative for academic identity. DAP/REST can map legacy Canvas user IDs but must not override SIS status. | BLOCKER: provide real sanitized sample for Student, Teacher, and Admin identities plus legacy Canvas user ID mappings. |
+| courses | SIS, DAP, REST | SIS course extract; DAP `courses`; Canvas REST course detail for syllabus/settings used by WTS | SIS owns course identity and offering status. REST/course export may be needed for syllabus/body fields not represented as needed in DAP. | BLOCKER: provide real sanitized sample for one active course before course schema/import work leaves fixture mode. |
+| enrollments | SIS, DAP | SIS enrollment extract; DAP `enrollments` | SIS add/drop state is authoritative. DAP helps audit Canvas role/workflow state and legacy enrollment IDs. | BLOCKER: provide real sanitized sample for active/dropped Student and Teacher enrollment cases. |
+| modules | DAP, REST, course export | DAP `context_modules`, `content_tags`; Canvas REST modules/items; course export module metadata | DAP provides module records and item metadata. REST/export may be needed for display ordering and item URLs as Canvas presents them. | BLOCKER: provide real sanitized sample for at least one module containing a page, assignment, and file item. |
+| pages | DAP, REST, course export | DAP `wiki_pages`/wiki metadata; Canvas REST pages; course export HTML/resources | DAP can provide page records/metadata. REST or course export is the fallback for normalized HTML body fidelity and embedded file links. | BLOCKER: provide real sanitized sample for page body, title, workflow state, and legacy Canvas page ID. |
+| assignments | DAP, REST, course export | DAP `assignments`, `assignment_overrides`; Canvas REST assignments; course export assignment metadata | DAP covers core assignment records, dates, points, submission types, group, description metadata. REST/export validates runtime presentation and HTML body fidelity. | BLOCKER: provide real sanitized sample for text-entry, file-upload, and no-submission assignments or remove missing types from pilot scope. |
+| submissions | DAP, REST, file download | DAP `submissions`, `submission_versions`, `attachment_associations`; Canvas REST submissions and submission attachments | DAP provides table-like submission records and metadata. Text bodies and attachment associations must be verified against REST; file bytes require REST/file download. | BLOCKER: provide real sanitized sample for submitted, missing, late, graded, and file-upload submissions before Task 8/11 production implementation. |
+| grades | DAP, REST | DAP `scores`, `submission_scores`, `enrollment_states`, `submissions`; Canvas REST gradebook/submission views | Grade calculation must follow `gradebook_rules.md`. DAP/REST are source inputs, not acceptance by themselves; diff must match final percentage and letter display. | BLOCKER: provide real sanitized sample with points, weighted groups, posted grade, hidden/missing/late examples, and CSV comparison. |
+| attachments/files | DAP, REST, course export, file download | DAP `attachments`, `folders`, `attachment_associations`; Canvas REST files; course export resource files; file download manifest | DAP gives metadata such as ID, context, filename, size, content type, hash/uuid when present, but file bytes require REST, course export, or file download unless proven otherwise. | BLOCKER: provide real sanitized sample manifest with checksum/byte-size for every pilot course file and submission attachment. |
+| legacy Canvas ID mappings | Mixed | Stable Canvas IDs from DAP tables, REST endpoints, course export identifiers, and file download manifest rows | Each Phoenix record imported from Canvas keeps a legacy Canvas ID mapping. SIS-owned rows also keep SIS IDs. Mixed sources must reconcile to one mapping table. | BLOCKER: provide real sanitized sample mapping for users, terms, courses, sections, enrollments, modules, pages, announcements, assignments, assignment groups, submissions, grades, attachments, comments. |
+
+$ python3 -m json.tool wts-lms-api/test/fixtures/canvas_sample/pilot_course/manifest.json
+exit=0
+{
+    "fixture": "canvas_sample/pilot_course",
+    "classification": "sanitized placeholder only; no real WTS data",
+    "real_sanitized_sample_status": "BLOCKER: missing",
+    "mocked_only_data_policy": "mocked-only data prohibited for Tasks 5, 8, and 11 production-quality implementation",
+    "sources": [
+        "DAP",
+        "REST",
+        "course export",
+        "file download"
+    ],
+    "entity_families": [
+        "users",
+        "terms",
+        "courses",
+        "sections",
+        "enrollments",
+        "modules",
+        "pages",
+        "announcements",
+        "assignments",
+        "assignment groups",
+        "submissions",
+        "grades",
+        "attachments/files",
+        "comments",
+        "legacy Canvas ID mappings"
+    ]
+}
+
+$ python3 -m json.tool wts-lms-api/test/fixtures/canvas_sample/pilot_course/dap/manifest.json
+exit=0
+{
+    "source": "DAP",
+    "classification": "sanitized placeholder only; no real WTS data",
+    "limitation": "DAP provides table-like Canvas records and metadata; this fixture does not prove file bytes are available from DAP.",
+    "expected_tables": [
+        "users",
+        "pseudonyms",
+        "enrollment_terms",
+        "courses",
+        "course_sections",
+        "enrollments",
+        "context_modules",
+        "content_tags",
+        "wiki_pages",
+        "discussion_topics",
+        "assignments",
+        "assignment_groups",
+        "submissions",
+        "submission_versions",
+        "scores",
+        "submission_scores",
+        "attachments",
+        "folders",
+        "attachment_associations",
+        "submission_comments"
+    ],
+    "real_sanitized_sample_gate": "BLOCKER: replace placeholders with scrubbed DAP extracts for one active course."
+}
+
+$ python3 -m json.tool wts-lms-api/test/fixtures/canvas_sample/pilot_course/rest/manifest.json
+exit=0
+{
+    "source": "Canvas REST API",
+    "classification": "sanitized placeholder only; no real WTS data",
+    "expected_endpoints": [
+        "GET /api/v1/courses/:course_id",
+        "GET /api/v1/courses/:course_id/users",
+        "GET /api/v1/courses/:course_id/enrollments",
+        "GET /api/v1/courses/:course_id/modules?include[]=items",
+        "GET /api/v1/courses/:course_id/pages/:url",
+        "GET /api/v1/announcements?context_codes[]=course_:course_id",
+        "GET /api/v1/courses/:course_id/assignment_groups?include[]=assignments",
+        "GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions?include[]=submission_comments&include[]=submission_history",
+        "GET /api/v1/courses/:course_id/files"
+    ],
+    "real_sanitized_sample_gate": "BLOCKER: add scrubbed REST JSON responses for runtime semantics and source gaps."
+}
+
+$ python3 -m json.tool wts-lms-api/test/fixtures/canvas_sample/pilot_course/course_export/manifest.json
+exit=0
+{
+    "source": "course export",
+    "classification": "sanitized placeholder only; no real WTS data",
+    "expected_artifacts": [
+        "imsmanifest.xml metadata summary",
+        "module item ordering summary",
+        "page and assignment body/resource reference summary",
+        "course file resource reference summary"
+    ],
+    "real_sanitized_sample_gate": "BLOCKER: add scrubbed course export metadata for one active course."
+}
+
+$ python3 -m json.tool wts-lms-api/test/fixtures/canvas_sample/pilot_course/file_download/manifest.json
+exit=0
+{
+    "source": "file download",
+    "classification": "sanitized placeholder only; no real WTS data",
+    "limitation": "File bytes must come from REST URLs, course export resources, or explicit downloads; DAP metadata alone is insufficient unless official docs later prove file byte delivery.",
+    "expected_manifest_fields": [
+        "legacy_canvas_attachment_id",
+        "source_url_or_export_path",
+        "sha256",
+        "byte_size",
+        "content_type",
+        "sanitization_status"
+    ],
+    "real_sanitized_sample_gate": "BLOCKER: add checksum and byte-size rows for every pilot course file and submission attachment."
+}
+

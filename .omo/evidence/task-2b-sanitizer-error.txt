@@ -1,0 +1,28 @@
+Synthetic unsafe temp fixtures under approved temp directory; raw-looking values are not committed.
+
+$ scripts/wts_sanitize_canvas_sample.sh --validate /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/opencode/tmpw0kd6bo5/email/pilot_course
+exit 1
+sanitizer validation failed: raw-looking email in /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/opencode/tmpw0kd6bo5/email/pilot_course/rest/unsafe_email.synthetic.json
+
+$ scripts/wts_sanitize_canvas_sample.sh --validate /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/opencode/tmpw0kd6bo5/token/pilot_course
+exit 1
+sanitizer validation failed: raw-looking access token in /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/opencode/tmpw0kd6bo5/token/pilot_course/rest/unsafe_token.synthetic.json
+
+$ scripts/wts_sanitize_canvas_sample.sh --validate /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/opencode/tmpw0kd6bo5/url/pilot_course
+exit 1
+sanitizer validation failed: private-looking URL in /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/opencode/tmpw0kd6bo5/url/pilot_course/rest/unsafe_url.synthetic.json
+
+$ scripts/wts_sanitize_canvas_sample.sh --validate /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/opencode/tmpw0kd6bo5/missing_checksum_byte_size/pilot_course
+exit 1
+sanitizer validation failed: missing checksum column or field in /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/opencode/tmpw0kd6bo5/missing_checksum_byte_size/pilot_course/file_download/file_manifest.real.json
+
+Additional synthetic manifest completeness cases.
+
+$ scripts/wts_sanitize_canvas_sample.sh --validate /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/opencode/tmp_mcdhqsv/missing_checksum/pilot_course
+exit 1
+sanitizer validation failed: missing checksum column or field in /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/opencode/tmp_mcdhqsv/missing_checksum/pilot_course/file_download/file_manifest.real.json
+
+$ scripts/wts_sanitize_canvas_sample.sh --validate /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/opencode/tmp_mcdhqsv/missing_byte_size/pilot_course
+exit 1
+sanitizer validation failed: missing byte-size column or field in /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/opencode/tmp_mcdhqsv/missing_byte_size/pilot_course/file_download/file_manifest.real.json
+

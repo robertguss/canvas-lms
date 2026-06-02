@@ -1,0 +1,6 @@
+$ cd wts-lms-api && mix test
+Running ExUnit with seed: 344706, max_cases: 28
+
+...
+Finished in 0.01 seconds (0.01s async, 0.00s sync)
+3 tests, 0 failures

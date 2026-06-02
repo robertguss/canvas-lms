@@ -1,0 +1,195 @@
+{
+  "schema_version": 2,
+  "active_work_id": "wts-canvas-phoenix-replacement-347a3737",
+  "works": {
+    "wts-canvas-phoenix-replacement-347a3737": {
+      "work_id": "wts-canvas-phoenix-replacement-347a3737",
+      "active_plan": "/Users/robertguss/Projects/wts-dops/canvas-lms/.omo/plans/wts-canvas-phoenix-replacement.md",
+      "plan_name": "wts-canvas-phoenix-replacement",
+      "status": "completed",
+      "started_at": "2026-06-02T15:57:28.119Z",
+      "updated_at": "2026-06-02T18:03:05.363Z",
+      "session_ids": [
+        "ses_1772acd96ffe4laX2hw6HRUWu1"
+      ],
+      "session_origins": {
+        "ses_1772acd96ffe4laX2hw6HRUWu1": "direct"
+      },
+      "agent": "atlas",
+      "task_sessions": {
+        "todo:4": {
+          "task_key": "todo:4",
+          "task_label": "4",
+          "task_title": "Scaffold Phoenix API, React SPA, and contract-test harness",
+          "session_id": "ses_176efd0baffeixqwzgYx9ZPBek",
+          "agent": "Sisyphus-Junior",
+          "category": "unspecified-high",
+          "updated_at": "2026-06-02T16:00:01.829Z",
+          "started_at": "2026-06-02T16:00:01.829Z",
+          "status": "running"
+        },
+        "todo:1": {
+          "task_key": "todo:1",
+          "task_label": "1",
+          "task_title": "Create WTS replacement spec package",
+          "session_id": "ses_176ea1a87ffek5iqA7FldmQYKs",
+          "agent": "Sisyphus-Junior",
+          "category": "",
+          "started_at": "2026-06-02T16:00:11.326Z",
+          "status": "running",
+          "updated_at": "2026-06-02T16:23:02.660Z"
+        },
+        "todo:3": {
+          "task_key": "todo:3",
+          "task_label": "3",
+          "task_title": "Define Populi SAML and SIS sync contracts",
+          "session_id": "ses_176efd9e6ffeQIs0dVrDa1fPhr",
+          "agent": "Sisyphus-Junior",
+          "category": "deep",
+          "updated_at": "2026-06-02T16:03:25.773Z",
+          "started_at": "2026-06-02T16:03:25.773Z",
+          "status": "running"
+        },
+        "todo:2": {
+          "task_key": "todo:2",
+          "task_label": "2",
+          "task_title": "Prove DAP/API/file migration inputs on one sanitized active course",
+          "session_id": "ses_176d306a4ffeJFrKYaFfiTwr7f",
+          "agent": "Sisyphus-Junior",
+          "category": "deep",
+          "started_at": "2026-06-02T16:30:13.319Z",
+          "status": "running",
+          "updated_at": "2026-06-02T16:35:37.014Z"
+        },
+        "todo:5": {
+          "task_key": "todo:5",
+          "task_label": "5",
+          "task_title": "Implement clean Phoenix domain schema with legacy Canvas mappings",
+          "session_id": "ses_176c88f77ffeYdmg1b9EE1zUtx",
+          "agent": "Sisyphus-Junior",
+          "category": "deep",
+          "started_at": "2026-06-02T16:42:06.892Z",
+          "status": "running",
+          "updated_at": "2026-06-02T16:49:30.682Z"
+        },
+        "todo:6": {
+          "task_key": "todo:6",
+          "task_label": "6",
+          "task_title": "Implement Populi SAML, SIS sync, and role authorization",
+          "session_id": "ses_1768c4afcffeqyrE1unPa1Ylv9",
+          "agent": "Sisyphus-Junior",
+          "category": "",
+          "started_at": "2026-06-02T16:51:55.000Z",
+          "status": "running",
+          "updated_at": "2026-06-02T18:03:05.364Z"
+        },
+        "todo:13": {
+          "task_key": "todo:13",
+          "task_label": "13",
+          "task_title": "Implement managed-cloud operational readiness package",
+          "session_id": "ses_176bd9bedffefImuD8LCvnVUMW",
+          "agent": "Sisyphus-Junior",
+          "category": "deep",
+          "started_at": "2026-06-02T16:52:56.346Z",
+          "status": "running",
+          "updated_at": "2026-06-02T16:59:15.691Z"
+        }
+      },
+      "ended_at": "2026-06-02T17:03:45.241Z",
+      "elapsed_ms": 3977122
+    }
+  },
+  "active_plan": "/Users/robertguss/Projects/wts-dops/canvas-lms/.omo/plans/wts-canvas-phoenix-replacement.md",
+  "started_at": "2026-06-02T15:57:28.119Z",
+  "status": "completed",
+  "updated_at": "2026-06-02T18:03:05.363Z",
+  "session_ids": [
+    "ses_1772acd96ffe4laX2hw6HRUWu1"
+  ],
+  "session_origins": {
+    "ses_1772acd96ffe4laX2hw6HRUWu1": "direct"
+  },
+  "plan_name": "wts-canvas-phoenix-replacement",
+  "task_sessions": {
+    "todo:4": {
+      "task_key": "todo:4",
+      "task_label": "4",
+      "task_title": "Scaffold Phoenix API, React SPA, and contract-test harness",
+      "session_id": "ses_176efd0baffeixqwzgYx9ZPBek",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-06-02T16:00:01.829Z",
+      "started_at": "2026-06-02T16:00:01.829Z",
+      "status": "running"
+    },
+    "todo:1": {
+      "task_key": "todo:1",
+      "task_label": "1",
+      "task_title": "Create WTS replacement spec package",
+      "session_id": "ses_176ea1a87ffek5iqA7FldmQYKs",
+      "agent": "Sisyphus-Junior",
+      "category": "",
+      "started_at": "2026-06-02T16:00:11.326Z",
+      "status": "running",
+      "updated_at": "2026-06-02T16:23:02.660Z"
+    },
+    "todo:3": {
+      "task_key": "todo:3",
+      "task_label": "3",
+      "task_title": "Define Populi SAML and SIS sync contracts",
+      "session_id": "ses_176efd9e6ffeQIs0dVrDa1fPhr",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "updated_at": "2026-06-02T16:03:25.773Z",
+      "started_at": "2026-06-02T16:03:25.773Z",
+      "status": "running"
+    },
+    "todo:2": {
+      "task_key": "todo:2",
+      "task_label": "2",
+      "task_title": "Prove DAP/API/file migration inputs on one sanitized active course",
+      "session_id": "ses_176d306a4ffeJFrKYaFfiTwr7f",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "started_at": "2026-06-02T16:30:13.319Z",
+      "status": "running",
+      "updated_at": "2026-06-02T16:35:37.014Z"
+    },
+    "todo:5": {
+      "task_key": "todo:5",
+      "task_label": "5",
+      "task_title": "Implement clean Phoenix domain schema with legacy Canvas mappings",
+      "session_id": "ses_176c88f77ffeYdmg1b9EE1zUtx",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "started_at": "2026-06-02T16:42:06.892Z",
+      "status": "running",
+      "updated_at": "2026-06-02T16:49:30.682Z"
+    },
+    "todo:6": {
+      "task_key": "todo:6",
+      "task_label": "6",
+      "task_title": "Implement Populi SAML, SIS sync, and role authorization",
+      "session_id": "ses_1768c4afcffeqyrE1unPa1Ylv9",
+      "agent": "Sisyphus-Junior",
+      "category": "",
+      "started_at": "2026-06-02T16:51:55.000Z",
+      "status": "running",
+      "updated_at": "2026-06-02T18:03:05.364Z"
+    },
+    "todo:13": {
+      "task_key": "todo:13",
+      "task_label": "13",
+      "task_title": "Implement managed-cloud operational readiness package",
+      "session_id": "ses_176bd9bedffefImuD8LCvnVUMW",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "started_at": "2026-06-02T16:52:56.346Z",
+      "status": "running",
+      "updated_at": "2026-06-02T16:59:15.691Z"
+    }
+  },
+  "agent": "atlas",
+  "ended_at": "2026-06-02T17:03:45.241Z",
+  "elapsed_ms": 3977122
+}

@@ -1,0 +1,12 @@
+Compiling 3 files (.ex)
+Generated wts_lms_api app
+Running ExUnit with seed: 970068, max_cases: 28
+
+.....
+Finished in 0.04 seconds (0.04s async, 0.00s sync)
+5 tests, 0 failures
+Running ExUnit with seed: 957143, max_cases: 28
+
+......................
+Finished in 0.1 seconds (0.1s async, 0.03s sync)
+22 tests, 0 failures

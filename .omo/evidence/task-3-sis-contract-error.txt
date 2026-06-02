@@ -1,0 +1,41 @@
+$ grep -R "idempotent\|add/drop\|section\|term rollover\|conflict" wts-lms-specs/integrations/sis_sync.md
+wts-lms-specs/integrations/sis_sync.md:This contract defines how Phoenix imports SIS/Registrar records for Core Coursework. The SIS/Registrar system remains the source of truth for users, courses, sections, terms, roles, and enrollments. Phoenix must not own academic records and must not provide normal local-password auth to bypass SIS state.
+wts-lms-specs/integrations/sis_sync.md:| Sections | SIS/Registrar | Mirror section identity, course association, term association, and meeting metadata if supplied. |
+wts-lms-specs/integrations/sis_sync.md:| Enrollments | SIS/Registrar | Mirror add/drop state, role, section, effective dates, and status. |
+wts-lms-specs/integrations/sis_sync.md:- `sis_section_id`: required stable unique identifier.
+wts-lms-specs/integrations/sis_sync.md:- `sis_enrollment_id`: required stable unique identifier when available; otherwise use deterministic composite key `sis_user_id + sis_section_id + role`.
+wts-lms-specs/integrations/sis_sync.md:- `sis_section_id`: required enrolled section identifier.
+wts-lms-specs/integrations/sis_sync.md:DECISION NEEDED: confirm production sync frequency, acceptable propagation delay for add/drop changes, and whether Populi provides push webhooks, scheduled exports, or API polling.
+wts-lms-specs/integrations/sis_sync.md:An add creates or reactivates the enrollment identified by `sis_enrollment_id` or the deterministic enrollment composite key. A drop marks the enrollment inactive/dropped and removes access to the section at the next authorization check. Dropping a user must not delete submissions, grades, comments, files, audit events, or historical enrollment records.
+wts-lms-specs/integrations/sis_sync.md:If the feed sends a full authoritative section enrollment roster, an omitted prior enrollment is treated as a drop only when the extract declares itself a full roster for that section and term. If the feed sends incremental changes, omission means no change.
+wts-lms-specs/integrations/sis_sync.md:A role change updates the enrollment role for the same user and section only when the new role is Student, Teacher, or Admin. The change takes effect at the next authorization check. Unsupported roles are rejected or quarantined as a conflict and must not grant access.
+wts-lms-specs/integrations/sis_sync.md:A section change is represented as a drop from the old `sis_section_id` and an add to the new `sis_section_id`, unless the SIS supplies a stable enrollment ID that explicitly changes section. Phoenix must preserve user submissions and grades tied to the original section for audit and gradebook history. Access to the old section stops when the drop is applied, and access to the new section starts when the add is applied.
+wts-lms-specs/integrations/sis_sync.md:Term rollover creates or activates future term, course, section, and enrollment records without mutating completed term history. Completed terms become read-only for normal Student and Teacher workflows unless a later spec grants Admin correction tools. Future-term access follows SIS effective dates and role policy.
+wts-lms-specs/integrations/sis_sync.md:Course shells and sections for a new term must use new `sis_term_id`, `sis_course_id`, and `sis_section_id` values supplied by SIS. Phoenix must not clone prior term academic records as authoritative data.
+wts-lms-specs/integrations/sis_sync.md:Every sync job must be idempotent. Re-running the same extract with the same source extract ID and row contents must produce no duplicate users, courses, terms, sections, enrollments, roles, audit rows, or side effects beyond recording that the job was re-run.
+wts-lms-specs/integrations/sis_sync.md:- Sections: `sis_section_id`.
+wts-lms-specs/integrations/sis_sync.md:- Enrollments: `sis_enrollment_id` when present; otherwise `sis_user_id + sis_section_id + role`.
+wts-lms-specs/integrations/sis_sync.md:A conflict is any source row or batch condition that cannot be applied without judgment. Phoenix must fail or quarantine the affected row, keep the last known good state for that row, and report the conflict.
+wts-lms-specs/integrations/sis_sync.md:- Duplicate `sis_user_id`, `sis_term_id`, `sis_course_id`, `sis_section_id`, or enrollment key within the same extract.
+wts-lms-specs/integrations/sis_sync.md:- Enrollment references a missing user, section, course, or term.
+wts-lms-specs/integrations/sis_sync.md:- `NameID` or SAML binding from the Populi SAML contract conflicts with a changed `sis_user_id`.
+wts-lms-specs/integrations/sis_sync.md:Row-level conflicts must not stop unrelated valid rows unless the batch declares itself atomic. Batch-level conflicts, such as a malformed file or invalid extract identity, fail the entire job.
+wts-lms-specs/integrations/sis_sync.md:- Counts for inserted, updated, unchanged, dropped, disabled, skipped, conflicted, and failed rows.
+wts-lms-specs/integrations/sis_sync.md:- List of blocking conflicts requiring Registrar or Admin resolution.
+wts-lms-specs/integrations/sis_sync.md:Dry-run mode must apply the same validation and conflict detection as apply mode, but it must not persist mirrored academic record changes. Apply mode must be transactionally safe at the row or declared batch boundary.
+wts-lms-specs/integrations/sis_sync.md:- Make add/drop, role change, section change, term rollover, idempotent re-runs, conflict detection, and failure reporting directly testable.
+
+$ grep -E "add|drop|role change|section change|term rollover" wts-lms-specs/integrations/sis_sync.md
+| Enrollments | SIS/Registrar | Mirror add/drop state, role, section, effective dates, and status. |
+- `status`: required enrollment lifecycle value, including active and dropped.
+DECISION NEEDED: confirm production sync frequency, acceptable propagation delay for add/drop changes, and whether Populi provides push webhooks, scheduled exports, or API polling.
+### Add/drop
+An add creates or reactivates the enrollment identified by `sis_enrollment_id` or the deterministic enrollment composite key. A drop marks the enrollment inactive/dropped and removes access to the section at the next authorization check. Dropping a user must not delete submissions, grades, comments, files, audit events, or historical enrollment records.
+If the feed sends a full authoritative section enrollment roster, an omitted prior enrollment is treated as a drop only when the extract declares itself a full roster for that section and term. If the feed sends incremental changes, omission means no change.
+A role change updates the enrollment role for the same user and section only when the new role is Student, Teacher, or Admin. The change takes effect at the next authorization check. Unsupported roles are rejected or quarantined as a conflict and must not grant access.
+When a role change would reduce permissions, Phoenix must preserve prior Phoenix-owned coursework and audit records while immediately enforcing the reduced access.
+A section change is represented as a drop from the old `sis_section_id` and an add to the new `sis_section_id`, unless the SIS supplies a stable enrollment ID that explicitly changes section. Phoenix must preserve user submissions and grades tied to the original section for audit and gradebook history. Access to the old section stops when the drop is applied, and access to the new section starts when the add is applied.
+- Email changes to an address already used by another `sis_user_id`.
+- Incremental extract attempts to imply a drop by omission.
+- Counts for inserted, updated, unchanged, dropped, disabled, skipped, conflicted, and failed rows.
+- Make add/drop, role change, section change, term rollover, idempotent re-runs, conflict detection, and failure reporting directly testable.

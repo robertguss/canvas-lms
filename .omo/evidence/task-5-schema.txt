@@ -1,0 +1,70 @@
+$ cd wts-lms-api && mix ecto.migrate
+Compiling 5 files (.ex)
+Generated wts_lms_api app
+WTS LMS migration manifest validated: priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs
+
+exit=0
+
+$ cd wts-lms-api && mix test test/wts_lms/schema_contract_test.exs
+Running ExUnit with seed: 889680, max_cases: 28
+
+..
+Finished in 0.09 seconds (0.09s async, 0.00s sync)
+2 tests, 0 failures
+
+exit=0
+
+$ cd wts-lms-api && mix test test/wts_lms/legacy_mapping_test.exs
+Running ExUnit with seed: 329277, max_cases: 28
+
+..
+Finished in 0.01 seconds (0.01s async, 0.00s sync)
+2 tests, 0 failures
+
+exit=0
+
+$ grep -R "legacy_canvas_id" wts-lms-api/lib/wts_lms wts-lms-api/priv/repo/migrations
+wts-lms-api/lib/wts_lms/legacy_mapping.ex:  `source_system`, `entity_type`, and `legacy_canvas_id` so duplicate Canvas IDs
+wts-lms-api/lib/wts_lms/legacy_mapping.ex:    :legacy_canvas_id,
+wts-lms-api/lib/wts_lms/legacy_mapping.ex:      :legacy_canvas_id,
+wts-lms-api/lib/wts_lms/legacy_mapping.ex:      |> Map.put_new(:id, "legacy_mapping-" <> to_string(Map.fetch!(attrs, :entity_type)) <> "-" <> to_string(Map.fetch!(attrs, :legacy_canvas_id)))
+wts-lms-api/lib/wts_lms/legacy_mapping.ex:      key = {mapping.source_system, mapping.entity_type, mapping.legacy_canvas_id}
+wts-lms-api/lib/wts_lms/legacy_mapping.ex:             legacy_canvas_id: mapping.legacy_canvas_id
+wts-lms-api/lib/wts_lms/schema.ex:  @audit_fields [:legacy_canvas_id, :source_system, :import_batch_id, :last_imported_at, :source_updated_at]
+wts-lms-api/lib/wts_lms/schema.ex:        source = Enum.find_value([:sis_user_id, :sis_course_id, :sis_section_id, :sis_term_id, :legacy_canvas_id, :name, :title], fn key -> Map.get(attrs, key) end)
+wts-lms-api/lib/wts_lms/schema.ex:  at the boundary through `legacy_canvas_id`, `source_system`, and audit fields;
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:  @legacy_fields [:legacy_canvas_id, :source_system, :import_batch_id, :last_imported_at, :source_updated_at]
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    legacy_mappings: [:entity_type, :entity_id, :source_system, :legacy_canvas_id, :import_batch_id, :last_imported_at, :source_updated_at]
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    unique_legacy_mapping_index: [:legacy_mappings, [:source_system, :entity_type, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    accounts_legacy_canvas_id_index: [:accounts, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    academic_terms_legacy_canvas_id_index: [:academic_terms, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    users_legacy_canvas_id_index: [:users, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    roles_legacy_canvas_id_index: [:roles, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    courses_legacy_canvas_id_index: [:courses, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    sections_legacy_canvas_id_index: [:sections, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    enrollments_legacy_canvas_id_index: [:enrollments, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    learning_modules_legacy_canvas_id_index: [:learning_modules, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    pages_legacy_canvas_id_index: [:pages, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    content_files_legacy_canvas_id_index: [:content_files, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    assignment_groups_legacy_canvas_id_index: [:assignment_groups, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    assignments_legacy_canvas_id_index: [:assignments, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    submissions_legacy_canvas_id_index: [:submissions, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    grade_items_legacy_canvas_id_index: [:grade_items, [:source_system, :legacy_canvas_id]],
+wts-lms-api/priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs:    grades_legacy_canvas_id_index: [:grades, [:source_system, :legacy_canvas_id]]
+
+exit=0
+
+$ grep -R -E "TODO|FIXME|HACK|xxx" wts-lms-api/lib/wts_lms wts-lms-api/priv/repo/migrations wts-lms-api/test/wts_lms
+
+exit=1
+
+$ grep -R -E "dap_|wiki_pages|course_sections|content_tags|context_modules" wts-lms-api/lib/wts_lms wts-lms-api/priv/repo/migrations
+
+exit=1
+
+$ cd wts-lms-api && mix ecto.migrate && mix test test/wts_lms/schema_contract_test.exs && mix test test/wts_lms/legacy_mapping_test.exs && mix run -e '<schema smoke>'
+WTS LMS migration manifest validated: priv/repo/migrations/20260602000000_create_wts_lms_core_domain_schema.exs
+Schema contract test: 2 tests, 0 failures
+Legacy mapping test: 2 tests, 0 failures
+Library smoke output: WTS:1
+exit=0

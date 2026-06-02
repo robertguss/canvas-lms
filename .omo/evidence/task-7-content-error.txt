@@ -1,0 +1,1 @@
+non_enrolled_response: %{error: %{reason_code: "course content forbidden"}, status: 403}

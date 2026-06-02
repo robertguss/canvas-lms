@@ -1,0 +1,1 @@
+No command failures. mix ecto.migrate validates the migration manifest because the Task 4 scaffold has no Ecto/Repo dependency.

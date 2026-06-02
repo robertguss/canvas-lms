@@ -1,0 +1,4 @@
+
+## 2026-06-02 Task 13c negative secret scan
+$ ! grep -R -E "POSTMARK_API_TOKEN=|server token|webhook secret:" wts-lms-specs/ops/
+PASS: no secret-looking Postmark values matched.

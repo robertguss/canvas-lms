@@ -1,0 +1,40 @@
+Compiling 5 files (.ex)
+Running ExUnit with seed: 158996, max_cases: 28
+
+Generated wts_lms_api app
+..mode=dry-run persisted=false inserted=3 updated=0 unchanged=1 dropped=0 disabled=0 skipped=0 conflicted=2 failed=0
+....
+Finished in 0.06 seconds (0.06s async, 0.00s sync)
+6 tests, 0 failures
+
+canvas-lms on  elixir-migration-spike [?] via 🐳 orbstack via  v22.22.3 via 💎
+ v3.4.5 on ☁️  (us-east-2) on ☁️  google_dev@wts.edu
+❯ cd /Users/robertguss/Projects/wts-dops/canvas-lms/wts-lms-api && mix wts.sis.d
+ry_run --fixture test/fixtures/sis/add_drop.csv
+mode=dry-run persisted=false inserted=3 updated=0 unchanged=1 dropped=0 disabled
+=0 skipped=0 conflicted=2 failed=0
+
+canvas-lms/wts-lms-api on  elixir-migration-spike [?] is 📦 v0.1.0 via 💧 v1.19
+.5 (OTP 29) on ☁️  (us-east-2) on ☁️  google_dev@wts.edu
+❯ mix wts.sis.dry_run
+** (Mix) Expected --fixture PATH
+
+canvas-lms/wts-lms-api on  elixir-migration-spike [?] is 📦 v0.1.0 via 💧 v1.19
+.5 (OTP 29) on ☁️  (us-east-2) on ☁️  google_dev@wts.edu
+❯
+
+
+
+
+
+
+
+
+Compiling 1 file (.ex)
+Running ExUnit with seed: 110302, max_cases: 28
+
+Generated wts_lms_api app
+mode=dry-run persisted=false inserted=2 updated=0 unchanged=1 dropped=0 disabled=0 skipped=0 conflicted=3 failed=0
+........
+Finished in 0.06 seconds (0.06s async, 0.00s sync)
+8 tests, 0 failures
