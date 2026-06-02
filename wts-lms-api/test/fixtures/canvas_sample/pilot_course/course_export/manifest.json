@@ -1,0 +1,11 @@
+{
+  "source": "course export",
+  "classification": "sanitized placeholder only; no real WTS data",
+  "expected_artifacts": [
+    "imsmanifest.xml metadata summary",
+    "module item ordering summary",
+    "page and assignment body/resource reference summary",
+    "course file resource reference summary"
+  ],
+  "real_sanitized_sample_gate": "BLOCKER: add scrubbed course export metadata for one active course."
+}
