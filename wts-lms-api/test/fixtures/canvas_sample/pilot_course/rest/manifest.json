@@ -1,16 +1,51 @@
 {
-  "source": "Canvas REST API",
-  "classification": "sanitized placeholder only; no real WTS data",
-  "expected_endpoints": [
-    "GET /api/v1/courses/:course_id",
-    "GET /api/v1/courses/:course_id/users",
-    "GET /api/v1/courses/:course_id/enrollments",
-    "GET /api/v1/courses/:course_id/modules?include[]=items",
-    "GET /api/v1/courses/:course_id/pages/:url",
-    "GET /api/v1/announcements?context_codes[]=course_:course_id",
-    "GET /api/v1/courses/:course_id/assignment_groups?include[]=assignments",
-    "GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions?include[]=submission_comments&include[]=submission_history",
-    "GET /api/v1/courses/:course_id/files"
+  "approval": {
+    "approval_note": "User stated \"fixture approved\"; fixture approved for commit and migration importer/diff development.",
+    "approved_by": "user confirmation in chat",
+    "approved_on": "2026-06-03",
+    "status": "approved"
+  },
+  "classification": "approved real sanitized WTS-derived REST responses",
+  "collection_summary": {
+    "announcements": 12,
+    "assignment_groups": 4,
+    "assignments": 13,
+    "course_code": "PILOT 001",
+    "course_id": 4363,
+    "excluded_basic_lti_launch_submissions": 87,
+    "excluded_external_tool_assignments": 3,
+    "files": 22,
+    "folders": 4,
+    "front_page": 1,
+    "module_items": 134,
+    "modules": 16,
+    "page_details": 80,
+    "pages": 80,
+    "student_submissions": 390
+  },
+  "excluded_from_day_one_payload": {
+    "assignment_submission_types": [
+      "external_tool"
+    ],
+    "external_tool_assignment_ids": [
+      82463,
+      82464,
+      82465
+    ],
+    "submission_types": [
+      "basic_lti_launch"
+    ]
+  },
+  "private_values_removed": [
+    "emails",
+    "names",
+    "course identifiers",
+    "HTML bodies",
+    "submission bodies",
+    "comments",
+    "private URLs",
+    "file names"
   ],
-  "real_sanitized_sample_gate": "BLOCKER: add scrubbed REST JSON responses for runtime semantics and source gaps."
+  "sanitized_payload": "responses.sanitized.json",
+  "source": "Canvas REST API"
 }
