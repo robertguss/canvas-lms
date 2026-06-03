@@ -1,0 +1,1044 @@
+{
+  "byte_size": 57667647,
+  "content_export_id": 22260,
+  "content_type": "text/plain",
+  "download_status": 200,
+  "imsmanifest": {
+    "byte_size": 75430,
+    "element_counts": {
+      "contribute": 1,
+      "copyrightAndOtherRestrictions": 1,
+      "date": 1,
+      "dateTime": 1,
+      "dependency": 15,
+      "description": 1,
+      "file": 202,
+      "general": 1,
+      "item": 154,
+      "lifeCycle": 1,
+      "lom": 1,
+      "manifest": 1,
+      "metadata": 1,
+      "organization": 1,
+      "organizations": 1,
+      "resource": 176,
+      "resources": 1,
+      "rights": 1,
+      "schema": 1,
+      "schemaversion": 1,
+      "string": 2,
+      "title": 154,
+      "value": 1
+    },
+    "present": true
+  },
+  "package_entries": [
+    {
+      "byte_size": 2251193,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0001"
+    },
+    {
+      "byte_size": 21889,
+      "original_extension": ".docx",
+      "path": "imscc_entry_0002"
+    },
+    {
+      "byte_size": 66538,
+      "original_extension": ".docx",
+      "path": "imscc_entry_0003"
+    },
+    {
+      "byte_size": 361179,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0004"
+    },
+    {
+      "byte_size": 498781,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0005"
+    },
+    {
+      "byte_size": 3399090,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0006"
+    },
+    {
+      "byte_size": 3702878,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0007"
+    },
+    {
+      "byte_size": 3368786,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0008"
+    },
+    {
+      "byte_size": 22936166,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0009"
+    },
+    {
+      "byte_size": 801424,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0010"
+    },
+    {
+      "byte_size": 7524358,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0011"
+    },
+    {
+      "byte_size": 877961,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0012"
+    },
+    {
+      "byte_size": 2194402,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0013"
+    },
+    {
+      "byte_size": 171863,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0014"
+    },
+    {
+      "byte_size": 1267494,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0015"
+    },
+    {
+      "byte_size": 1240803,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0016"
+    },
+    {
+      "byte_size": 217042,
+      "original_extension": ".pdf",
+      "path": "imscc_entry_0017"
+    },
+    {
+      "byte_size": 16036,
+      "original_extension": ".docx",
+      "path": "imscc_entry_0018"
+    },
+    {
+      "byte_size": 15680,
+      "original_extension": ".docx",
+      "path": "imscc_entry_0019"
+    },
+    {
+      "byte_size": 2753396,
+      "original_extension": ".png",
+      "path": "imscc_entry_0020"
+    },
+    {
+      "byte_size": 5588315,
+      "original_extension": ".png",
+      "path": "imscc_entry_0021"
+    },
+    {
+      "byte_size": 331640,
+      "original_extension": ".jpg",
+      "path": "imscc_entry_0022"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0023"
+    },
+    {
+      "byte_size": 1065,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0024"
+    },
+    {
+      "byte_size": 97,
+      "original_extension": ".txt",
+      "path": "imscc_entry_0025"
+    },
+    {
+      "byte_size": 652,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0026"
+    },
+    {
+      "byte_size": 3995,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0027"
+    },
+    {
+      "byte_size": 728,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0028"
+    },
+    {
+      "byte_size": 276,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0029"
+    },
+    {
+      "byte_size": 1076,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0030"
+    },
+    {
+      "byte_size": 844,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0031"
+    },
+    {
+      "byte_size": 284,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0032"
+    },
+    {
+      "byte_size": 65521,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0033"
+    },
+    {
+      "byte_size": 13464,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0034"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0035"
+    },
+    {
+      "byte_size": 69,
+      "original_extension": ".json",
+      "path": "imscc_entry_0036"
+    },
+    {
+      "byte_size": 1023,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0037"
+    },
+    {
+      "byte_size": 1029,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0038"
+    },
+    {
+      "byte_size": 430,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0039"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0040"
+    },
+    {
+      "byte_size": 2576,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0041"
+    },
+    {
+      "byte_size": 4241,
+      "original_extension": ".html",
+      "path": "imscc_entry_0042"
+    },
+    {
+      "byte_size": 475,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0043"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0044"
+    },
+    {
+      "byte_size": 2278,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0045"
+    },
+    {
+      "byte_size": 788,
+      "original_extension": ".html",
+      "path": "imscc_entry_0046"
+    },
+    {
+      "byte_size": 1029,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0047"
+    },
+    {
+      "byte_size": 428,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0048"
+    },
+    {
+      "byte_size": 1016,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0049"
+    },
+    {
+      "byte_size": 468,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0050"
+    },
+    {
+      "byte_size": 2932,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0051"
+    },
+    {
+      "byte_size": 1029,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0052"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0053"
+    },
+    {
+      "byte_size": 2594,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0054"
+    },
+    {
+      "byte_size": 3074,
+      "original_extension": ".html",
+      "path": "imscc_entry_0055"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0056"
+    },
+    {
+      "byte_size": 2286,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0057"
+    },
+    {
+      "byte_size": 3215,
+      "original_extension": ".html",
+      "path": "imscc_entry_0058"
+    },
+    {
+      "byte_size": 1050,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0059"
+    },
+    {
+      "byte_size": 1156,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0060"
+    },
+    {
+      "byte_size": 1149,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0061"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0062"
+    },
+    {
+      "byte_size": 2225,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0063"
+    },
+    {
+      "byte_size": 163,
+      "original_extension": ".html",
+      "path": "imscc_entry_0064"
+    },
+    {
+      "byte_size": 1028,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0065"
+    },
+    {
+      "byte_size": 533,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0066"
+    },
+    {
+      "byte_size": 416,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0067"
+    },
+    {
+      "byte_size": 1156,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0068"
+    },
+    {
+      "byte_size": 422,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0069"
+    },
+    {
+      "byte_size": 428,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0070"
+    },
+    {
+      "byte_size": 2154,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0071"
+    },
+    {
+      "byte_size": 1024,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0072"
+    },
+    {
+      "byte_size": 428,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0073"
+    },
+    {
+      "byte_size": 983,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0074"
+    },
+    {
+      "byte_size": 904,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0075"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0076"
+    },
+    {
+      "byte_size": 2278,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0077"
+    },
+    {
+      "byte_size": 788,
+      "original_extension": ".html",
+      "path": "imscc_entry_0078"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0079"
+    },
+    {
+      "byte_size": 2279,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0080"
+    },
+    {
+      "byte_size": 2568,
+      "original_extension": ".html",
+      "path": "imscc_entry_0081"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0082"
+    },
+    {
+      "byte_size": 2293,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0083"
+    },
+    {
+      "byte_size": 380,
+      "original_extension": ".html",
+      "path": "imscc_entry_0084"
+    },
+    {
+      "byte_size": 1154,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0085"
+    },
+    {
+      "byte_size": 465,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0086"
+    },
+    {
+      "byte_size": 1024,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0087"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0088"
+    },
+    {
+      "byte_size": 6735,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0089"
+    },
+    {
+      "byte_size": 1058,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0090"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0091"
+    },
+    {
+      "byte_size": 2278,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0092"
+    },
+    {
+      "byte_size": 788,
+      "original_extension": ".html",
+      "path": "imscc_entry_0093"
+    },
+    {
+      "byte_size": 449,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0094"
+    },
+    {
+      "byte_size": 442,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0095"
+    },
+    {
+      "byte_size": 474,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0096"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0097"
+    },
+    {
+      "byte_size": 2225,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0098"
+    },
+    {
+      "byte_size": 163,
+      "original_extension": ".html",
+      "path": "imscc_entry_0099"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0100"
+    },
+    {
+      "byte_size": 2279,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0101"
+    },
+    {
+      "byte_size": 3171,
+      "original_extension": ".html",
+      "path": "imscc_entry_0102"
+    },
+    {
+      "byte_size": 772,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0103"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0104"
+    },
+    {
+      "byte_size": 6706,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0105"
+    },
+    {
+      "byte_size": 1068,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0106"
+    },
+    {
+      "byte_size": 547,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0107"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0108"
+    },
+    {
+      "byte_size": 2278,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0109"
+    },
+    {
+      "byte_size": 788,
+      "original_extension": ".html",
+      "path": "imscc_entry_0110"
+    },
+    {
+      "byte_size": 1026,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0111"
+    },
+    {
+      "byte_size": 1029,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0112"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0113"
+    },
+    {
+      "byte_size": 2282,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0114"
+    },
+    {
+      "byte_size": 3376,
+      "original_extension": ".html",
+      "path": "imscc_entry_0115"
+    },
+    {
+      "byte_size": 496,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0116"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0117"
+    },
+    {
+      "byte_size": 7351,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0118"
+    },
+    {
+      "byte_size": 1039,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0119"
+    },
+    {
+      "byte_size": 1016,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0120"
+    },
+    {
+      "byte_size": 1022,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0121"
+    },
+    {
+      "byte_size": 1016,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0122"
+    },
+    {
+      "byte_size": 1029,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0123"
+    },
+    {
+      "byte_size": 75430,
+      "original_extension": ".xml",
+      "path": "imscc_entry_0124"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0125"
+    },
+    {
+      "byte_size": 36254,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0126"
+    },
+    {
+      "byte_size": 67458,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0127"
+    },
+    {
+      "byte_size": 36265,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0128"
+    },
+    {
+      "byte_size": 36356,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0129"
+    },
+    {
+      "byte_size": 129903,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0130"
+    },
+    {
+      "byte_size": 110409,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0131"
+    },
+    {
+      "byte_size": 3132,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0132"
+    },
+    {
+      "byte_size": 89933,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0133"
+    },
+    {
+      "byte_size": 99663,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0134"
+    },
+    {
+      "byte_size": 2926,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0135"
+    },
+    {
+      "byte_size": 9335,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0136"
+    },
+    {
+      "byte_size": 34449,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0137"
+    },
+    {
+      "byte_size": 142242,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0138"
+    },
+    {
+      "byte_size": 2481,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0139"
+    },
+    {
+      "byte_size": 103362,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0140"
+    },
+    {
+      "byte_size": 101368,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0141"
+    },
+    {
+      "byte_size": 2888,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0142"
+    },
+    {
+      "byte_size": 103569,
+      "original_extension": ".qti",
+      "path": "imscc_entry_0143"
+    },
+    {
+      "byte_size": 0,
+      "original_extension": null,
+      "path": "imscc_entry_0144"
+    },
+    {
+      "byte_size": 7737,
+      "original_extension": ".html",
+      "path": "imscc_entry_0145"
+    },
+    {
+      "byte_size": 713,
+      "original_extension": ".html",
+      "path": "imscc_entry_0146"
+    },
+    {
+      "byte_size": 627,
+      "original_extension": ".html",
+      "path": "imscc_entry_0147"
+    },
+    {
+      "byte_size": 352,
+      "original_extension": ".html",
+      "path": "imscc_entry_0148"
+    },
+    {
+      "byte_size": 353,
+      "original_extension": ".html",
+      "path": "imscc_entry_0149"
+    },
+    {
+      "byte_size": 351,
+      "original_extension": ".html",
+      "path": "imscc_entry_0150"
+    },
+    {
+      "byte_size": 355,
+      "original_extension": ".html",
+      "path": "imscc_entry_0151"
+    },
+    {
+      "byte_size": 353,
+      "original_extension": ".html",
+      "path": "imscc_entry_0152"
+    },
+    {
+      "byte_size": 2075,
+      "original_extension": ".html",
+      "path": "imscc_entry_0153"
+    },
+    {
+      "byte_size": 2108,
+      "original_extension": ".html",
+      "path": "imscc_entry_0154"
+    },
+    {
+      "byte_size": 1608,
+      "original_extension": ".html",
+      "path": "imscc_entry_0155"
+    },
+    {
+      "byte_size": 1702,
+      "original_extension": ".html",
+      "path": "imscc_entry_0156"
+    },
+    {
+      "byte_size": 341,
+      "original_extension": ".html",
+      "path": "imscc_entry_0157"
+    },
+    {
+      "byte_size": 721,
+      "original_extension": ".html",
+      "path": "imscc_entry_0158"
+    },
+    {
+      "byte_size": 722,
+      "original_extension": ".html",
+      "path": "imscc_entry_0159"
+    },
+    {
+      "byte_size": 726,
+      "original_extension": ".html",
+      "path": "imscc_entry_0160"
+    },
+    {
+      "byte_size": 728,
+      "original_extension": ".html",
+      "path": "imscc_entry_0161"
+    },
+    {
+      "byte_size": 719,
+      "original_extension": ".html",
+      "path": "imscc_entry_0162"
+    },
+    {
+      "byte_size": 719,
+      "original_extension": ".html",
+      "path": "imscc_entry_0163"
+    },
+    {
+      "byte_size": 712,
+      "original_extension": ".html",
+      "path": "imscc_entry_0164"
+    },
+    {
+      "byte_size": 739,
+      "original_extension": ".html",
+      "path": "imscc_entry_0165"
+    },
+    {
+      "byte_size": 741,
+      "original_extension": ".html",
+      "path": "imscc_entry_0166"
+    },
+    {
+      "byte_size": 1033,
+      "original_extension": ".html",
+      "path": "imscc_entry_0167"
+    },
+    {
+      "byte_size": 1148,
+      "original_extension": ".html",
+      "path": "imscc_entry_0168"
+    },
+    {
+      "byte_size": 698,
+      "original_extension": ".html",
+      "path": "imscc_entry_0169"
+    },
+    {
+      "byte_size": 705,
+      "original_extension": ".html",
+      "path": "imscc_entry_0170"
+    },
+    {
+      "byte_size": 752,
+      "original_extension": ".html",
+      "path": "imscc_entry_0171"
+    },
+    {
+      "byte_size": 754,
+      "original_extension": ".html",
+      "path": "imscc_entry_0172"
+    },
+    {
+      "byte_size": 713,
+      "original_extension": ".html",
+      "path": "imscc_entry_0173"
+    },
+    {
+      "byte_size": 728,
+      "original_extension": ".html",
+      "path": "imscc_entry_0174"
+    },
+    {
+      "byte_size": 713,
+      "original_extension": ".html",
+      "path": "imscc_entry_0175"
+    },
+    {
+      "byte_size": 703,
+      "original_extension": ".html",
+      "path": "imscc_entry_0176"
+    },
+    {
+      "byte_size": 714,
+      "original_extension": ".html",
+      "path": "imscc_entry_0177"
+    },
+    {
+      "byte_size": 709,
+      "original_extension": ".html",
+      "path": "imscc_entry_0178"
+    },
+    {
+      "byte_size": 711,
+      "original_extension": ".html",
+      "path": "imscc_entry_0179"
+    },
+    {
+      "byte_size": 717,
+      "original_extension": ".html",
+      "path": "imscc_entry_0180"
+    },
+    {
+      "byte_size": 731,
+      "original_extension": ".html",
+      "path": "imscc_entry_0181"
+    },
+    {
+      "byte_size": 717,
+      "original_extension": ".html",
+      "path": "imscc_entry_0182"
+    },
+    {
+      "byte_size": 719,
+      "original_extension": ".html",
+      "path": "imscc_entry_0183"
+    },
+    {
+      "byte_size": 722,
+      "original_extension": ".html",
+      "path": "imscc_entry_0184"
+    },
+    {
+      "byte_size": 737,
+      "original_extension": ".html",
+      "path": "imscc_entry_0185"
+    },
+    {
+      "byte_size": 739,
+      "original_extension": ".html",
+      "path": "imscc_entry_0186"
+    },
+    {
+      "byte_size": 739,
+      "original_extension": ".html",
+      "path": "imscc_entry_0187"
+    },
+    {
+      "byte_size": 767,
+      "original_extension": ".html",
+      "path": "imscc_entry_0188"
+    },
+    {
+      "byte_size": 727,
+      "original_extension": ".html",
+      "path": "imscc_entry_0189"
+    },
+    {
+      "byte_size": 769,
+      "original_extension": ".html",
+      "path": "imscc_entry_0190"
+    },
+    {
+      "byte_size": 718,
+      "original_extension": ".html",
+      "path": "imscc_entry_0191"
+    },
+    {
+      "byte_size": 703,
+      "original_extension": ".html",
+      "path": "imscc_entry_0192"
+    },
+    {
+      "byte_size": 711,
+      "original_extension": ".html",
+      "path": "imscc_entry_0193"
+    },
+    {
+      "byte_size": 742,
+      "original_extension": ".html",
+      "path": "imscc_entry_0194"
+    },
+    {
+      "byte_size": 726,
+      "original_extension": ".html",
+      "path": "imscc_entry_0195"
+    },
+    {
+      "byte_size": 718,
+      "original_extension": ".html",
+      "path": "imscc_entry_0196"
+    },
+    {
+      "byte_size": 7963,
+      "original_extension": ".html",
+      "path": "imscc_entry_0197"
+    },
+    {
+      "byte_size": 334,
+      "original_extension": ".html",
+      "path": "imscc_entry_0198"
+    },
+    {
+      "byte_size": 378,
+      "original_extension": ".html",
+      "path": "imscc_entry_0199"
+    },
+    {
+      "byte_size": 368,
+      "original_extension": ".html",
+      "path": "imscc_entry_0200"
+    }
+  ],
+  "package_entries_included": 200,
+  "package_entries_list_status": "truncated_metadata_sample",
+  "package_entries_omitted": 24,
+  "package_entry_count": 224,
+  "sanitization_status": "metadata_only_imscc_bytes_not_committed",
+  "sha256": "5065128babf49b4e5efe4ca61897fb05a16d5f359a8424e18e389e572eb9369d",
+  "workflow_state": "exported"
+}
