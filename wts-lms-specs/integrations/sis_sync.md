@@ -70,9 +70,9 @@ Phoenix-owned data includes submissions, comments, files, notifications, grade c
 
 ## Sync Cadence And Job Boundaries
 
-DECISION NEEDED: confirm production sync frequency, acceptable propagation delay for add/drop changes, and whether Populi provides push webhooks, scheduled exports, or API polling.
+The production pilot uses an hourly scheduled SIS sync and dry-run batch cadence. Add/drop changes must reach Phoenix within a maximum 2-hour propagation target. Populi push webhooks or API polling may be evaluated as future optimizations, but they are not launch blockers for the pilot.
 
-Until that decision is resolved, implementation must expose a deterministic dry-run path and a repeatable batch import path. Every sync job must have a job ID, source extract ID, started/finished timestamps, row counts, error counts, warning counts, and a persisted per-row outcome.
+Implementation must expose a deterministic dry-run path and a repeatable batch import path. Every sync job must have a job ID, source extract ID, started/finished timestamps, row counts, error counts, warning counts, and a persisted per-row outcome.
 
 ## Deterministic Change Handling
 

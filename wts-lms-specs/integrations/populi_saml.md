@@ -72,7 +72,7 @@ SAML establishes browser authentication only. Phoenix owns session tokens and re
 
 - Normal login path: Populi SAML redirect and callback only.
 - Normal local-password auth: prohibited for Students, Teachers, and Admins.
-- Session lifetime: DECISION NEEDED: choose absolute and idle session expiration durations before implementation.
+- Session lifetime: Phoenix sessions expire after 8 hours of idle time and after a 12-hour absolute lifetime, whichever comes first.
 - Session authorization: recomputed from current SIS-owned user, role, course, section, term, and enrollment records on each request or from a short-lived authorization cache.
 - Disabled user after login: the next authorization check must reject access and revoke active sessions.
 - Role or enrollment change after login: access must reflect the newest successful SIS sync, not stale SAML attributes.
