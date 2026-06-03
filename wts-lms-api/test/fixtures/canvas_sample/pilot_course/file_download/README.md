@@ -1,7 +1,3 @@
-# file_download Source Placeholder
+# File Download Source
 
-This directory contains non-sensitive placeholder metadata for the `file download` source.
-
-Do not add real WTS data without sanitizing it first. The current files only document the expected shape for Task 2.
-
-BLOCKER: add checksum and byte-size rows for every pilot course file and submission attachment.
+Sanitized checksum, byte-size, and content-type evidence for course files and submission attachments. Raw file bytes remain outside the repository.

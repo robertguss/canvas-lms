@@ -1,14 +1,16 @@
 {
+  "approval": {
+    "approval_note": "User stated \"fixture approved\"; fixture approved for commit and migration importer/diff development.",
+    "approved_by": "user confirmation in chat",
+    "approved_on": "2026-06-03",
+    "status": "approved"
+  },
+  "classification": "approved real sanitized WTS-derived checksum and byte-size evidence",
+  "download_errors": 0,
+  "file_count": 83,
+  "limitation": "Raw file bytes remain outside the repository; this fixture commits checksum/byte-size/content-type evidence only.",
+  "module_file_count": 11,
+  "sanitized_manifest": "file_manifest.sanitized.json",
   "source": "file download",
-  "classification": "sanitized placeholder only; no real WTS data",
-  "limitation": "File bytes must come from REST URLs, course export resources, or explicit downloads; DAP metadata alone is insufficient unless official docs later prove file byte delivery.",
-  "expected_manifest_fields": [
-    "legacy_canvas_attachment_id",
-    "source_url_or_export_path",
-    "sha256",
-    "byte_size",
-    "content_type",
-    "sanitization_status"
-  ],
-  "real_sanitized_sample_gate": "BLOCKER: add checksum and byte-size rows for every pilot course file and submission attachment."
+  "submission_file_count": 72
 }
