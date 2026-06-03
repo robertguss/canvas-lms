@@ -1,29 +1,57 @@
 {
+  "approval": {
+    "approval_note": "User stated \"fixture approved\"; fixture approved for commit and migration importer/diff development.",
+    "approved_by": "user confirmation in chat",
+    "approved_on": "2026-06-03",
+    "status": "approved"
+  },
+  "classification": "approved real sanitized WTS-derived sample",
+  "counts": {
+    "announcements": 12,
+    "assignment_groups": 4,
+    "assignments": 13,
+    "course_export_package_entries": 224,
+    "file_download_manifest_rows": 83,
+    "module_items": 134,
+    "modules": 16,
+    "pages": 80,
+    "students": 30,
+    "submissions": 390,
+    "teachers_or_comment_authors": 3
+  },
+  "excluded_scope": {
+    "assignment_submission_types": [
+      "external_tool"
+    ],
+    "excluded_basic_lti_launch_submissions": 87,
+    "external_tool_assignment_ids": [
+      82463,
+      82464,
+      82465
+    ],
+    "submission_types": [
+      "basic_lti_launch"
+    ]
+  },
   "fixture": "canvas_sample/pilot_course",
-  "classification": "sanitized placeholder only; no real WTS data",
-  "real_sanitized_sample_status": "BLOCKER: missing",
-  "mocked_only_data_policy": "mocked-only data prohibited for Tasks 5, 8, and 11 production-quality implementation",
+  "mocked_only_data_policy": "approved sanitized WTS-derived fixture may be used for Tasks 5, 8, and 11 production-quality implementation",
+  "real_sanitized_sample_status": "approved",
+  "sanitization": {
+    "course_identifiers": "synthetic course name/code/SIS ID used",
+    "file_bytes": "not committed; checksum, byte size, and content type retained",
+    "grades": "private grade display values replaced; deterministic numeric shape retained for importer tests",
+    "identities": "stable synthetic labels preserve Canvas legacy IDs and relationships",
+    "text_bodies": "raw page, announcement, assignment, submission, and comment text replaced with redaction summaries",
+    "urls": "private Canvas URLs replaced with redacted-url sentinels"
+  },
+  "source_course": {
+    "legacy_canvas_course_id": 4363,
+    "synthetic_course_code": "PILOT 001"
+  },
   "sources": [
     "DAP",
     "REST",
     "course export",
     "file download"
-  ],
-  "entity_families": [
-    "users",
-    "terms",
-    "courses",
-    "sections",
-    "enrollments",
-    "modules",
-    "pages",
-    "announcements",
-    "assignments",
-    "assignment groups",
-    "submissions",
-    "grades",
-    "attachments/files",
-    "comments",
-    "legacy Canvas ID mappings"
   ]
 }
