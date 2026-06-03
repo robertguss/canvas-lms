@@ -1,0 +1,16 @@
+{
+  "alias_type": "negative pilot rehearsal alias",
+  "derived_from_fixture": "../pilot_course",
+  "fixture": "canvas_sample/pilot_course_with_missing_submission",
+  "operations": [
+    {
+      "remove_target_assignment_id": 83856,
+      "reason": "negative rehearsal fixture: source assignment and submissions remain staged but target transform omits them"
+    }
+  ],
+  "pilot_rehearsal": {
+    "expected_result": "non-zero import diff with missing assignment and missing submission mismatches",
+    "launch_status": "blocked",
+    "rollback_trigger": "Any missing required assignment or submission blocks launch and returns the course to hosted Canvas/archive fallback until fixed."
+  }
+}

@@ -1,0 +1,25 @@
+$ mix test test/wts_lms/notifications
+Running ExUnit with seed: 121125, max_cases: 28
+
+......
+Finished in 0.1 seconds (0.1s async, 0.00s sync)
+6 tests, 0 failures
+$ mix test test/wts_lms/workers
+Running ExUnit with seed: 697407, max_cases: 28
+
+....
+Finished in 0.05 seconds (0.05s async, 0.00s sync)
+4 tests, 0 failures
+$ mix test
+Running ExUnit with seed: 164111, max_cases: 28
+
+...................................................
+Finished in 0.2 seconds (0.2s async, 0.03s sync)
+51 tests, 0 failures
+$ grep -R "SMS|mobile push|digest|frequency|preferences" lib/wts_lms/notifications lib/wts_lms/workers test/wts_lms/notifications test/wts_lms/workers
+test/wts_lms/notifications/notifications_test.exs:  test "notification preferences digests SMS and mobile push stay out of scope" do
+test/wts_lms/notifications/notifications_test.exs:    refute function_exported?(Notifications, :set_preferences, 3)
+test/wts_lms/notifications/notifications_test.exs:    refute function_exported?(Notifications, :schedule_digest, 2)
+test/wts_lms/notifications/notifications_test.exs:    refute :digest in Notifications.supported_channels()
+$ mix run -e notification manual QA
+{nil, :notifications, "grade_released"}

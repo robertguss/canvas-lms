@@ -1,0 +1,158 @@
+{
+  "course_id": "course-1",
+  "student_user_id": "student-1",
+  "courses": [
+    {
+      "id": "course-1",
+      "account_id": "acct-1",
+      "term_id": "term-1",
+      "sis_course_id": "THEO-101",
+      "name": "Foundations",
+      "code": "THEO-101"
+    }
+  ],
+  "sections": [
+    {
+      "id": "section-1",
+      "course_id": "course-1",
+      "sis_section_id": "THEO-101-A",
+      "name": "A"
+    }
+  ],
+  "users": [
+    {
+      "id": "student-1",
+      "sis_user_id": "S100",
+      "display_name": "Student One",
+      "email": "student@example.edu"
+    }
+  ],
+  "enrollments": [
+    {
+      "id": "enrollment-1",
+      "course_id": "course-1",
+      "section_id": "section-1",
+      "user_id": "student-1",
+      "role_id": "role-student",
+      "state": "active"
+    }
+  ],
+  "assignment_groups": [
+    {
+      "id": "group-essays",
+      "course_id": "course-1",
+      "name": "Essays",
+      "weight": "40.0",
+      "position": 1,
+      "status": "active"
+    },
+    {
+      "id": "group-exams",
+      "course_id": "course-1",
+      "name": "Exams",
+      "weight": "60.0",
+      "position": 2,
+      "status": "active"
+    }
+  ],
+  "assignments": [
+    {
+      "id": "assignment-essay",
+      "course_id": "course-1",
+      "assignment_group_id": "group-essays",
+      "title": "Essay",
+      "points_possible": "50.0",
+      "status": "published"
+    },
+    {
+      "id": "assignment-midterm",
+      "course_id": "course-1",
+      "assignment_group_id": "group-exams",
+      "title": "Midterm",
+      "points_possible": "100.0",
+      "status": "published"
+    },
+    {
+      "id": "assignment-final",
+      "course_id": "course-1",
+      "assignment_group_id": "group-exams",
+      "title": "Final Exam",
+      "points_possible": "50.0",
+      "status": "published"
+    }
+  ],
+  "grade_items": [
+    {
+      "id": "grade-item-assignment-essay",
+      "course_id": "course-1",
+      "assignment_id": "assignment-essay",
+      "assignment_group_id": "group-essays",
+      "title": "Essay",
+      "points_possible": "50.0",
+      "status": "active"
+    },
+    {
+      "id": "grade-item-assignment-midterm",
+      "course_id": "course-1",
+      "assignment_id": "assignment-midterm",
+      "assignment_group_id": "group-exams",
+      "title": "Midterm",
+      "points_possible": "100.0",
+      "status": "active"
+    },
+    {
+      "id": "grade-item-assignment-final",
+      "course_id": "course-1",
+      "assignment_id": "assignment-final",
+      "assignment_group_id": "group-exams",
+      "title": "Final Exam",
+      "points_possible": "50.0",
+      "status": "active"
+    }
+  ],
+  "grades": [
+    {
+      "id": "grade-essay",
+      "grade_item_id": "grade-item-assignment-essay",
+      "submission_id": "submission-assignment-essay",
+      "student_user_id": "student-1",
+      "grader_user_id": "teacher-1",
+      "points": "45.0",
+      "state": "posted",
+      "posted_at": "2027-01-13T12:00:00Z",
+      "grading_comments": []
+    },
+    {
+      "id": "grade-midterm",
+      "grade_item_id": "grade-item-assignment-midterm",
+      "submission_id": "submission-assignment-midterm",
+      "student_user_id": "student-1",
+      "grader_user_id": "teacher-1",
+      "points": "90.0",
+      "state": "posted",
+      "posted_at": "2027-01-13T12:00:00Z",
+      "grading_comments": []
+    },
+    {
+      "id": "grade-final",
+      "grade_item_id": "grade-item-assignment-final",
+      "submission_id": "submission-assignment-final",
+      "student_user_id": "student-1",
+      "grader_user_id": "teacher-1",
+      "points": "42.5",
+      "state": "posted",
+      "posted_at": "2027-01-13T12:00:00Z",
+      "grading_comments": []
+    }
+  ],
+  "grading_scheme": [
+    { "letter": "A", "threshold": "93.0" },
+    { "letter": "A-", "threshold": "90.0" },
+    { "letter": "B+", "threshold": "87.0" },
+    { "letter": "B", "threshold": "83.0" },
+    { "letter": "B-", "threshold": "80.0" },
+    { "letter": "C", "threshold": "70.0" },
+    { "letter": "F", "threshold": "0.0" }
+  ],
+  "expected": { "final_percentage": "89.00", "letter_display": "B+" }
+}

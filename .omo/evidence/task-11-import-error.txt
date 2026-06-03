@@ -1,0 +1,50 @@
+$ mix wts.import.diff --fixture test/fixtures/canvas_sample/pilot_course_missing_assignment
+# expected non-zero failure captured for negative fixture
+STDOUT:
+
+STDERR:
+** (Mix) Import diff failed:
+status=failed
+announcements: source=12 target=12
+assignment_groups: source=4 target=4
+assignments: source=13 target=12
+file_manifest_rows: source=83 target=83
+module_items: source=134 target=134
+modules: source=16 target=16
+pages: source=80 target=80
+submissions: source=390 target=360
+blocking_mismatches=33
+count_mismatch entity=assignments source_id=n/a target_id=n/a field=n/a detail=source=13 target=12 action=Fix the transform or source fixture before promotion
+count_mismatch entity=submissions source_id=n/a target_id=n/a field=n/a detail=source=390 target=360 action=Fix the transform or source fixture before promotion
+missing_target_record entity=assignment source_id=83856 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing assignment source row
+missing_target_record entity=submission source_id=1447641 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447642 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447643 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447644 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447645 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447646 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447648 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447649 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447650 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447651 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447652 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447653 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447654 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447655 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447656 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447657 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447658 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447659 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447660 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447661 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447662 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447663 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447664 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447666 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447668 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1447669 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1453394 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1453534 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1454525 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+missing_target_record entity=submission source_id=1455094 target_id=n/a field=n/a detail=source row has no target record action=Restore or transform the missing submission source row
+

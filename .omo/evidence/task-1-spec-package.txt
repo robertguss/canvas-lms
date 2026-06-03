@@ -1,0 +1,178 @@
+# Task 1 Spec Package Evidence
+
+$ test -f wts-lms-specs/non_goals.md && test -f wts-lms-specs/compatibility_matrix.md && test -f wts-lms-specs/gradebook_rules.md
+exit=0
+
+$ grep -R "LTI.*Exclude\|Quizzes.*Exclude\|Mobile.*Exclude" wts-lms-specs/compatibility_matrix.md
+exit=0
+wts-lms-specs/compatibility_matrix.md:| Mobile app compatibility | Exclude | Canvas mobile Exclude. | Do not implement official Canvas mobile app support day one. |
+wts-lms-specs/compatibility_matrix.md:| LTI and external tools | Exclude | LTI Exclude. | Do not implement LTI, external tools, developer keys, or grade passback day one. |
+wts-lms-specs/compatibility_matrix.md:| Quizzes and New Quizzes | Exclude | Quizzes Exclude. | Do not implement quizzes/New Quizzes day one. |
+
+$ grep -R "rollback trigger\|mismatch tolerance\|FERPA\|WCAG" wts-lms-specs/
+exit=0
+wts-lms-specs/migration_fidelity.md:- mismatch tolerance: The automated diff harness may allow at most 0 blocking mismatches and at most 0.5% non-blocking normalized text mismatches across pilot fixture fields.
+wts-lms-specs/migration_fidelity.md:- mismatch tolerance: Any missing required assignment, submission, enrollment, grade, file, or user mapping is a blocking mismatch regardless of percentage.
+wts-lms-specs/migration_fidelity.md:- rollback trigger: If a pilot import produces any blocking mismatch, the import is not promoted and the pilot course remains on hosted Canvas or read-only archive until the mismatch is fixed and diff verification exits 0.
+wts-lms-specs/migration_fidelity.md:- rollback trigger: If a promoted import corrupts Phoenix-owned pilot data, restore the last verified database backup and S3 object snapshot before reopening the course.
+wts-lms-specs/migration_fidelity.md:- Every import job emits a machine-readable diff report with pass/fail status, counts, mismatch tolerance application, rollback trigger evaluation, and fallback trigger usage.
+wts-lms-specs/ops_readiness.md:| Logs | Preserve | Logs must include correlation IDs and operational reason codes without exposing FERPA-sensitive content. |
+wts-lms-specs/privacy_accessibility.md:The WTS Phoenix LMS must protect student educational records and provide WCAG-oriented access for day-one Core Coursework workflows. Task 14 will implement detailed gates; Task 1 freezes the expectations.
+wts-lms-specs/privacy_accessibility.md:## FERPA And Privacy Rules
+wts-lms-specs/privacy_accessibility.md:- FERPA: Treat grades, submissions, comments, enrollment status, course membership, identity mappings, files, and audit trails as protected educational records.
+wts-lms-specs/privacy_accessibility.md:- FERPA: Logs must not include passwords, SAML assertions, secrets, access tokens, full file contents, full submission bodies, or unnecessary grade details.
+wts-lms-specs/privacy_accessibility.md:- FERPA: Audit events must identify who accessed or changed protected records, when, from where, and why, using correlation IDs and reason codes.
+wts-lms-specs/privacy_accessibility.md:- FERPA: Student users may access only their own enrolled course records; Teachers may access assigned sections; Admins may access only operationally necessary records.
+wts-lms-specs/privacy_accessibility.md:- FERPA: Migration fixtures used for automated tests must be sanitized before committing.
+wts-lms-specs/privacy_accessibility.md:## WCAG Accessibility Rules
+wts-lms-specs/privacy_accessibility.md:- WCAG: Student, Teacher, and Admin pilot workflows must support keyboard navigation, visible focus, semantic headings, labels, error messages, and screen-reader-friendly status updates.
+wts-lms-specs/privacy_accessibility.md:- WCAG: Submission, grading, file download/upload, announcement, gradebook, and admin import/status views must have automated accessibility checks before pilot launch.
+wts-lms-specs/privacy_accessibility.md:- WCAG: Critical accessibility violations block pilot readiness.
+wts-lms-specs/privacy_accessibility.md:- WCAG: Accessibility is a release gate, not a best-effort cleanup.
+wts-lms-specs/privacy_accessibility.md:- Preserve FERPA-conscious logging, auditability, least-privilege access, and WCAG-oriented checks for pilot workflows.
+wts-lms-specs/pilot_success_failure.md:- numeric threshold: 0 critical WCAG accessibility violations and 0 FERPA/privacy logging violations are allowed for pilot workflows.
+wts-lms-specs/pilot_success_failure.md:- mismatch tolerance: The pilot accepts no missing required academic, content, submission, grade, file, or auth records.
+wts-lms-specs/pilot_success_failure.md:- mismatch tolerance: Formatting-only content differences may be accepted only within the 0.5% non-blocking tolerance and must appear in the readiness report.
+wts-lms-specs/pilot_success_failure.md:- mismatch tolerance: Any mismatch that changes access, grade outcome, submission state, due date, file availability, or identity mapping is blocking.
+wts-lms-specs/pilot_success_failure.md:- PASS when all required Task 1-14 verification commands pass, pilot rehearsal exits 0, and the readiness report lists no active rollback trigger or fallback trigger.
+wts-lms-specs/pilot_success_failure.md:- rollback trigger: Any blocking migration mismatch, grade discrepancy, authorization error, missing file, broken submission workflow, or failed restore rehearsal blocks launch or returns the course to hosted Canvas/archive access.
+wts-lms-specs/pilot_success_failure.md:- rollback trigger: Any FERPA-significant data exposure, critical WCAG violation in a pilot workflow, or inability to revoke disabled-user access blocks launch.
+wts-lms-specs/compatibility_matrix.md:| FERPA and WCAG controls | Preserve | Preserve privacy-conscious logging and WCAG-oriented checks for pilot workflows. | Exclude accessibility as best-effort only. |
+
+$ grep -R "Preserve\|Simplify\|Exclude" wts-lms-specs/compatibility_matrix.md
+exit=0
+wts-lms-specs/compatibility_matrix.md:- Preserve means Phoenix must match the WTS-observed Canvas behavior closely enough for pilot users and automated fixtures.
+wts-lms-specs/compatibility_matrix.md:- Simplify means Phoenix implements the WTS-required outcome through a smaller product surface, with no generic Canvas parity promise.
+wts-lms-specs/compatibility_matrix.md:- Exclude means the behavior is out of day-one scope and must not be implemented as accidental scope creep.
+wts-lms-specs/compatibility_matrix.md:| Student Teacher Admin roles | Preserve | Preserve only Student, Teacher, and Admin authorization derived from SIS-owned records. | Exclude unsupported Canvas roles and custom role proliferation. |
+wts-lms-specs/compatibility_matrix.md:| Course membership from SIS | Preserve | Preserve SIS/Registrar source of truth for users, terms, courses, sections, roles, and enrollments. | Exclude Phoenix-owned academic record edits as source of truth. |
+wts-lms-specs/compatibility_matrix.md:| Populi SAML login | Preserve | Preserve SAML browser login mapped to SIS-synced users through the integration contracts. | Exclude normal local-password auth for day-one users. |
+wts-lms-specs/compatibility_matrix.md:| Courses and sections | Preserve | Preserve active/current/future Core Coursework course and section access with legacy Canvas ID mappings. | Exclude full Canvas course settings parity. |
+wts-lms-specs/compatibility_matrix.md:| Syllabus, modules, pages, readings, files | Preserve | Preserve teacher-managed course content required by WTS Core Coursework. | Exclude Canvas plugin or LTI content surfaces. |
+wts-lms-specs/compatibility_matrix.md:| Announcements | Preserve | Preserve course announcements visible to enrolled users. | Exclude discussion-board parity. |
+wts-lms-specs/compatibility_matrix.md:| Assignment dates and calendar display | Preserve | Preserve due, available, and lock date behavior required for pilot coursework. | Exclude broad Canvas calendar API compatibility. |
+wts-lms-specs/compatibility_matrix.md:| Text-entry assignments | Preserve | Preserve text submission workflow, timestamps, comments, and grading comments. | Exclude quiz-style response engines. |
+wts-lms-specs/compatibility_matrix.md:| File-upload assignments | Preserve | Preserve upload, permissioned download, timestamp, comments, and grading comments. | Exclude external tool submission handoffs. |
+wts-lms-specs/compatibility_matrix.md:| No-submission assignments | Preserve | Preserve gradebook-visible assignments without student upload text. | Exclude attendance or advanced assignment types unless later approved. |
+wts-lms-specs/compatibility_matrix.md:| Points and weighted assignment groups | Preserve | Preserve final percentage and letter display using `gradebook_rules.md`. | Exclude advanced gradebook parity beyond specified edge cases. |
+wts-lms-specs/compatibility_matrix.md:| Grade CSV export | Preserve | Preserve Teacher/Admin CSV export for pilot grade reporting. | Exclude broad Canvas gradebook import/export parity. |
+wts-lms-specs/compatibility_matrix.md:| S3-compatible file storage | Preserve | Preserve permissioned object storage for course files and submission uploads. | Exclude Canvas file storage internals. |
+wts-lms-specs/compatibility_matrix.md:| Simple email and in-app notifications | Simplify | Simplify to essential assignment, comment, grade, and announcement notifications. | Exclude complex notification preferences and channels day one. |
+wts-lms-specs/compatibility_matrix.md:| Canvas REST API | Simplify | Simplify to REST endpoints used by the WTS React SPA, import diff harness, and contract tests. | Broad Canvas API Exclude. |
+wts-lms-specs/compatibility_matrix.md:| Canvas UI | Simplify | Simplify into a WTS React/TypeScript SPA for Student Teacher Admin workflows. | Generic Canvas clone Exclude. |
+wts-lms-specs/compatibility_matrix.md:| Migration source access | Simplify | Simplify migration to DAP/API/file-export inputs with automated diff reports. | Exclude manual point-and-click migration as the primary path. |
+wts-lms-specs/compatibility_matrix.md:| Historical course access | Simplify | Simplify to read-only old Canvas/export/archive strategy for non-active historical records. | Full historical editable migration Exclude. |
+wts-lms-specs/compatibility_matrix.md:| Operational administration | Simplify | Simplify to managed-cloud health, backup, restore, monitoring, logs, and incident runbooks. | Exclude self-hosted Canvas operational parity. |
+wts-lms-specs/compatibility_matrix.md:| FERPA and WCAG controls | Preserve | Preserve privacy-conscious logging and WCAG-oriented checks for pilot workflows. | Exclude accessibility as best-effort only. |
+wts-lms-specs/compatibility_matrix.md:| Mobile app compatibility | Exclude | Canvas mobile Exclude. | Do not implement official Canvas mobile app support day one. |
+wts-lms-specs/compatibility_matrix.md:| LTI and external tools | Exclude | LTI Exclude. | Do not implement LTI, external tools, developer keys, or grade passback day one. |
+wts-lms-specs/compatibility_matrix.md:| Quizzes and New Quizzes | Exclude | Quizzes Exclude. | Do not implement quizzes/New Quizzes day one. |
+wts-lms-specs/compatibility_matrix.md:| Discussions | Exclude | Discussions Exclude. | Do not implement Canvas discussions day one. |
+wts-lms-specs/compatibility_matrix.md:| Rubrics, outcomes, groups, collaborations | Exclude | Rubrics outcomes groups collaborations Exclude. | Do not implement these Canvas feature families day one. |
+wts-lms-specs/compatibility_matrix.md:| Plugins | Exclude | Plugins Exclude. | Do not recreate Canvas plugin architecture. |
+wts-lms-specs/compatibility_matrix.md:| Advanced gradebook parity | Exclude | Advanced gradebook parity Exclude. | Do not implement gradebook behavior not listed in `gradebook_rules.md`. |
+
+$ grep -R "ungraded\|missing\|excused\|late\|resubmitted\|extra credit\|dropped" wts-lms-specs/gradebook_rules.md
+exit=0
+wts-lms-specs/gradebook_rules.md:4. CSV export must include student identity, course, section, assignment columns, current final percentage, final letter display, and notes for excluded states such as excused or dropped scores.
+wts-lms-specs/gradebook_rules.md:| ungraded | An ungraded submitted assignment does not count as earned points and does not count as a zero until a grade is posted or the missing rule applies. It remains visible as ungraded in Teacher/Admin gradebook views. |
+wts-lms-specs/gradebook_rules.md:| missing | A missing assignment after the due date receives the course missing policy when one is configured; otherwise it is displayed as missing without inventing a score. |
+wts-lms-specs/gradebook_rules.md:| excused | An excused assignment is removed from numerator and denominator for that student and does not reduce the weighted group percentage. CSV export marks the cell as excused. |
+wts-lms-specs/gradebook_rules.md:| late | A late submission retains the submitted timestamp and receives the configured late policy deduction only when that policy is present in the fixture or course configuration. |
+wts-lms-specs/gradebook_rules.md:| resubmitted | A resubmitted assignment keeps prior submission history, uses the latest submission selected for grading, and preserves grader comments and timestamps for audit. |
+wts-lms-specs/gradebook_rules.md:| extra credit | Extra credit adds earned points without increasing required possible points, capped only when the course grading scheme explicitly defines a cap. |
+wts-lms-specs/gradebook_rules.md:| dropped scores | Dropped scores are excluded from group calculations according to the configured drop rule, while remaining visible in audit and CSV notes. |
+wts-lms-specs/gradebook_rules.md:- Exclude advanced gradebook parity, including gradebook behavior not named in this file, unless a later approved spec adds it.
+
+$ grep -R "numeric threshold\|mismatch tolerance\|rollback trigger\|fallback trigger" wts-lms-specs/migration_fidelity.md wts-lms-specs/pilot_success_failure.md
+exit=0
+wts-lms-specs/migration_fidelity.md:- numeric threshold: A pilot-course import passes only when 100% of required SIS-owned identity, course, section, enrollment, assignment, submission, grade, file manifest, and legacy Canvas ID mapping records are present for the selected fixture set.
+wts-lms-specs/migration_fidelity.md:- numeric threshold: Content body normalization may tolerate formatting-only differences, but required pages, modules, readings, files, announcements, assignment descriptions, comments, and timestamps must reach at least 99.5% field-level match across the pilot fixture set.
+wts-lms-specs/migration_fidelity.md:- numeric threshold: File payload verification must reach 100% checksum or byte-size match for every file that Canvas/DAP/export source makes available.
+wts-lms-specs/migration_fidelity.md:- mismatch tolerance: The automated diff harness may allow at most 0 blocking mismatches and at most 0.5% non-blocking normalized text mismatches across pilot fixture fields.
+wts-lms-specs/migration_fidelity.md:- mismatch tolerance: Any missing required assignment, submission, enrollment, grade, file, or user mapping is a blocking mismatch regardless of percentage.
+wts-lms-specs/migration_fidelity.md:- rollback trigger: If a pilot import produces any blocking mismatch, the import is not promoted and the pilot course remains on hosted Canvas or read-only archive until the mismatch is fixed and diff verification exits 0.
+wts-lms-specs/migration_fidelity.md:- rollback trigger: If a promoted import corrupts Phoenix-owned pilot data, restore the last verified database backup and S3 object snapshot before reopening the course.
+wts-lms-specs/migration_fidelity.md:- fallback trigger: If DAP lacks payloads required for a pilot course, use Canvas REST API, course export, or file downloads as the documented fallback input and record the source in the import report.
+wts-lms-specs/migration_fidelity.md:- fallback trigger: If no source can provide a required day-one field, block migration for that course and record a decision in the notepad before implementation proceeds.
+wts-lms-specs/migration_fidelity.md:- Every import job emits a machine-readable diff report with pass/fail status, counts, mismatch tolerance application, rollback trigger evaluation, and fallback trigger usage.
+wts-lms-specs/pilot_success_failure.md:- numeric threshold: 2-3 low-risk real courses are selected, sanitized for fixtures, imported, diffed, and rehearsed before launch.
+wts-lms-specs/pilot_success_failure.md:- numeric threshold: 100% of pilot Students, Teachers, Admins, courses, sections, enrollments, assignments, submissions, files, comments, grades, and legacy Canvas ID mappings required by the selected fixtures pass migration diff verification.
+wts-lms-specs/pilot_success_failure.md:- numeric threshold: 0 blocking mismatches are allowed at launch.
+wts-lms-specs/pilot_success_failure.md:- numeric threshold: At least 99.5% field-level match is required for normalized non-blocking content fields.
+wts-lms-specs/pilot_success_failure.md:- numeric threshold: 100% of pilot happy-path Student, Teacher, and Admin workflows must pass automated UI/API checks.
+wts-lms-specs/pilot_success_failure.md:- numeric threshold: 0 critical WCAG accessibility violations and 0 FERPA/privacy logging violations are allowed for pilot workflows.
+wts-lms-specs/pilot_success_failure.md:- mismatch tolerance: The pilot accepts no missing required academic, content, submission, grade, file, or auth records.
+wts-lms-specs/pilot_success_failure.md:- mismatch tolerance: Formatting-only content differences may be accepted only within the 0.5% non-blocking tolerance and must appear in the readiness report.
+wts-lms-specs/pilot_success_failure.md:- mismatch tolerance: Any mismatch that changes access, grade outcome, submission state, due date, file availability, or identity mapping is blocking.
+wts-lms-specs/pilot_success_failure.md:- PASS when all required Task 1-14 verification commands pass, pilot rehearsal exits 0, and the readiness report lists no active rollback trigger or fallback trigger.
+wts-lms-specs/pilot_success_failure.md:- rollback trigger: Any blocking migration mismatch, grade discrepancy, authorization error, missing file, broken submission workflow, or failed restore rehearsal blocks launch or returns the course to hosted Canvas/archive access.
+wts-lms-specs/pilot_success_failure.md:- rollback trigger: Any FERPA-significant data exposure, critical WCAG violation in a pilot workflow, or inability to revoke disabled-user access blocks launch.
+wts-lms-specs/pilot_success_failure.md:- fallback trigger: If Phoenix is unavailable during pilot, instructors and students use the documented hosted Canvas/archive fallback path for the affected course until service is restored.
+wts-lms-specs/pilot_success_failure.md:- fallback trigger: If a source data gap prevents faithful import, use documented DAP/API/course-export/file-download fallback source; if none exists, the course is removed from pilot scope.
+
+$ grep -E "valid assertion|missing attribute|disabled user|idempotent|add/drop" wts-lms-specs/sis_auth_contracts.md
+exit=0
+| valid assertion | A valid assertion with signed response, correct audience, `NameID`, normalized `email`, and `sis_user_id` matching one active SIS user creates a Phoenix session and audit event. |
+| missing attribute | A missing attribute such as absent `NameID`, `email`, or `sis_user_id` rejects login before user lookup and records a non-enumerating audit reason. |
+| disabled user | A disabled user or blocked SIS status rejects login, creates no session, and preserves audit attribution. |
+| idempotent | Re-running the same extract with the same source identity and row contents creates no duplicates and no side effects beyond recording the re-run. |
+| add/drop | An add creates or reactivates enrollment; a drop removes access at the next authorization check without deleting submissions, grades, comments, files, or audit history. |
+This file summarizes the executable contract surface. Later implementation must preserve the detailed integration contracts and may not weaken the valid assertion, missing attribute, disabled user, idempotent, or add/drop cases.
+
+$ ! (grep -R -nE "TBD|TODO" wts-lms-specs/ | grep -v "DECISION NEEDED:")
+exit=0
+
+$ test -x scripts/verify_plan_compliance.sh && test -x scripts/verify_scope_fidelity.sh
+exit=0
+
+$ scripts/verify_plan_compliance.sh
+exit=0
+plan compliance verified
+
+$ scripts/verify_scope_fidelity.sh
+exit=0
+scope fidelity verified
+
+$ grep -R "Generic Canvas clone\|No LTI\|No quizzes\|Student Teacher Admin" wts-lms-specs/
+exit=0
+wts-lms-specs/privacy_accessibility.md:- Simplify privacy and accessibility scope to Student Teacher Admin Core Coursework workflows first.
+wts-lms-specs/compatibility_matrix.md:| Student Teacher Admin roles | Preserve | Preserve only Student, Teacher, and Admin authorization derived from SIS-owned records. | Exclude unsupported Canvas roles and custom role proliferation. |
+wts-lms-specs/compatibility_matrix.md:| Canvas UI | Simplify | Simplify into a WTS React/TypeScript SPA for Student Teacher Admin workflows. | Generic Canvas clone Exclude. |
+wts-lms-specs/non_goals.md:The WTS Phoenix LMS replaces WTS day-one Core Coursework usage of hosted Canvas. It is not a generic Canvas clone. It serves Student Teacher Admin workflows for active, current, and future coursework, with historical Canvas material retained through read-only export/archive access.
+wts-lms-specs/non_goals.md:| Generic Canvas clone | Exclude | WTS needs a focused replacement for its hosted Canvas Core Coursework workflows, not full Instructure product parity. | Generic Canvas clone Exclude |
+wts-lms-specs/non_goals.md:| LTI, external tools, developer keys, grade passback | Exclude | External tool ecosystems are not required for the pilot and would expand the product beyond Core Coursework. | No LTI Exclude |
+wts-lms-specs/non_goals.md:| Quizzes and New Quizzes | Exclude | Day-one assessment scope is assignments with text-entry, file-upload, and no-submission types. | No quizzes Exclude |
+wts-lms-specs/non_goals.md:- Preserve Student Teacher Admin day-one roles only.
+
+$ grep -R "Canvas mobile.*Exclude" wts-lms-specs/compatibility_matrix.md
+exit=0
+wts-lms-specs/compatibility_matrix.md:| Mobile app compatibility | Exclude | Canvas mobile Exclude. | Do not implement official Canvas mobile app support day one. |
+
+## 2026-06-02 Atlas final-wave invocation fix
+
+$ bash -n scripts/verify_plan_compliance.sh
+exit=0
+
+$ bash -n scripts/verify_scope_fidelity.sh
+exit=0
+
+$ scripts/verify_plan_compliance.sh
+exit=0
+plan compliance verified
+
+$ scripts/verify_scope_fidelity.sh
+exit=0
+scope fidelity verified
+
+$ scripts/verify_plan_compliance.sh .omo/plans/wts-canvas-phoenix-replacement.md wts-lms-specs/ > .omo/evidence/f1-plan-compliance-smoke.md
+exit=0
+
+$ scripts/verify_scope_fidelity.sh wts-lms-specs/ wts-lms-api/ wts-lms-web/ > .omo/evidence/f4-scope-fidelity-smoke.md
+exit=0
+
+$ cat .omo/evidence/f1-plan-compliance-smoke.md
+plan compliance verified
+
+$ cat .omo/evidence/f4-scope-fidelity-smoke.md
+scope fidelity verified

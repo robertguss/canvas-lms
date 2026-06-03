@@ -1,0 +1,10 @@
+{
+  "derived_from_fixture": "../pilot_course",
+  "fixture": "canvas_sample/pilot_course_missing_assignment",
+  "operations": [
+    {
+      "remove_target_assignment_id": 83856,
+      "reason": "negative diff fixture: source assignment remains staged but target transform omits it"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+$ grep -R "DECISION NEEDED: hosting provider\|DECISION NEEDED: email provider" wts-lms-specs/ops/
+exit=0
+wts-lms-specs/ops/backup_restore.md:| Email evidence | provider event logs and app notification records | 1 hour | 4 hours to reconstruct delivery status | DECISION NEEDED: email provider before final implementation. |
+wts-lms-specs/ops/backup_restore.md:- DECISION NEEDED: hosting provider must be resolved before production restore tooling is finalized.
+wts-lms-specs/ops/backup_restore.md:- DECISION NEEDED: email provider must be resolved before delivery-event restore verification is finalized.
+wts-lms-specs/ops/incident_response.md:DECISION NEEDED: hosting provider remains unresolved, so provider escalation paths must be filled in only after WTS approves a provider.
+wts-lms-specs/ops/incident_response.md:DECISION NEEDED: email provider remains unresolved, so delivery escalation paths must be filled in only after WTS approves a provider.
+wts-lms-specs/ops/deployment.md:- DECISION NEEDED: hosting provider must be selected before production provisioning. The provider must support managed application hosting, managed Postgres, private networking or equivalent service isolation, managed TLS, autoscaling or documented capacity controls, centralized logs, metrics, alerting, and restore access.
+wts-lms-specs/ops/deployment.md:- DECISION NEEDED: email provider must be selected before production notification testing. The provider must support authenticated sending, bounce and complaint reporting, delivery event logs, suppression handling, rate controls, and FERPA-safe operational visibility.
+wts-lms-specs/ops/deployment.md:| Email | provider account reference, sender domain, webhook secret reference | DECISION NEEDED: email provider gate resolved before pilot email testing. |
+wts-lms-specs/ops/deployment.md:- DECISION NEEDED: email provider must remain unresolved until WTS approves a provider.
+
+$ grep -R "TODO\|FIXME\|HACK\|xxx" wts-lms-specs/ops/
+exit=1
+(no stdout)
+
+Note: the placeholder grep is expected to exit 1 with no stdout when no TODO/FIXME/HACK/xxx placeholders remain. Explicit DECISION NEEDED gates are allowed.

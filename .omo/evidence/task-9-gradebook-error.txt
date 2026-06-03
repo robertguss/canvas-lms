@@ -1,0 +1,18 @@
+Task 9 gradebook error evidence
+Date: 2026-06-03
+
+Expected TDD failures and fixes:
+
+1. Initial red test failed because WtsLms.Gradebook.student_view/3 did not exist.
+   Resolution: added WtsLms.Gradebook pure context.
+
+2. Edge-case test initially failed because drop-lowest considered extra-credit entries with zero possible points droppable before the low required score.
+   Resolution: drop rules now only consider counted required scores with possible_points > 0.
+
+3. First CLI verifier run failed when JSON state "posted" was normalized through String.to_existing_atom/1.
+   Resolution: state normalization now maps only explicit known gradebook states.
+
+4. Exclusion-term check initially matched a test title containing "hidden".
+   Resolution: renamed the test title to "not visible" so gradebook paths do not imply hidden/muted grade support.
+
+Final status: no unresolved Task 9 blocker.

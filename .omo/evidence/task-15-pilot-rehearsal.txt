@@ -1,0 +1,190 @@
+$ test -x scripts/wts_pilot_rehearsal.sh
+# expected_exit=0
+# exit=0
+
+$ cd wts-lms-api && mix wts.import.diff --fixture test/fixtures/canvas_sample/pilot_course_1
+# expected_exit=0
+status=passed
+announcements: source=12 target=12
+assignment_groups: source=4 target=4
+assignments: source=13 target=13
+file_manifest_rows: source=83 target=83
+module_items: source=134 target=134
+modules: source=16 target=16
+pages: source=80 target=80
+submissions: source=390 target=390
+blocking_mismatches=0
+# exit=0
+
+$ cd wts-lms-web && npm run test:e2e -- --grep @pilot
+# expected_exit=0
+
+> wts-lms-web@0.1.0 test:e2e
+> node test/e2e.test.mjs --grep @pilot
+
+TAP version 13
+# Subtest: deterministic e2e workflow surface is represented in source
+ok 1 - deterministic e2e workflow surface is represented in source # SKIP
+  ---
+  duration_ms: 0.327583
+  type: 'test'
+  ...
+# Subtest: @keyboard deterministic keyboard gates cover day-one workflows
+ok 2 - @keyboard deterministic keyboard gates cover day-one workflows # SKIP
+  ---
+  duration_ms: 0.086417
+  type: 'test'
+  ...
+# Subtest: @pilot deterministic pilot rehearsal covers operational launch gates
+ok 3 - @pilot deterministic pilot rehearsal covers operational launch gates
+  ---
+  duration_ms: 3.195209
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 2
+# todo 0
+# duration_ms 5.986292
+# exit=0
+
+$ grep -R "PASS\|FAIL\|rollback trigger\|fallback" wts-lms-specs/pilot/readiness_report.md
+# expected_exit=0
+wts-lms-specs/pilot/readiness_report.md:| `pilot_course_1` | Approved real sanitized base fixture reused as deterministic alias | PASS when `mix wts.import.diff --fixture test/fixtures/canvas_sample/pilot_course_1` exits 0 | Rehearsal evidence only; not a distinct second real course. |
+wts-lms-specs/pilot/readiness_report.md:| `pilot_course_2` | Approved real sanitized base fixture reused as deterministic alias | PASS when `mix wts.import.diff --fixture test/fixtures/canvas_sample/pilot_course_2` exits 0 | Rehearsal evidence only; not a distinct second real course. |
+wts-lms-specs/pilot/readiness_report.md:| `pilot_course_3` | Approved real sanitized base fixture reused as deterministic alias | PASS when `mix wts.import.diff --fixture test/fixtures/canvas_sample/pilot_course_3` exits 0 | Rehearsal evidence only; not a distinct third real course. |
+wts-lms-specs/pilot/readiness_report.md:| `pilot_course_with_missing_submission` | Negative alias derived from the missing-assignment mismatch fixture | FAIL expected; non-zero import diff blocks launch | Proves missing required assignment/submission mismatches fail closed. |
+wts-lms-specs/pilot/readiness_report.md:## PASS/FAIL Gate Table
+wts-lms-specs/pilot/readiness_report.md:| Import diff for requested positive fixtures | `scripts/wts_pilot_rehearsal.sh --fixtures pilot_course_1,pilot_course_2,pilot_course_3` runs each `mix wts.import.diff` command | PASS for deterministic aliases | Replace aliases with 2-3 distinct WTS data/privacy owner-approved real sanitized fixtures before actual launch. |
+wts-lms-specs/pilot/readiness_report.md:| Negative migration mismatch | `scripts/wts_pilot_rehearsal.sh --fixtures pilot_course_with_missing_submission` exits non-zero | PASS as a blocking control because the negative rehearsal fails | Keep launch blocked for any missing required assignment, submission, grade, file, enrollment, or identity mapping. |
+wts-lms-specs/pilot/readiness_report.md:| Student UI workflow | `cd wts-lms-web && npm run test:e2e -- --grep @pilot` | PASS | Re-run after every pilot workflow change. |
+wts-lms-specs/pilot/readiness_report.md:| Teacher UI workflow | `cd wts-lms-web && npm run test:e2e -- --grep @pilot` | PASS | Re-run after every pilot workflow change. |
+wts-lms-specs/pilot/readiness_report.md:| Admin UI workflow and diff status | `cd wts-lms-web && npm run test:e2e -- --grep @pilot` | PASS | Re-run after every import/admin workflow change. |
+wts-lms-specs/pilot/readiness_report.md:| SAML/SIS contracts | `populi_saml.md`, `sis_sync.md`, Task 3 evidence, and Task 6 auth evidence | PASS for deterministic contract evidence | Verify live Populi metadata and SIS extract health before launch without recording private values. |
+wts-lms-specs/pilot/readiness_report.md:| Notifications | Task 10 notification/worker evidence plus Postmark readiness docs | PASS for deterministic tests and runbook evidence | Confirm Postmark sender-domain, webhook, bounce, complaint, suppression, and rate-control evidence before launch. |
+wts-lms-specs/pilot/readiness_report.md:| Backup/restore | Fly.io/Postmark ops runbooks and Task 13 evidence | FAIL for final launch because S3-compatible object storage provider and distinct real-course restore evidence remain pending | Complete restore drill with selected object storage and approved pilot fixtures before launch, or record WTS leadership waiver. |
+wts-lms-specs/pilot/readiness_report.md:| Privacy/security logging | Task 14 audit/security evidence and `privacy_accessibility.md` | PASS for deterministic redaction/audit gates | Re-run after any logging, auth, import, file, grade, or notification change. |
+wts-lms-specs/pilot/readiness_report.md:| Accessibility | Task 14 `axe` and `@keyboard` evidence plus `@pilot` deterministic e2e | PASS for deterministic local gates | Re-run in browser/runtime environment when available; any critical WCAG issue blocks launch. |
+wts-lms-specs/pilot/readiness_report.md:| 2-3 real-course selection | Current fixture inventory | FAIL for final launch because aliases are not distinct real courses | Obtain additional WTS data/privacy owner-approved sanitized pilot fixtures or WTS leadership waiver. |
+wts-lms-specs/pilot/readiness_report.md:- rollback trigger: Any blocking migration mismatch, missing required submission, missing assignment, grade discrepancy, authorization error, missing file, broken Student/Teacher/Admin workflow, failed restore rehearsal, FERPA-significant exposure, critical accessibility violation, or disabled-user revocation failure blocks launch or returns the affected course to hosted Canvas/archive access.
+wts-lms-specs/pilot/readiness_report.md:- rollback trigger: If a promoted import corrupts Phoenix-owned pilot data, restore the last verified managed Postgres backup and S3-compatible object snapshot before reopening the course.
+wts-lms-specs/pilot/readiness_report.md:- fallback trigger: If Phoenix is unavailable during pilot, instructors and students use hosted Canvas or read-only export archive access for the affected course until service is restored.
+wts-lms-specs/pilot/readiness_report.md:- fallback trigger: If DAP lacks payloads required for a pilot course, use Canvas REST API, course export, or file-download evidence; if no source can provide a required day-one field, remove that course from pilot scope.
+wts-lms-specs/pilot/readiness_report.md:WTS leadership must explicitly record any waiver here before launch. A valid waiver must name the failed gate, business owner, privacy owner, technical owner, compensating control, expiration date, rollback trigger, and fallback path. Silent waiver is not permitted.
+wts-lms-specs/pilot/readiness_report.md:- FAIL: 2-3 distinct real low-risk pilot courses are not yet represented by approved sanitized fixtures; current aliases only prove deterministic rehearsal mechanics.
+wts-lms-specs/pilot/readiness_report.md:- FAIL: S3-compatible object storage provider selection and object restore evidence remain final launch gates.
+wts-lms-specs/pilot/readiness_report.md:- FAIL: Final backup/restore proof must be repeated with approved real pilot fixtures and safe operator evidence.
+wts-lms-specs/pilot/readiness_report.md:- PASS: Deterministic import diff succeeds for alias fixtures derived from the approved sanitized base fixture.
+wts-lms-specs/pilot/readiness_report.md:- PASS: Deterministic `@pilot` e2e covers Student submission, Teacher grading/export, Admin import/diff status, notification visibility, unauthorized access, and safe local source checks.
+wts-lms-specs/pilot/readiness_report.md:- PASS: Negative missing-submission rehearsal fails non-zero and requires blocked launch action.
+wts-lms-specs/pilot/readiness_report.md:- PASS: Readiness report includes PASS/FAIL results, rollback trigger language, fallback path language, explicit waivers, and launch blocked state.
+# exit=0
+
+$ scripts/wts_pilot_rehearsal.sh --fixtures pilot_course_1,pilot_course_2,pilot_course_3
+# expected_exit=0
+pilot rehearsal: running import diff for pilot_course_1
+status=passed
+announcements: source=12 target=12
+assignment_groups: source=4 target=4
+assignments: source=13 target=13
+file_manifest_rows: source=83 target=83
+module_items: source=134 target=134
+modules: source=16 target=16
+pages: source=80 target=80
+submissions: source=390 target=390
+blocking_mismatches=0
+pilot rehearsal: running import diff for pilot_course_2
+status=passed
+announcements: source=12 target=12
+assignment_groups: source=4 target=4
+assignments: source=13 target=13
+file_manifest_rows: source=83 target=83
+module_items: source=134 target=134
+modules: source=16 target=16
+pages: source=80 target=80
+submissions: source=390 target=390
+blocking_mismatches=0
+pilot rehearsal: running import diff for pilot_course_3
+status=passed
+announcements: source=12 target=12
+assignment_groups: source=4 target=4
+assignments: source=13 target=13
+file_manifest_rows: source=83 target=83
+module_items: source=134 target=134
+modules: source=16 target=16
+pages: source=80 target=80
+submissions: source=390 target=390
+blocking_mismatches=0
+pilot rehearsal: running deterministic frontend pilot checks
+
+> wts-lms-web@0.1.0 test:e2e
+> node test/e2e.test.mjs --grep @pilot
+
+TAP version 13
+# Subtest: deterministic e2e workflow surface is represented in source
+ok 1 - deterministic e2e workflow surface is represented in source # SKIP
+  ---
+  duration_ms: 0.298833
+  type: 'test'
+  ...
+# Subtest: @keyboard deterministic keyboard gates cover day-one workflows
+ok 2 - @keyboard deterministic keyboard gates cover day-one workflows # SKIP
+  ---
+  duration_ms: 0.077958
+  type: 'test'
+  ...
+# Subtest: @pilot deterministic pilot rehearsal covers operational launch gates
+ok 3 - @pilot deterministic pilot rehearsal covers operational launch gates
+  ---
+  duration_ms: 3.080125
+  type: 'test'
+  ...
+1..3
+# tests 3
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 2
+# todo 0
+# duration_ms 5.766125
+pilot rehearsal: checking SAML and SIS contract evidence
+pilot rehearsal: checking notifications evidence
+pilot rehearsal: checking backup, restore, privacy, and accessibility readiness evidence
+pilot rehearsal: checking readiness report gates
+pilot rehearsal: rehearsal passed; launch status remains governed by the readiness report
+# exit=0
+
+$ scripts/wts_pilot_rehearsal.sh --fixtures pilot_course_with_missing_submission
+# expected_exit=1
+pilot rehearsal: running import diff for pilot_course_with_missing_submission
+pilot rehearsal: negative fixture blocked launch as expected: pilot_course_with_missing_submission
+# exit=1
+
+$ grep -R "access_token\|Authorization\|Bearer\|private_evidence\|raw_url\|saml_assertion" scripts/wts_pilot_rehearsal.sh wts-lms-specs/pilot/readiness_report.md wts-lms-api/test/fixtures/canvas_sample/pilot_course_1 wts-lms-api/test/fixtures/canvas_sample/pilot_course_2 wts-lms-api/test/fixtures/canvas_sample/pilot_course_3
+# expected_exit=1
+# exit=1
+
+$ bash -n scripts/wts_pilot_rehearsal.sh
+# expected_exit=0
+# exit=0
+
+$ scripts/wts_pilot_rehearsal.sh --help
+# expected_exit=0
+usage: scripts/wts_pilot_rehearsal.sh --fixtures pilot_course_1,pilot_course_2[,pilot_course_3]
+       scripts/wts_pilot_rehearsal.sh --help
+
+Runs the WTS pilot readiness rehearsal against sanitized fixture aliases only.
+The rehearsal imports and diffs each requested fixture, runs deterministic
+Student/Teacher/Admin pilot UI checks, verifies safe contract/readiness evidence,
+and fails closed when any strict operational gate is missing or failing.
+# exit=0
+
+$ scripts/wts_pilot_rehearsal.sh --fixtures does_not_exist
+# expected_exit=1
+# exit=1
+

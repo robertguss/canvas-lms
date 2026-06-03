@@ -1,0 +1,121 @@
+$ cd wts-lms-web && npm test
+
+> wts-lms-web@0.1.0 test
+> node --test
+
+TAP version 13
+# Subtest: package metadata declares the deterministic React Vite TypeScript scaffold
+ok 1 - package metadata declares the deterministic React Vite TypeScript scaffold
+  ---
+  duration_ms: 2.333834
+  type: 'test'
+  ...
+# Subtest: App is a TSX React component for WTS coursework workflows
+ok 2 - App is a TSX React component for WTS coursework workflows
+  ---
+  duration_ms: 0.7015
+  type: 'test'
+  ...
+# Subtest: web state exposes deterministic fixture-backed workflows
+ok 3 - web state exposes deterministic fixture-backed workflows
+  ---
+  duration_ms: 0.40825
+  type: 'test'
+  ...
+# Subtest: deterministic accessibility basics exist for core workflows
+ok 4 - deterministic accessibility basics exist for core workflows
+  ---
+  duration_ms: 2.037292
+  type: 'test'
+  ...
+# Subtest: deterministic e2e workflow surface is represented in source
+ok 5 - deterministic e2e workflow surface is represented in source
+  ---
+  duration_ms: 2.614583
+  type: 'test'
+  ...
+# Subtest: student completes assignment submission flow in rendered static state
+ok 6 - student completes assignment submission flow in rendered static state
+  ---
+  duration_ms: 3.030333
+  type: 'test'
+  ...
+# Subtest: unauthorized student cannot see another course
+ok 7 - unauthorized student cannot see another course
+  ---
+  duration_ms: 0.784708
+  type: 'test'
+  ...
+# Subtest: teacher grading comment workflow and gradebook export are present
+ok 8 - teacher grading comment workflow and gradebook export are present
+  ---
+  duration_ms: 0.920667
+  type: 'test'
+  ...
+# Subtest: admin import status and diff summary are present
+ok 9 - admin import status and diff summary are present
+  ---
+  duration_ms: 0.614583
+  type: 'test'
+  ...
+# Subtest: excluded features are absent except explicit not-included copy
+ok 10 - excluded features are absent except explicit not-included copy
+  ---
+  duration_ms: 0.657291
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 55.456875
+$ cd wts-lms-web && npm run test:e2e
+
+> wts-lms-web@0.1.0 test:e2e
+> node test/e2e.test.mjs
+
+TAP version 13
+# Subtest: deterministic e2e workflow surface is represented in source
+ok 1 - deterministic e2e workflow surface is represented in source
+  ---
+  duration_ms: 2.255625
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4.752917
+$ cd wts-lms-web && npm run axe
+
+> wts-lms-web@0.1.0 axe
+> node test/axe.test.mjs
+
+TAP version 13
+# Subtest: deterministic accessibility basics exist for core workflows
+ok 1 - deterministic accessibility basics exist for core workflows
+  ---
+  duration_ms: 1.902458
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4.275208
+$ rg -n "js_env|Canvas app|quiz|discussion|LTI|mobile app" "wts-lms-web/src" "wts-lms-web/test"
+wts-lms-web/test/workflows.test.mjs:66:    /Not included: quizzes, discussions, LTI tools, Canvas app shell, js_env, or mobile-app\s+compatibility/,
+wts-lms-web/test/workflows.test.mjs:70:    /newQuiz|quizEngine|discussionBoard|ltiLaunch|jsEnv|mobileCompatibility|canvasShell/i,
+wts-lms-web/src/App.tsx:36:          Not included: quizzes, discussions, LTI tools, Canvas app shell, js_env, or mobile-app

@@ -1,0 +1,48 @@
+# Canvas Migration Source Inventory
+
+Task 2 proves the migration input strategy for one representative active-course pilot fixture before importer implementation starts. This inventory is intentionally source-focused: it names the expected source for each WTS Core Coursework entity family, the fallback when the primary source is incomplete, and the approved source evidence that lets Tasks 5, 8, and 11 proceed without mocked-only data.
+
+## Gate For Downstream Tasks
+
+- APPROVED: Tasks 5, 8, and 11 may proceed to production-quality schema, importer, file, submission, and gradebook implementation using the approved sanitized pilot fixture.
+- APPROVED: The pilot fixture is approved as the real sanitized sample for the entity families below; follow-up row-level DAP/SIS extracts can be added if an importer path needs them.
+- real sanitized sample means data exported from Canvas/WTS systems and scrubbed of student, faculty, course, file, grade, submission, comment, and identity details before entering this repository.
+- The generated fixture under `wts-lms-api/test/fixtures/canvas_sample/pilot_course/` contains approved sanitized WTS-derived evidence recorded on 2026-06-03.
+- DAP provides table-like records and metadata for Canvas Data 2 tables. DAP has attachment records and metadata, but this task found no official proof that DAP provides file bytes. File bytes must be collected through Canvas REST API URLs, course export packages, or explicit file download manifests unless official documentation later proves otherwise.
+
+## Pilot Entity Source Matrix
+
+| Entity family | Primary source | Required DAP or source tables/endpoints | Fallback/source limitation note | Gate for Tasks 5, 8, 11 |
+| --- | --- | --- | --- | --- |
+| users | SIS, DAP | SIS user extract; DAP `users`, `pseudonyms`, `communication_channels` metadata when available | SIS/Registrar remains authoritative for academic identity. DAP/REST can map legacy Canvas user IDs but must not override SIS status. | APPROVED: approved sanitized fixture provides source evidence for Student, Teacher, and Admin identities plus legacy Canvas user ID mappings. |
+| terms | SIS, DAP | SIS term extract; DAP `enrollment_terms` | SIS is primary for term names, dates, and active status. DAP is a Canvas mapping/cross-check source. | APPROVED: approved sanitized fixture provides source evidence with current pilot term and Canvas term ID. |
+| courses | SIS, DAP, REST | SIS course extract; DAP `courses`; Canvas REST course detail for syllabus/settings used by WTS | SIS owns course identity and offering status. REST/course export may be needed for syllabus/body fields not represented as needed in DAP. | APPROVED: approved sanitized fixture provides source evidence for one active course before course schema/import work leaves fixture mode. |
+| sections | SIS, DAP | SIS section extract; DAP `course_sections` | SIS owns section membership and active status. DAP preserves Canvas section IDs for mapping. | APPROVED: approved sanitized fixture provides source evidence with every active pilot section and Canvas section ID. |
+| enrollments | SIS, DAP | SIS enrollment extract; DAP `enrollments` | SIS add/drop state is authoritative. DAP helps audit Canvas role/workflow state and legacy enrollment IDs. | APPROVED: approved sanitized fixture provides source evidence for active/dropped Student and Teacher enrollment cases. |
+| modules | DAP, REST, course export | DAP `context_modules`, `content_tags`; Canvas REST modules/items; course export module metadata | DAP provides module records and item metadata. REST/export may be needed for display ordering and item URLs as Canvas presents them. | APPROVED: approved sanitized fixture provides source evidence for at least one module containing a page, assignment, and file item. |
+| pages | DAP, REST, course export | DAP `wiki_pages`/wiki metadata; Canvas REST pages; course export HTML/resources | DAP can provide page records/metadata. REST or course export is the fallback for normalized HTML body fidelity and embedded file links. | APPROVED: approved sanitized fixture provides source evidence for page body, title, workflow state, and legacy Canvas page ID. |
+| announcements | DAP, REST, course export | DAP `discussion_topics`/announcement metadata when scoped as announcements; Canvas REST announcements; course export discussion/announcement resources | Day-one preserves announcements but excludes broad discussions. Filter to Canvas announcement records only. | APPROVED: approved sanitized fixture provides source evidence with at least one announcement or record an explicit no-announcement pilot gap. |
+| assignments | DAP, REST, course export | DAP `assignments`, `assignment_overrides`; Canvas REST assignments; course export assignment metadata | DAP covers core assignment records, dates, points, submission types, group, description metadata. REST/export validates runtime presentation and HTML body fidelity. | APPROVED: approved sanitized fixture provides source evidence for text-entry, file-upload, and no-submission assignments with missing out-of-scope types explicitly excluded from day-one payload. |
+| assignment groups | DAP, REST | DAP `assignment_groups`; Canvas REST assignment groups | DAP includes group name, weight, position, workflow state, and rules metadata. REST cross-checks Canvas gradebook presentation. | APPROVED: approved sanitized fixture provides source evidence for weighted and unweighted group behavior used by the pilot gradebook. |
+| submissions | DAP, REST, file download | DAP `submissions`, `submission_versions`, `attachment_associations`; Canvas REST submissions and submission attachments | DAP provides table-like submission records and metadata. Text bodies and attachment associations must be verified against REST; file bytes require REST/file download. | APPROVED: approved sanitized fixture provides source evidence for submitted, missing, late, graded, and file-upload submissions before Task 8/11 production implementation. |
+| grades | DAP, REST | DAP `scores`, `submission_scores`, `enrollment_states`, `submissions`; Canvas REST gradebook/submission views | Grade calculation must follow `gradebook_rules.md`. DAP/REST are source inputs, not acceptance by themselves; diff must match final percentage and letter display. | APPROVED: approved sanitized fixture provides source evidence with points, weighted groups, posted grade, hidden/missing/late examples, and CSV comparison. |
+| attachments/files | DAP, REST, course export, file download | DAP `attachments`, `folders`, `attachment_associations`; Canvas REST files; course export resource files; file download manifest | DAP gives metadata such as ID, context, filename, size, content type, hash/uuid when present, but file bytes require REST, course export, or file download unless proven otherwise. | APPROVED: approved sanitized fixture provides source evidence manifest with checksum/byte-size for every pilot course file and submission attachment. |
+| comments | DAP, REST | DAP `submission_comments`/comment metadata where available; Canvas REST submission comments | Comments are FERPA-sensitive. Use REST to verify author, timestamp, visibility, and grading-comment semantics when DAP metadata is insufficient. | APPROVED: approved sanitized fixture provides source evidence with scrubbed student/teacher comments and grading comments, or record pilot course has none. |
+| legacy Canvas ID mappings | Mixed | Stable Canvas IDs from DAP tables, REST endpoints, course export identifiers, and file download manifest rows | Each Phoenix record imported from Canvas keeps a legacy Canvas ID mapping. SIS-owned rows also keep SIS IDs. Mixed sources must reconcile to one mapping table. | APPROVED: approved sanitized fixture provides source evidence mapping for users, terms, courses, sections, enrollments, modules, pages, announcements, assignments, assignment groups, submissions, grades, attachments, comments. |
+
+## Fixture Expectations
+
+The Task 2 fixture tree now contains approved sanitized pilot-course evidence for importer and diff development.
+
+| Fixture source | Purpose | Required real-sample replacement |
+| --- | --- | --- |
+| `dap/manifest.json` and `dap/summary.sanitized.json` | Lists DAP baseline counts, excluded scope, and legacy file ID sets used to reconcile REST/file evidence. | Full sanitized DAP table extracts remain optional follow-up evidence if an importer path requires table-row fixtures rather than REST-shaped evidence. |
+| `rest/manifest.json` | Lists Canvas REST endpoints needed to verify runtime semantics and source gaps. | Real sanitized REST responses with PII/body/file values scrubbed. |
+| `course_export/manifest.json` | Lists course export package metadata needed for content body/resources verification. | Real sanitized course export metadata and scrubbed HTML/resource references. |
+| `file_download/manifest.json` | Lists file byte acquisition and checksum expectations. | Real sanitized file download manifest with checksums/byte sizes and no private file bytes committed unless explicitly approved. |
+
+## Approval Status
+
+- APPROVED: The generated sanitized pilot-course fixture was approved on 2026-06-03 by user confirmation in chat for commit and migration importer/diff development.
+- RESOLVED: File payload verification no longer relies on DAP alone. The pilot fixture includes file-download checksum, byte-size, and content-type rows for 83 course/submission files, while raw file bytes remain outside the repository.
+- APPROVED: Tasks 5, 8, and 11 are unblocked to proceed with production-quality implementation using the approved sanitized fixture.

@@ -1,0 +1,54 @@
+$ test -f wts-lms-specs/migration/sanitization_workflow.md
+exit 0
+
+$ test -x scripts/wts_sanitize_canvas_sample.sh
+exit 0
+
+$ bash -n scripts/wts_sanitize_canvas_sample.sh
+exit 0
+
+$ scripts/wts_sanitize_canvas_sample.sh --help
+exit 0
+usage: scripts/wts_sanitize_canvas_sample.sh --validate FIXTURE_DIR
+       scripts/wts_sanitize_canvas_sample.sh --help
+
+Validates a sanitized Canvas pilot-course fixture directory before it can be
+committed. The validator is safe by default: it fails when required source
+manifests are missing, when raw-looking private values are present, or when a
+real file-download manifest lacks checksum and byte-size evidence.
+
+Examples:
+  scripts/wts_sanitize_canvas_sample.sh --validate wts-lms-api/test/fixtures/canvas_sample/pilot_course
+  scripts/wts_sanitize_canvas_sample.sh wts-lms-api/test/fixtures/canvas_sample/pilot_course
+
+The current Task 2 placeholder fixture is allowed as a shape marker only. A
+real sanitized sample still needs WTS data/privacy owner approval before commit.
+
+$ scripts/wts_sanitize_canvas_sample.sh --validate /Users/robertguss/Projects/wts-dops/canvas-lms/wts-lms-api/test/fixtures/canvas_sample/pilot_course
+exit 0
+sanitizer validation: placeholder file manifest accepted as a shape marker; real sanitized sample remains blocked
+sanitizer validation: passed without printing private values
+
+$ rg -n DAP|REST|course export|file download|checksum|byte size|WTS data/privacy owner approval|no raw private data wts-lms-specs/migration/sanitization_workflow.md scripts/wts_sanitize_canvas_sample.sh
+exit 0
+scripts/wts_sanitize_canvas_sample.sh:12:real file-download manifest lacks checksum and byte-size evidence.
+scripts/wts_sanitize_canvas_sample.sh:19:real sanitized sample still needs WTS data/privacy owner approval before commit.
+scripts/wts_sanitize_canvas_sample.sh:107:[[ "${#file_manifests[@]}" -gt 0 ]] || error "missing file-download checksum/byte-size manifest rows"
+scripts/wts_sanitize_canvas_sample.sh:116:  grep -Eiq '(^|[",])([[:space:]]*)(sha256|checksum|sha256_checksum)([[:space:]]*)([",:]|$)' "$file_manifest" || error "missing checksum column or field in $file_manifest"
+scripts/wts_sanitize_canvas_sample.sh:118:  grep -Eq '([0-9a-fA-F]{64}|[A-Za-z0-9+/]{43}=?)' "$file_manifest" || error "missing checksum value in $file_manifest"
+wts-lms-specs/migration/sanitization_workflow.md:3:This workflow defines how the migration lead produces a real sanitized active-course sample from Canvas DAP records, Canvas REST responses, course export metadata, and file-download manifests. It does not implement the import pipeline and does not unblock production import, file, submission, or gradebook work until the sanitized sample is approved and committed.
+wts-lms-specs/migration/sanitization_workflow.md:9:- The no raw private data rule applies before commit. This includes student names, faculty names, real emails, grades, submission text, comments, access tokens, SAML assertions, private URLs, real course identifiers, and private file bytes.
+wts-lms-specs/migration/sanitization_workflow.md:23:- DAP provides table-like Canvas records and metadata only. Preserve entity shape, legacy Canvas IDs, dates, workflow states, content types, relationships, and source table names.
+wts-lms-specs/migration/sanitization_workflow.md:24:- Canvas REST responses verify runtime semantics, submission/comment detail, assignment/page/module presentation, and source gaps not proven by DAP.
+wts-lms-specs/migration/sanitization_workflow.md:26:- File downloads provide byte evidence. DAP metadata alone is not proof of file bytes; every pilot course file and submission attachment needs REST, course export, or file download evidence with checksum and byte size.
+wts-lms-specs/migration/sanitization_workflow.md:30:1. Export DAP records for the selected active course into a private workspace outside the repository.
+wts-lms-specs/migration/sanitization_workflow.md:31:2. Fetch the required Canvas REST responses in the same private workspace without committing raw response bodies.
+wts-lms-specs/migration/sanitization_workflow.md:32:3. Generate course export metadata summaries from the IMSCC package; do not commit raw private page bodies, assignment bodies, or file bytes.
+wts-lms-specs/migration/sanitization_workflow.md:33:4. Download or otherwise verify every course file and submission attachment outside the repository, then produce a manifest row with legacy Canvas attachment ID, sanitized source reference, SHA-256 checksum, byte size, content type, and sanitization status.
+wts-lms-specs/migration/sanitization_workflow.md:38:9. Obtain WTS data/privacy owner approval before commit and record the approval in the migration evidence notes.
+wts-lms-specs/migration/sanitization_workflow.md:44:The validator fails closed when required DAP, REST, course export, or file-download manifests are missing. It rejects raw-looking emails, access tokens, private Canvas/WTS URLs, and real file-download manifests that lack checksum or byte size evidence. It reports only file paths and rule names, not private values.
+
+$ rg -n TODO|FIXME|HACK|xxx wts-lms-specs/migration/sanitization_workflow.md scripts/wts_sanitize_canvas_sample.sh
+exit 1
+No matches expected; exit 1 from rg means clean.
+

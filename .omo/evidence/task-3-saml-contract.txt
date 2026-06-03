@@ -1,0 +1,32 @@
+$ grep -R "SAML attribute\|NameID\|email\|sis_user_id\|disabled" wts-lms-specs/integrations/populi_saml.md
+wts-lms-specs/integrations/populi_saml.md:Each Populi assertion accepted by Phoenix must include the following SAML attribute values:
+wts-lms-specs/integrations/populi_saml.md:| `NameID` | Yes | Stable Populi login identifier for the person. It must not be used alone to create an LMS user. |
+wts-lms-specs/integrations/populi_saml.md:| `email` | Yes | Primary institutional email address. It is normalized to lowercase and trimmed before matching. |
+wts-lms-specs/integrations/populi_saml.md:| `sis_user_id` | Yes | SIS-owned person identifier. It is the primary matching key and must match exactly one active SIS-synced user row. |
+wts-lms-specs/integrations/populi_saml.md:1. Match `sis_user_id` to exactly one SIS-synced user.
+wts-lms-specs/integrations/populi_saml.md:2. Verify the matched user has the same normalized `email` as the assertion.
+wts-lms-specs/integrations/populi_saml.md:3. Record the observed `NameID` on the user identity binding if no binding exists.
+wts-lms-specs/integrations/populi_saml.md:4. If a binding exists, require the assertion `NameID` to match the bound value for the same `sis_user_id`.
+wts-lms-specs/integrations/populi_saml.md:Email is a verification key, not the primary identity key. If `email` matches an existing user but `sis_user_id` is missing, different, or unmatched, Phoenix must reject the login rather than infer identity. If `NameID` matches a prior binding but `sis_user_id` points to a different user, Phoenix must reject the login as an identity conflict.
+wts-lms-specs/integrations/populi_saml.md:Phoenix must never auto-provision normal users from a SAML assertion. User records are created, disabled, and updated only by SIS sync.
+wts-lms-specs/integrations/populi_saml.md:- The assertion contains one `NameID`, one `email`, and one `sis_user_id`.
+wts-lms-specs/integrations/populi_saml.md:- `sis_user_id` matches exactly one SIS-synced, non-disabled user.
+wts-lms-specs/integrations/populi_saml.md:If `NameID`, `email`, or `sis_user_id` is absent, blank, duplicated, or malformed, Phoenix must reject the login before user lookup. The response must not reveal which users exist. The audit event must include `missing attribute` with the missing or malformed attribute names.
+wts-lms-specs/integrations/populi_saml.md:If the SIS-synced user has `disabled = true`, inactive academic status, or an SIS status that forbids LMS access, Phoenix must reject the login with an authorization failure. No session is created. The audit event must include `disabled user`, `sis_user_id`, and the blocking status.
+wts-lms-specs/integrations/populi_saml.md:If `sis_user_id` does not match a SIS-synced user, Phoenix must reject the login. Phoenix must not create a local user, must not fall back to email-only matching, and must not offer local-password setup. The audit event must include `unmatched user` and the asserted `sis_user_id`.
+wts-lms-specs/integrations/populi_saml.md:If `sis_user_id`, `email`, or `NameID` point to inconsistent existing bindings, Phoenix must reject the login and report a security conflict. The conflict must be visible to Admin audit review and operations failure reporting.
+wts-lms-specs/integrations/populi_saml.md:- Role or enrollment change after login: access must reflect the newest successful SIS sync, not stale SAML attributes.
+wts-lms-specs/integrations/populi_saml.md:Phoenix must write an audit event for every SAML callback attempt. Audit events must include timestamp, request correlation ID, IdP entity ID, outcome, reason code, `sis_user_id` when present, normalized `email` when present, user ID when matched, source IP, user agent, and assertion ID. Audit logs must not store passwords because normal local passwords are not supported, and must not store full raw assertions unless explicitly enabled for short-lived incident debugging.
+wts-lms-specs/integrations/populi_saml.md:Required reason codes include `valid assertion`, `missing attribute`, `disabled user`, `unmatched user`, `identity conflict`, `invalid signature`, `invalid audience`, `expired assertion`, and `unsupported role`.
+wts-lms-specs/integrations/populi_saml.md:- Use `sis_user_id` as the stable primary external identity key.
+wts-lms-specs/integrations/populi_saml.md:- Use `NameID` as an IdP binding verification key.
+wts-lms-specs/integrations/populi_saml.md:- Use `email` as a normalized verification key and display/contact field.
+
+$ grep -E "valid assertion|missing attribute|disabled user|unmatched user" wts-lms-specs/integrations/populi_saml.md
+Phoenix matches a valid assertion in this order:
+A valid assertion is accepted only when all conditions are true:
+- `sis_user_id` matches exactly one SIS-synced, non-disabled user.
+If `NameID`, `email`, or `sis_user_id` is absent, blank, duplicated, or malformed, Phoenix must reject the login before user lookup. The response must not reveal which users exist. The audit event must include `missing attribute` with the missing or malformed attribute names.
+If the SIS-synced user has `disabled = true`, inactive academic status, or an SIS status that forbids LMS access, Phoenix must reject the login with an authorization failure. No session is created. The audit event must include `disabled user`, `sis_user_id`, and the blocking status.
+If `sis_user_id` does not match a SIS-synced user, Phoenix must reject the login. Phoenix must not create a local user, must not fall back to email-only matching, and must not offer local-password setup. The audit event must include `unmatched user` and the asserted `sis_user_id`.
+Required reason codes include `valid assertion`, `missing attribute`, `disabled user`, `unmatched user`, `identity conflict`, `invalid signature`, `invalid audience`, `expired assertion`, and `unsupported role`.

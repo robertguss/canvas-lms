@@ -1,0 +1,68 @@
+## 2026-06-02 Task 5b: Ecto/Postgres Repo evidence
+
+Working directory: `wts-lms-api`
+
+### mix deps.get
+
+Command: `mix deps.get`
+
+Result: PASS
+
+Output summary:
+- Resolution completed.
+- Dependencies fetched/unchanged: `db_connection 2.10.1`, `decimal 3.1.1`, `ecto 3.14.0`, `ecto_sql 3.14.0`, `postgrex 0.22.2`, `telemetry 1.4.2`.
+
+### mix ecto.create
+
+Command: `mix ecto.create`
+
+Result: PASS
+
+Output summary:
+- `The database for WtsLms.Repo has already been created`
+- Earlier in this task, after switching safe local defaults to the OS user with environment overrides, the same command created the dev database successfully.
+
+### mix ecto.migrate
+
+Command: `mix ecto.migrate`
+
+Result: PASS
+
+Output summary:
+- Initial run applied `20260602000000 WtsLms.Repo.Migrations.CreateWtsLmsCoreDomainSchema.change/0`.
+- Created clean WTS tables: `accounts`, `academic_terms`, `users`, `roles`, `courses`, `sections`, `enrollments`, `learning_modules`, `pages`, `content_files`, `assignment_groups`, `assignments`, `submissions`, `grade_items`, `grades`, `notifications`, `legacy_mappings`.
+- Created legacy import indexes and `unique_legacy_mapping_index`.
+- Final verification run reported `Migrations already up`.
+
+### MIX_ENV=test mix ecto.create && MIX_ENV=test mix ecto.migrate
+
+Result: PASS
+
+Output summary:
+- Test database for `WtsLms.Repo` was created.
+- Test migration applied the same clean WTS tables and `unique_legacy_mapping_index`.
+
+### targeted tests
+
+Command: `mix test test/wts_lms/schema_contract_test.exs test/wts_lms/legacy_mapping_test.exs`
+
+Result: PASS
+
+Output:
+```text
+Running ExUnit with seed: 316152, max_cases: 28
+
+......
+Finished in 0.1 seconds (0.1s async, 0.02s sync)
+6 tests, 0 failures
+```
+
+### guardrail checks
+
+Result: PASS
+
+- `rg`/grep equivalent for `TODO|FIXME|HACK|xxx` under `wts-lms-api` found no matches.
+- Search for fake `Mix.Tasks.Ecto.Migrate`/manifest-only leftovers found no matches.
+- Migration search for `canvas_`/`dap_` operational table creation found no matches.
+- `ast-grep` found the expected `defmodule` structures for `WtsLms.Repo`, `WtsLms.LegacyMapping`, and the real Ecto migration.
+- LSP diagnostics were clean for changed Elixir files.

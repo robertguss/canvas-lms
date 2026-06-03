@@ -1,0 +1,7 @@
+entity,action,sis_user_id,email,first_name,last_name,disabled,status,sis_section_id,role,enrollment_status,updated_at_source
+user,add,sis-new,new@example.edu,New,Student,false,active,sec-1,Student,active,2026-06-02T01:00:00Z
+user,add,sis-unchanged,unchanged@example.edu,Unchanged,User,false,active,sec-1,Student,active,2026-06-02T00:00:00Z
+user,add,sis-updated,updated@example.edu,Updated,User,false,active,sec-1,Student,active,2026-06-02T02:00:00Z
+enrollment,drop,sis-dropped,dropped@example.edu,Dropped,User,false,active,sec-1,Student,dropped,2026-06-02T03:00:00Z
+enrollment,add,sis-observer,observer@example.edu,Observer,User,false,active,sec-1,Observer,active,2026-06-02T04:00:00Z
+user,add,sis-new,duplicate@example.edu,Duplicate,Student,false,active,sec-1,Student,active,2026-06-02T05:00:00Z

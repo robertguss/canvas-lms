@@ -1,0 +1,8 @@
+# Task 1 Missing Scope Exclusion Evidence
+
+$ scripts/verify_scope_fidelity.sh <temp-copy-with-Canvas-mobile-exclusion-removed>
+exit=1
+STDERR:
+missing Canvas mobile exclusion in /var/folders/f8/ft7ygqg92pj8qh0rwplbw2x80000gn/T/tmpwtq7uxc1/wts-lms-specs/compatibility_matrix.md
+
+Expected failure observed: missing Canvas mobile exclusion is rejected.

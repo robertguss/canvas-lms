@@ -1,0 +1,19 @@
+{
+  "approval": {
+    "approval_note": "User stated \"fixture approved\"; fixture approved for commit and migration importer/diff development.",
+    "approved_by": "user confirmation in chat",
+    "approved_on": "2026-06-03",
+    "status": "approved"
+  },
+  "byte_size": 57667647,
+  "classification": "approved real sanitized WTS-derived course export metadata",
+  "content_export_id": 22260,
+  "limitation": "Raw IMSCC bytes remain outside the repository; this fixture commits package metadata only.",
+  "metadata_file": "imscc_metadata.sanitized.json",
+  "package_entries_included": 200,
+  "package_entries_list_status": "truncated_metadata_sample",
+  "package_entries_omitted": 24,
+  "sha256": "5065128babf49b4e5efe4ca61897fb05a16d5f359a8424e18e389e572eb9369d",
+  "source": "course export",
+  "workflow_state": "exported"
+}

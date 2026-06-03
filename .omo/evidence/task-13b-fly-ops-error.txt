@@ -1,0 +1,2 @@
+$ ! grep -R -E "fly_[A-Za-z0-9]|access token|private key|wireguard" wts-lms-specs/ops/
+PASS: no secret-looking Fly.io values or prohibited token/key strings found.

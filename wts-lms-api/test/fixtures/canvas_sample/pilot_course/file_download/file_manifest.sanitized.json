@@ -1,0 +1,1081 @@
+[
+  {
+    "byte_size": 801424,
+    "category": "module_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6089459,
+    "roles": [
+      "module_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6089459.pdf",
+    "sha256": "fb530bb95f830ffbb6e4e071ca4a4756d924b4c3cd133745824fc4994c61f252",
+    "source_reference": "private_evidence_file_6089459"
+  },
+  {
+    "byte_size": 1240803,
+    "category": "module_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6089461,
+    "roles": [
+      "module_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6089461.pdf",
+    "sha256": "1742c6c35c248c6bb767f15b2497ef316e047ad10c47defc303d1e69ee7c8509",
+    "source_reference": "private_evidence_file_6089461"
+  },
+  {
+    "byte_size": 2194402,
+    "category": "module_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6089462,
+    "roles": [
+      "module_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6089462.pdf",
+    "sha256": "8a0e3f37c939c40e78662ca47827f380cdc05e5d968c0923450999ad05a2ebfc",
+    "source_reference": "private_evidence_file_6089462"
+  },
+  {
+    "byte_size": 361179,
+    "category": "module_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6089472,
+    "roles": [
+      "module_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6089472.pdf",
+    "sha256": "1404a4e3b9961621973ff3f508557eab3cc85b0d8446f2e5e46b6dc0a128cee5",
+    "source_reference": "private_evidence_file_6089472"
+  },
+  {
+    "byte_size": 66538,
+    "category": "module_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6089473,
+    "roles": [
+      "module_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6089473.docx",
+    "sha256": "64d564fb0aa42b354b4eb28d96fef0485615a5e18fffefff6778b202253ac8d8",
+    "source_reference": "private_evidence_file_6089473"
+  },
+  {
+    "byte_size": 3368786,
+    "category": "module_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6089474,
+    "roles": [
+      "module_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6089474.pdf",
+    "sha256": "f39837a6c527677e2d8b498f4e3b41fb0817c9092f955b587b26e4bb061cc1a2",
+    "source_reference": "private_evidence_file_6089474"
+  },
+  {
+    "byte_size": 1267494,
+    "category": "module_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6089475,
+    "roles": [
+      "module_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6089475.pdf",
+    "sha256": "521e5e95b3428e08ae5f8ee44944f2e50d24af2311262c12640e85bffabc831a",
+    "source_reference": "private_evidence_file_6089475"
+  },
+  {
+    "byte_size": 22936166,
+    "category": "module_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6089476,
+    "roles": [
+      "module_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6089476.pdf",
+    "sha256": "7c8411d10e0f9f2bbfdf91d7aaaf8563a7d1360652af73694740751e42c8c493",
+    "source_reference": "private_evidence_file_6089476"
+  },
+  {
+    "byte_size": 171863,
+    "category": "module_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6089477,
+    "roles": [
+      "module_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6089477.pdf",
+    "sha256": "9488841218825c417a11e3ddeb4df8ad0f0ef07e7d49c81cc1d2b58caca30a66",
+    "source_reference": "private_evidence_file_6089477"
+  },
+  {
+    "byte_size": 217042,
+    "category": "module_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6119883,
+    "roles": [
+      "module_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6119883.pdf",
+    "sha256": "8a5d5a65c3fc7619f460ba5658b7ad4775ee9025ddb8889bceeb467dd633a9b0",
+    "source_reference": "private_evidence_file_6119883"
+  },
+  {
+    "byte_size": 498781,
+    "category": "module_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6127141,
+    "roles": [
+      "module_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6127141.pdf",
+    "sha256": "9560211359e56c925333587535757c961b6c8b3e3d1e01a74941fce461989513",
+    "source_reference": "private_evidence_file_6127141"
+  },
+  {
+    "byte_size": 58877,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6159162,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6159162.pdf",
+    "sha256": "e5a5f1529544c3d0cae4b63795d6dfcd61aeaa80785ec040eeb28615573745d4",
+    "source_reference": "private_evidence_file_6159162"
+  },
+  {
+    "byte_size": 62167,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6180927,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6180927.pdf",
+    "sha256": "267045789ecf3828826fb3528a91438698223236b568f30bafdbe3627fd5d56a",
+    "source_reference": "private_evidence_file_6180927"
+  },
+  {
+    "byte_size": 21107,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6184572,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6184572.docx",
+    "sha256": "c5309b3df6e2c7d78f4fff5f473674d681110cda5e63f5e2da42ca9554a13c89",
+    "source_reference": "private_evidence_file_6184572"
+  },
+  {
+    "byte_size": 18636,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6186868,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6186868.docx",
+    "sha256": "8251f3eeb52b3b57f96c1ad2a59ea951fa057ae7c233a76ca256a69c2b30c9f1",
+    "source_reference": "private_evidence_file_6186868"
+  },
+  {
+    "byte_size": 66294,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6188997,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6188997.pdf",
+    "sha256": "fee2f267701fafc1cb1e2b67856b51d07b48c11921757c17fa32938d5aaf6b47",
+    "source_reference": "private_evidence_file_6188997"
+  },
+  {
+    "byte_size": 20120,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6189001,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6189001.docx",
+    "sha256": "ab8189a0f2229704c0afc167a7b341bc1fa59134cda14908dfa7f9aa8ce863af",
+    "source_reference": "private_evidence_file_6189001"
+  },
+  {
+    "byte_size": 18839,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6191024,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6191024.docx",
+    "sha256": "3e8eba3252fb84fffa47bd2cb82877f05019151ec6c57785e8a25419dcce17b3",
+    "source_reference": "private_evidence_file_6191024"
+  },
+  {
+    "byte_size": 44871,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6191317,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6191317.pdf",
+    "sha256": "4cf0eeb69192cd792ce87213e51e6bf565eaf5bdc3d5cb4cb9843044f8b11d11",
+    "source_reference": "private_evidence_file_6191317"
+  },
+  {
+    "byte_size": 64153,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6191513,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6191513.pdf",
+    "sha256": "daf9b2e2f81767d2677903def392b1bd1402f2f83d2cfad50444051e79d1be5f",
+    "source_reference": "private_evidence_file_6191513"
+  },
+  {
+    "byte_size": 21256,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6193128,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6193128.docx",
+    "sha256": "b847d0b2c846a27fff3eb1a3942575fa3b8a839a5775c67ced02c9e339c9ab20",
+    "source_reference": "private_evidence_file_6193128"
+  },
+  {
+    "byte_size": 157559,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6193134,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6193134.pdf",
+    "sha256": "2ceb8b912818b540b6274fccdf19be869604ef103ca64317c7a3f8454a34c56f",
+    "source_reference": "private_evidence_file_6193134"
+  },
+  {
+    "byte_size": 13288,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6193425,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6193425.docx",
+    "sha256": "cadfb61fe8dc0c533b273431d19eb7ee7d356ea1361b5d0f259e9ee23bbef47b",
+    "source_reference": "private_evidence_file_6193425"
+  },
+  {
+    "byte_size": 15782,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6193925,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6193925.docx",
+    "sha256": "bbf27e6a0ebf1be3feb5a1414c4e6648308c04bb34889c070b88068d5bd52d13",
+    "source_reference": "private_evidence_file_6193925"
+  },
+  {
+    "byte_size": 58712,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6194326,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6194326.pdf",
+    "sha256": "abccfd300b11b7673dcc7e4b038e7fd30f1e3ccf08b8cd8d12c4218a57339979",
+    "source_reference": "private_evidence_file_6194326"
+  },
+  {
+    "byte_size": 51276,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6194420,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6194420.pdf",
+    "sha256": "7ee62a4eb5134bdb7786a013be5a093a9c2a02e644209a36121737cf60d7694d",
+    "source_reference": "private_evidence_file_6194420"
+  },
+  {
+    "byte_size": 8029,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6195442,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6195442.docx",
+    "sha256": "357d915e6a4eef12bd419449a559f4716e8482842b56fb29f93f1026ed948c9a",
+    "source_reference": "private_evidence_file_6195442"
+  },
+  {
+    "byte_size": 18525,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6195638,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6195638.pdf",
+    "sha256": "f459373fae33f5240559626f0c68c1dc6b640fd6bda980bd9cafac2775f125c8",
+    "source_reference": "private_evidence_file_6195638"
+  },
+  {
+    "byte_size": 64870,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6195640,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6195640.pdf",
+    "sha256": "c346619df05f226e5d9c6cac3611a83827d838a52871bd5e255e2e5126710d7d",
+    "source_reference": "private_evidence_file_6195640"
+  },
+  {
+    "byte_size": 18032,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6196055,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6196055.docx",
+    "sha256": "a6496b7500ae9aef1891eeaf02e74b5b1b674574f6dd7bd60f352bf17f8f8141",
+    "source_reference": "private_evidence_file_6196055"
+  },
+  {
+    "byte_size": 86717,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6196292,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6196292.pdf",
+    "sha256": "031e989391c400da559a030a16afcb49a40f8c1e5c86d001de6d33d92e72f2b5",
+    "source_reference": "private_evidence_file_6196292"
+  },
+  {
+    "byte_size": 13984,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6196498,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6196498.docx",
+    "sha256": "09ca1e7b308713f7d077ae29666d99388144f1504ebf770e473b7f50bc329cf5",
+    "source_reference": "private_evidence_file_6196498"
+  },
+  {
+    "byte_size": 9126,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6196504,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6196504.docx",
+    "sha256": "a0723ef280bdb29788bae42e0a26c2b1bd703cad48bbc08c88d12d5b17f71f88",
+    "source_reference": "private_evidence_file_6196504"
+  },
+  {
+    "byte_size": 16644,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6196713,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6196713.docx",
+    "sha256": "8ba2fa0a0dd3919784e843421c2d9f91ee99d7d56009ef7b86d1a34b016aebc9",
+    "source_reference": "private_evidence_file_6196713"
+  },
+  {
+    "byte_size": 16535,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6196825,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6196825.docx",
+    "sha256": "c3cb572fbc1277c887aa4b7798fe87718b26c489fcdee71b4d3f887e515a1d98",
+    "source_reference": "private_evidence_file_6196825"
+  },
+  {
+    "byte_size": 64206,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6196832,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6196832.pdf",
+    "sha256": "93ee84bb2f3dd8d734a8fbb3c597d94b17dc9374d90966f147d1cef43b949086",
+    "source_reference": "private_evidence_file_6196832"
+  },
+  {
+    "byte_size": 50255,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6196837,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6196837.pdf",
+    "sha256": "c03796fb720d1e7e8ae0f9d1dde521326f67f6d7d7d4df29dea08d0d9c3d371f",
+    "source_reference": "private_evidence_file_6196837"
+  },
+  {
+    "byte_size": 21343,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6196842,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6196842.docx",
+    "sha256": "6e47116966bdeabd931d8b5e42e17b72b508d9afd4ce1b41ce2d6f187f19a944",
+    "source_reference": "private_evidence_file_6196842"
+  },
+  {
+    "byte_size": 513279,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6196952,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6196952.pdf",
+    "sha256": "9a39464b51079faa9f53889683b7263679e89a19f3fe6f77bd2e988f291e9d09",
+    "source_reference": "private_evidence_file_6196952"
+  },
+  {
+    "byte_size": 52578,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6254428,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6254428.pdf",
+    "sha256": "08a1dde4cc3e6bc8b841490825914bf6838835cbcefe4a128b1eadf37bb9adce",
+    "source_reference": "private_evidence_file_6254428"
+  },
+  {
+    "byte_size": 119062,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6355861,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6355861.pdf",
+    "sha256": "14512c0c32c69ed04eec4b8b6ab7ed10f51f6af6434b45011f505f5a5b43243d",
+    "source_reference": "private_evidence_file_6355861"
+  },
+  {
+    "byte_size": 72069,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6355992,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6355992.pdf",
+    "sha256": "4c309e8568e6ace70d640fa7904e6c2b9e01ef469c1141d88566f31762c0239f",
+    "source_reference": "private_evidence_file_6355992"
+  },
+  {
+    "byte_size": 22220,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6355993,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6355993.docx",
+    "sha256": "cfdeb7786f282e3f3a5b090601e2ad3d975dc4e5e73e2a532cc24619829c1a88",
+    "source_reference": "private_evidence_file_6355993"
+  },
+  {
+    "byte_size": 118238,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6356114,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6356114.pdf",
+    "sha256": "869fccd533493762df09992aa22e8205d759d32c90f01d4e9877a47c1fc07b9c",
+    "source_reference": "private_evidence_file_6356114"
+  },
+  {
+    "byte_size": 12832,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6356233,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6356233.docx",
+    "sha256": "55d7a45f282d82a5c125c707ac2434e01c2fe468b5f48067ef2c889c7a61e5ae",
+    "source_reference": "private_evidence_file_6356233"
+  },
+  {
+    "byte_size": 24811,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6356368,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6356368.docx",
+    "sha256": "be3f69a2b93fe57c50779cf428e26e721fc9d984e1e827b1d5acc2860e5dea9e",
+    "source_reference": "private_evidence_file_6356368"
+  },
+  {
+    "byte_size": 32744,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6356745,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6356745.docx",
+    "sha256": "8bf3cbd773039fad25bd3155fdd5a457f5e4807a280b827ec25168444461061f",
+    "source_reference": "private_evidence_file_6356745"
+  },
+  {
+    "byte_size": 53110,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6356995,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6356995.pdf",
+    "sha256": "8eede88256c2b38e6935f0231cd77d06fb33b691c5b4b9dc3f6ecfd1829c1866",
+    "source_reference": "private_evidence_file_6356995"
+  },
+  {
+    "byte_size": 51540,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6357117,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6357117.pdf",
+    "sha256": "c4964cf6f6f32db049949e4fd483e0f8750f7b68b0bb71b8f967ab654da54e03",
+    "source_reference": "private_evidence_file_6357117"
+  },
+  {
+    "byte_size": 40088,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6357240,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6357240.docx",
+    "sha256": "b17f98fd775a5f66a55affdf876ab4e9eca6c276f86183cf2ccd790ac1f9d432",
+    "source_reference": "private_evidence_file_6357240"
+  },
+  {
+    "byte_size": 85789,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6357251,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6357251.pdf",
+    "sha256": "8612b7bf3818cf81e4212da0335d21082203d6641c0cbc2d54d8445cf89ed3fd",
+    "source_reference": "private_evidence_file_6357251"
+  },
+  {
+    "byte_size": 17861,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6357377,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6357377.docx",
+    "sha256": "3062219b9f1ba43d33be66e02c926ea9d53e6ec875143810c9f73796501a44f1",
+    "source_reference": "private_evidence_file_6357377"
+  },
+  {
+    "byte_size": 165926,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6359192,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6359192.pdf",
+    "sha256": "c6563136645bc9c53846771985f9b2e14fb1c93f7f29c88d6415384d731a4204",
+    "source_reference": "private_evidence_file_6359192"
+  },
+  {
+    "byte_size": 31382,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6361290,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6361290.docx",
+    "sha256": "e2ab9cb9375482e2212abf4a8588c49ee483735afab34b9e1563fc3855fc3365",
+    "source_reference": "private_evidence_file_6361290"
+  },
+  {
+    "byte_size": 15824,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6367510,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6367510.docx",
+    "sha256": "cc43f0ddfdeb5a18d5eb44ef221b6442c08b97ba0d5b5fb62d86c7a984e66f1f",
+    "source_reference": "private_evidence_file_6367510"
+  },
+  {
+    "byte_size": 235800,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6382605,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6382605.pdf",
+    "sha256": "3720231ee250c87f5446a5547d312c88aa3ce216c626910ecdb36e61c68c98f1",
+    "source_reference": "private_evidence_file_6382605"
+  },
+  {
+    "byte_size": 195609,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6412242,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6412242.pdf",
+    "sha256": "3a0a8834034a2d7ada41f6a048767e64cbbc4fee2ba2d612ed4d224517335dd5",
+    "source_reference": "private_evidence_file_6412242"
+  },
+  {
+    "byte_size": 162730,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6412360,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6412360.pdf",
+    "sha256": "e1cba3320ae568569b5041bb850fd0ccf8d9a94d0319e910b16a288555b44a19",
+    "source_reference": "private_evidence_file_6412360"
+  },
+  {
+    "byte_size": 206679,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6414128,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6414128.pdf",
+    "sha256": "aebcf1d947ba696ed9e8100e66909c90dd4f2a7977d6e0ce9c6e0bd50d6281d6",
+    "source_reference": "private_evidence_file_6414128"
+  },
+  {
+    "byte_size": 168510,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6414201,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6414201.pdf",
+    "sha256": "b8c2be80c509943a56f3818c8a120e07255cd19d7996f97892f1708d7759cc12",
+    "source_reference": "private_evidence_file_6414201"
+  },
+  {
+    "byte_size": 256492,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6415062,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6415062.pdf",
+    "sha256": "e5c02d8a875b55b3bba40dedd126cfec80e9c8ee269c3d93497330c32820ee7d",
+    "source_reference": "private_evidence_file_6415062"
+  },
+  {
+    "byte_size": 35174,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6417942,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6417942.docx",
+    "sha256": "444f63d06816d2bef73730045c8bdc77e8ae1ca973e4af60848460f82d105099",
+    "source_reference": "private_evidence_file_6417942"
+  },
+  {
+    "byte_size": 212010,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6418406,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6418406.pdf",
+    "sha256": "96dec478422e61d49d8efd59763b55ace18e07c51163563dbb1aa61a308e4fdb",
+    "source_reference": "private_evidence_file_6418406"
+  },
+  {
+    "byte_size": 177999,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6421180,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6421180.pdf",
+    "sha256": "74cf2d8f1c3e83c88a16ddd796400e8e8736189380ea1a11d6f638689f07fa69",
+    "source_reference": "private_evidence_file_6421180"
+  },
+  {
+    "byte_size": 40358,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6422465,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6422465.docx",
+    "sha256": "202bb35170907227fdf7d1ae647f1a26a8c40375bffc1c5f8fc854de6873f170",
+    "source_reference": "private_evidence_file_6422465"
+  },
+  {
+    "byte_size": 46608,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6422721,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6422721.docx",
+    "sha256": "22d0cc15835c59f1d6eef3f75772d1dcd9a19f78404323fc0e17263091f84ab7",
+    "source_reference": "private_evidence_file_6422721"
+  },
+  {
+    "byte_size": 229234,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6423657,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6423657.pdf",
+    "sha256": "3220fb12b4977ad8f2b0dddb42281fb056799475b15c3a0c76a090396424f871",
+    "source_reference": "private_evidence_file_6423657"
+  },
+  {
+    "byte_size": 220071,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6423913,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6423913.pdf",
+    "sha256": "15f10ef764d205f5885a467e57160b1ace2b9b750c1c4d1fa0753a044d2adef2",
+    "source_reference": "private_evidence_file_6423913"
+  },
+  {
+    "byte_size": 29850,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6424039,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6424039.docx",
+    "sha256": "efc9ffa5b9cff4e25693dcccf3b47db562867438d53837e33d549c31ea1414f4",
+    "source_reference": "private_evidence_file_6424039"
+  },
+  {
+    "byte_size": 49999,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6424045,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6424045.docx",
+    "sha256": "8b85a3df722523525af304cdd16d3a2d4bee081247a5188d6fe0706ce146bd7f",
+    "source_reference": "private_evidence_file_6424045"
+  },
+  {
+    "byte_size": 43396,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6424119,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6424119.docx",
+    "sha256": "128e7a7b9bcb063dc525a6916938936f1aefd07ca33a120ce510598abfcf7c98",
+    "source_reference": "private_evidence_file_6424119"
+  },
+  {
+    "byte_size": 254114,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6424317,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6424317.pdf",
+    "sha256": "c8d2dca8f475e5aa3597c870eb40559bfbbe672c1174ec2ab02a4d5754413c1e",
+    "source_reference": "private_evidence_file_6424317"
+  },
+  {
+    "byte_size": 145947,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6424321,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6424321.pdf",
+    "sha256": "bb94d8d51cb6f33f7873676450ce4427f920ac6a98123cfa7b765eaa00ae18af",
+    "source_reference": "private_evidence_file_6424321"
+  },
+  {
+    "byte_size": 265351,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6424720,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6424720.pdf",
+    "sha256": "d77d59e31ae23b76b79fba021259b65ee84977a2af5d26070768b60e60daac69",
+    "source_reference": "private_evidence_file_6424720"
+  },
+  {
+    "byte_size": 31436,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6424861,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6424861.docx",
+    "sha256": "57bf98f773e84f95a5ce1d0156f979f21087867fc91d18711b81cf467808e4ed",
+    "source_reference": "private_evidence_file_6424861"
+  },
+  {
+    "byte_size": 26925,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6424989,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6424989.docx",
+    "sha256": "ffd9e12487edb7865a1b0c938e4058ae54449a99003ec07e1bccf20ab29ab351",
+    "source_reference": "private_evidence_file_6424989"
+  },
+  {
+    "byte_size": 16786,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6425129,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6425129.docx",
+    "sha256": "18c51658ff8f13a64f262974504c70a19b46e8cf24fb2681e3db609e7ce8fbbb",
+    "source_reference": "private_evidence_file_6425129"
+  },
+  {
+    "byte_size": 271177,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6425257,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6425257.pdf",
+    "sha256": "ffa3fd069729efc49ca870622148ffa93893ed1745b7cab26c0ecec7c85cddfa",
+    "source_reference": "private_evidence_file_6425257"
+  },
+  {
+    "byte_size": 154200,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6425262,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6425262.pdf",
+    "sha256": "969209f56420b165c963ad3983a4c98f1a960facd7da74ff8a2fa53d067d113e",
+    "source_reference": "private_evidence_file_6425262"
+  },
+  {
+    "byte_size": 162,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6425266,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6425266.docx",
+    "sha256": "a3a03bfe3eab51fb04369bc4b4ed756dcfbad63095daac56fb9fb656d2bb2f76",
+    "source_reference": "private_evidence_file_6425266"
+  },
+  {
+    "byte_size": 35681,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6425271,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6425271.docx",
+    "sha256": "d76c1e3518c1b7bf1f8113ee4364f7d7d361c159081956d53299b9f51b69193c",
+    "source_reference": "private_evidence_file_6425271"
+  },
+  {
+    "byte_size": 371426,
+    "category": "submission_files",
+    "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "legacy_canvas_attachment_id": 6425273,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6425273.docx",
+    "sha256": "f380a126dbcab0d1574ad2d6aa3d6baeb89bb2cff989123d79b09bcb02069c49",
+    "source_reference": "private_evidence_file_6425273"
+  },
+  {
+    "byte_size": 127352,
+    "category": "submission_files",
+    "content_type": "application/pdf",
+    "legacy_canvas_attachment_id": 6440854,
+    "roles": [
+      "submission_file"
+    ],
+    "sanitization_status": "metadata_only_file_bytes_not_committed",
+    "sanitized_filename": "sanitized_canvas_file_6440854.pdf",
+    "sha256": "22e250f06d94ea4b1227311c53f03c93b95cd738390dffaa839e963a1abfd889",
+    "source_reference": "private_evidence_file_6440854"
+  }
+]
