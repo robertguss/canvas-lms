@@ -1,0 +1,24 @@
+$ mix test test/wts_lms/assignments test/wts_lms/files test/wts_lms_web/controllers/submission_controller_test.exs
+Running ExUnit with seed: 222930, max_cases: 28
+
+............
+Finished in 0.1 seconds (0.1s async, 0.00s sync)
+12 tests, 0 failures
+
+$ mix test
+Running ExUnit with seed: 735363, max_cases: 28
+
+..................................
+Finished in 0.1 seconds (0.1s async, 0.03s sync)
+34 tests, 0 failures
+
+$ mix run direct module QA
+%{
+  submission_state: :submitted,
+  submitted_at: ~U[2027-01-12 15:30:00Z],
+  denied_status: 403,
+  denied_object_url: nil
+}
+
+$ rg "external_tool|quiz|Turnitin|SpeedGrader" lib/wts_lms/assignments lib/wts_lms/files test/wts_lms/assignments test/wts_lms/files
+test/wts_lms/assignments/submissions_test.exs:    fixture = fixture(:online_quiz)

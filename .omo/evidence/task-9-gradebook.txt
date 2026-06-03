@@ -1,0 +1,34 @@
+Task 9 gradebook verification evidence
+Date: 2026-06-03
+
+Command: cd wts-lms-api && mix test test/wts_lms/gradebook
+Result: PASS
+Output summary:
+Running ExUnit with seed: 356531, max_cases: 28
+7 tests, 0 failures
+
+Command: cd wts-lms-api && mix wts.gradebook.verify --fixture test/fixtures/gradebook/weighted_groups.json
+Result: PASS
+Output:
+final_percentage=89.00 letter_display=B+
+
+Command: cd wts-lms-api && mix test
+Result: PASS
+Output summary:
+Running ExUnit with seed: 848231, max_cases: 28
+41 tests, 0 failures
+
+Command: cd wts-lms-api && mix run -e 'fixture = :json.decode(File.read!("test/fixtures/gradebook/weighted_groups.json")); {:ok, report} = WtsLms.Gradebook.Verify.run(fixture); IO.puts(WtsLms.Gradebook.Verify.format_report(report))'
+Result: PASS
+Output:
+final_percentage=89.00 letter_display=B+
+
+Command: cd wts-lms-api && rg "rubric|outcome|grade passback|analytics|posting policy|muted|hidden" lib/wts_lms/gradebook test/wts_lms/gradebook
+Result: PASS
+Output: no matches
+
+LSP diagnostics:
+- lib/wts_lms/gradebook/gradebook.ex: no diagnostics
+- lib/wts_lms/gradebook/verify.ex: no diagnostics
+- lib/mix/tasks/wts.gradebook.verify.ex: no diagnostics
+- test/wts_lms/gradebook/gradebook_test.exs: no diagnostics
