@@ -1,0 +1,11 @@
+{
+  "alias_type": "deterministic pilot rehearsal alias",
+  "derived_from_fixture": "../pilot_course",
+  "fixture": "canvas_sample/pilot_course_3",
+  "pilot_rehearsal": {
+    "approval_status": "approved real sanitized base fixture reused as alias",
+    "base_fixture": "canvas_sample/pilot_course",
+    "course_selection_status": "derived alias for rehearsal only; not a distinct real course",
+    "launch_note": "Broader 2-3 real-course readiness requires additional WTS data/privacy owner-approved fixtures before actual launch."
+  }
+}
