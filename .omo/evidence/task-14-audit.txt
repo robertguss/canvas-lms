@@ -1,0 +1,181 @@
+$ cd wts-lms-api && mix test test/wts_lms/audit test/wts_lms/security
+Running ExUnit with seed: 758231, max_cases: 28
+
+.....
+Finished in 0.05 seconds (0.05s async, 0.00s sync)
+5 tests, 0 failures
+$ cd wts-lms-api && mix test
+Running ExUnit with seed: 219935, max_cases: 28
+
+................................................................
+Finished in 0.2 seconds (0.2s async, 0.02s sync)
+64 tests, 0 failures
+$ grep -R "access_token|Authorization|Bearer|saml_assertion|private_key|file_content|raw_url" wts-lms-api/lib/wts_lms/audit wts-lms-api/lib/wts_lms/security wts-lms-api/test/wts_lms/audit wts-lms-api/test/wts_lms/security
+wts-lms-api/lib/wts_lms/security/secure_log.ex:                    "access_token",
+wts-lms-api/lib/wts_lms/security/secure_log.ex:                    "file_content",
+wts-lms-api/lib/wts_lms/security/secure_log.ex:                    "private_key",
+wts-lms-api/lib/wts_lms/security/secure_log.ex:                    "raw_url",
+wts-lms-api/lib/wts_lms/security/secure_log.ex:                    "saml_assertion",
+wts-lms-api/lib/wts_lms/security/secure_log.ex:    |> String.replace(~r/Bearer\s+[^\s,;]+/i, @redacted)
+wts-lms-api/test/wts_lms/audit/audit_test.exs:            access_token: "secret-token",
+wts-lms-api/test/wts_lms/audit/audit_test.exs:            file_content: "draft contents",
+wts-lms-api/test/wts_lms/audit/audit_test.exs:            raw_url: "https://storage.example/private/file.pdf?token=abc"
+wts-lms-api/test/wts_lms/audit/audit_test.exs:        metadata: %{saml_assertion: "SAML-PRIVATE-BLOB", authorization: "Bearer auth-token"}
+wts-lms-api/test/wts_lms/audit/audit_test.exs:        metadata: %{private_key: "key", inserted: 2, raw_url: "s3://bucket/object"}
+wts-lms-api/test/wts_lms/audit/audit_test.exs:          metadata: %{points: "9", access_token: "secret"}
+wts-lms-api/test/wts_lms/security/secure_log_test.exs:      access_token: "abc123",
+wts-lms-api/test/wts_lms/security/secure_log_test.exs:      authorization: "Bearer abc123",
+wts-lms-api/test/wts_lms/security/secure_log_test.exs:      file_content: "file bytes",
+wts-lms-api/test/wts_lms/security/secure_log_test.exs:      raw_url: "https://storage.example/private/file.pdf?token=abc123",
+wts-lms-api/test/wts_lms/security/secure_log_test.exs:      saml_assertion: "assertion",
+wts-lms-api/test/wts_lms/security/secure_log_test.exs:      private_key: "-----BEGIN PRIVATE KEY----- key",
+wts-lms-api/test/wts_lms/security/secure_log_test.exs:    assert sanitized.access_token == "[REDACTED]"
+wts-lms-api/test/wts_lms/security/secure_log_test.exs:    assert sanitized.raw_url == "[REDACTED]"
+wts-lms-api/test/wts_lms/security/secure_log_test.exs:    sanitized = SecureLog.sanitize(%{detail: "Authorization: Bearer secret-token sent"})
+wts-lms-api/test/wts_lms/security/secure_log_test.exs:    assert sanitized.detail == "Authorization: [REDACTED] sent"
+$ cd wts-lms-web && npm run axe
+
+> wts-lms-web@0.1.0 axe
+> node test/axe.test.mjs
+
+TAP version 13
+# Subtest: deterministic accessibility basics exist for core workflows
+ok 1 - deterministic accessibility basics exist for core workflows
+  ---
+  duration_ms: 1.925375
+  type: 'test'
+  ...
+# Subtest: deterministic accessibility gate covers day-one workflow regions
+ok 2 - deterministic accessibility gate covers day-one workflow regions
+  ---
+  duration_ms: 0.817042
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5.009875
+$ cd wts-lms-web && npm run test:e2e -- --grep @keyboard
+
+> wts-lms-web@0.1.0 test:e2e
+> node test/e2e.test.mjs --grep @keyboard
+
+TAP version 13
+# Subtest: deterministic e2e workflow surface is represented in source
+ok 1 - deterministic e2e workflow surface is represented in source
+  ---
+  duration_ms: 2.156167
+  type: 'test'
+  ...
+# Subtest: @keyboard deterministic keyboard gates cover day-one workflows
+ok 2 - @keyboard deterministic keyboard gates cover day-one workflows
+  ---
+  duration_ms: 1.084542
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5.472458
+$ cd wts-lms-web && npm test
+
+> wts-lms-web@0.1.0 test
+> node --test
+
+TAP version 13
+# Subtest: package metadata declares the deterministic React Vite TypeScript scaffold
+ok 1 - package metadata declares the deterministic React Vite TypeScript scaffold
+  ---
+  duration_ms: 2.470083
+  type: 'test'
+  ...
+# Subtest: App is a TSX React component for WTS coursework workflows
+ok 2 - App is a TSX React component for WTS coursework workflows
+  ---
+  duration_ms: 0.573375
+  type: 'test'
+  ...
+# Subtest: web state exposes deterministic fixture-backed workflows
+ok 3 - web state exposes deterministic fixture-backed workflows
+  ---
+  duration_ms: 0.435042
+  type: 'test'
+  ...
+# Subtest: deterministic accessibility basics exist for core workflows
+ok 4 - deterministic accessibility basics exist for core workflows
+  ---
+  duration_ms: 2.351416
+  type: 'test'
+  ...
+# Subtest: deterministic accessibility gate covers day-one workflow regions
+ok 5 - deterministic accessibility gate covers day-one workflow regions
+  ---
+  duration_ms: 0.854583
+  type: 'test'
+  ...
+# Subtest: deterministic e2e workflow surface is represented in source
+ok 6 - deterministic e2e workflow surface is represented in source
+  ---
+  duration_ms: 2.608959
+  type: 'test'
+  ...
+# Subtest: @keyboard deterministic keyboard gates cover day-one workflows
+ok 7 - @keyboard deterministic keyboard gates cover day-one workflows
+  ---
+  duration_ms: 1.035375
+  type: 'test'
+  ...
+# Subtest: student completes assignment submission flow in rendered static state
+ok 8 - student completes assignment submission flow in rendered static state
+  ---
+  duration_ms: 2.681667
+  type: 'test'
+  ...
+# Subtest: unauthorized student cannot see another course
+ok 9 - unauthorized student cannot see another course
+  ---
+  duration_ms: 0.69875
+  type: 'test'
+  ...
+# Subtest: teacher grading comment workflow and gradebook export are present
+ok 10 - teacher grading comment workflow and gradebook export are present
+  ---
+  duration_ms: 0.986625
+  type: 'test'
+  ...
+# Subtest: admin import status and diff summary are present
+ok 11 - admin import status and diff summary are present
+  ---
+  duration_ms: 0.646584
+  type: 'test'
+  ...
+# Subtest: excluded features are absent except explicit not-included copy
+ok 12 - excluded features are absent except explicit not-included copy
+  ---
+  duration_ms: 0.822125
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 50.427334
+$ cd wts-lms-api && mix run -e manual audit/security driver
+Compiling 3 files (.ex)
+Generated wts_lms_api app
+manual_event_action=grade_changed safe_metadata=%{grade_item_id: "grade-item-1"}
+manual_sanitized=%{authorization: "[REDACTED]", detail: "Authorization: [REDACTED] sent"}
