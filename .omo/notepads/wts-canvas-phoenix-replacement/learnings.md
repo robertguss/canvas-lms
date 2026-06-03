@@ -81,3 +81,49 @@
 - Added `WtsLmsWeb.CourseContentController.show/3` as a thin Phoenix-compatible map-returning controller surface matching the existing Task 6 direct controller style.
 - Course content access reuses `WtsLms.Authorization.RoleAuthorization` and requires an active SIS-owned enrollment in the requested course before returning any payload.
 - Evidence for targeted/full tests and unauthorized controller QA is in `.omo/evidence/task-7-content.txt` and `.omo/evidence/task-7-content-error.txt`.
+
+## 2026-06-03 Task 8: Assignments, submissions, comments, and S3-backed files
+- Added dependency-light `WtsLms.Assignments` and `WtsLms.Files` contexts for text-entry, file-upload metadata, no-submission acknowledgement, submission comments, and authorized S3-compatible signed URL metadata.
+- File URL minting now validates active course enrollment before returning opaque object references; unauthorized and missing-file responses include no object URL.
+- Task 8 intentionally keeps quiz/external-tool/SpeedGrader parity out of scope; the only out-of-scope reference in targeted paths is the explicit `:online_quiz` rejection test.
+- Evidence for targeted/full tests and direct module QA is in `.omo/evidence/task-8-submissions.txt` and `.omo/evidence/task-8-submissions-error.txt`.
+
+## 2026-06-03 Task 9: Gradebook engine and CSV export
+- Added dependency-light `WtsLms.Gradebook` and `WtsLms.Gradebook.Verify` for pure weighted grade calculations, letter display, status-specific score inclusion, dropped-score marking, unpublished assignment visibility rules, and fixed-header CSV export.
+- Gradebook behavior is deterministic for ungraded, missing, excused, late, resubmitted, extra credit, dropped scores, and unpublished assignments; missing and late policy effects only apply when explicitly supplied in fixture/config opts.
+- Added `mix wts.gradebook.verify --fixture test/fixtures/gradebook/weighted_groups.json` plus the weighted-groups JSON fixture for CLI/manual verification.
+- Evidence for targeted/full tests, CLI verifier, manual module QA, diagnostics, and exclusion-term check is in `.omo/evidence/task-9-gradebook.txt` and `.omo/evidence/task-9-gradebook-error.txt`.
+
+## 2026-06-03 Task 10: Oban-backed notifications and delivery
+- Added dependency-light `WtsLms.Notifications` event helpers for announcement published/updated, due-date changed, submission comment added, and grade released events, producing unread in-app notification records plus email delivery jobs for active enrolled recipients.
+- Kept the worker boundary Oban-compatible without adding real Oban dependency churn; `WtsLms.Workers.EmailDeliveryWorker` records queue, attempts, max attempts, retry scheduling, delivered audit state, and terminal failure state.
+- Email delivery requests are Postmark-oriented with placeholder-safe `message_stream`, template/subject/body, event ID, and recipient metadata, and contain no token, webhook secret, sender secret, SMS, mobile push, digest, preference, or frequency-control implementation.
+- Evidence for targeted notification tests, targeted worker tests, full backend tests, exclusion grep, manual module QA, and empty stderr is in `.omo/evidence/task-10-notifications.txt` and `.omo/evidence/task-10-notifications-error.txt`.
+
+## 2026-06-03 Task 11: Canvas import pipeline and diff harness
+- Added dependency-light `WtsLms.Imports` staging, transform, audit, idempotency, and diff reporting for the approved sanitized pilot fixture without Repo writes or private raw data access.
+- Import output maps DAP/REST/course-export/file-download fixture evidence into domain-shaped course, module, page, announcement, assignment group, assignment, submission/comment, file manifest, file, grade item, grade, and legacy mapping records; source/audit metadata remains read-only.
+- Added `mix wts.import.diff --fixture ...`; approved fixture exits 0 with zero blocking mismatches, while the deliberate missing-assignment fixture exits non-zero with count and missing-record actions.
+- Evidence for targeted import tests, approved/negative diff CLI, full backend tests, and exclusion grep is in `.omo/evidence/task-11-import.txt` and `.omo/evidence/task-11-import-error.txt`.
+
+## 2026-06-03 Task 12: React/TypeScript Student Teacher Admin workflows
+- Implemented a deterministic fixture-backed WTS React coursework workspace in `wts-lms-web/src/` for Student dashboard/course content/announcements/assignments/submissions/grades/notifications, Teacher submission review/grading/comment/export, Admin import status/diff summary, and unauthorized access-denied state.
+- Kept day-one exclusions explicit as user-facing "not included" copy only: quizzes, discussions, LTI tools, Canvas app shell, `js_env`, and mobile-app compatibility remain absent from implementation surfaces.
+- Switched `test:e2e` and `axe` to local Node test scripts because browser/axe runtime dependencies are not installed in this checkout; required `npm test`, `npm run test:e2e`, and `npm run axe` pass and evidence is in `.omo/evidence/task-12-web-ui.txt` with empty stderr in `.omo/evidence/task-12-web-ui-error.txt`.
+
+## 2026-06-03 Task 14: Privacy, audit, security, and accessibility gates
+- Added pure WTS audit event primitives for login, import diff, grade change/release, submission create/comment, and file authorization with safe actor/action/target/course/timestamp/outcome/reason/metadata fields.
+- Added secure log sanitization for tokens, authorization headers, SAML material, private keys/certificates, raw URLs, storage keys, file contents, submission bodies, email, and private message bodies; admin audit listing returns only safe fields and filtered events.
+- Extended deterministic local web accessibility gates with day-one workflow region checks and @keyboard coverage for Student submission, Teacher grading/export, Admin import status, and unauthorized access without requiring browser services.
+- Evidence captured in `.omo/evidence/task-14-audit.txt`; stderr capture `.omo/evidence/task-14-accessibility-error.txt` is empty.
+
+## 2026-06-03 Task 15: Pilot readiness rehearsal
+- Created executable `scripts/wts_pilot_rehearsal.sh` to run sanitized fixture import diffs, deterministic `@pilot` frontend checks, SAML/SIS contract evidence checks, notification readiness checks, backup/restore readiness checks, and readiness report term gates.
+- Added deterministic pilot fixture aliases `pilot_course_1`, `pilot_course_2`, and `pilot_course_3` derived from the single approved sanitized `pilot_course`; they are rehearsal aliases, not distinct real-course readiness proof.
+- Added negative alias `pilot_course_with_missing_submission`, which removes assignment `83856` from the target transform and fails non-zero with missing assignment/submission mismatches.
+- Created `wts-lms-specs/pilot/readiness_report.md` with PASS/FAIL gates, rollback trigger language, fallback path language, explicit waiver rules, and `LAUNCH STATUS: BLOCKED` until additional real-course fixture and ops gates are satisfied or waived by WTS leadership.
+- Captured Task 15 verification in `.omo/evidence/task-15-pilot-rehearsal.txt` and `.omo/evidence/task-15-pilot-rehearsal-error.txt`.
+
+## 2026-06-03 F1 remediation
+- Resolved stale Task 6 spec decisions in `wts-lms-specs/integrations/populi_saml.md` and `wts-lms-specs/integrations/sis_sync.md`: SAML sessions use 8-hour idle and 12-hour absolute expiration; SIS pilot cadence is hourly scheduled sync/dry-run with a maximum 2-hour add/drop propagation target.
+- Kept the S3-compatible object-storage provider decision unresolved because Task 15/readiness materials intentionally treat it as a launch blocker.

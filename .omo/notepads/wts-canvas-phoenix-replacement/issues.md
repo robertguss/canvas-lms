@@ -9,3 +9,7 @@
 
 ## 2026-06-02 Task 2: Canvas migration source inventory
 - Active issue: representative active-course export/sanitization is still needed before downstream production implementation gates can be lifted.
+## 2026-06-03 Task 15: Pilot launch blockers
+- BLOCKER: Current Task 15 fixture set has one approved real sanitized WTS-derived course plus deterministic aliases; 2-3 distinct low-risk real pilot courses still require WTS data/privacy owner-approved sanitized fixtures before actual launch unless WTS leadership records an explicit waiver.
+- BLOCKER: S3-compatible object storage provider selection and final restore drill evidence with approved pilot fixtures remain launch gates.
+- BLOCKER: `wts-lms-specs/pilot/readiness_report.md` intentionally keeps launch blocked until every strict operational gate passes or WTS leadership records explicit waiver details in the report.
