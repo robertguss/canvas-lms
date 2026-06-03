@@ -597,7 +597,7 @@ gate after all prior tasks.
   **Commit**: YES | Message: `feat(wts): add course content APIs` | Files:
   [`wts-lms-api/lib/wts_lms/course_content/`, `wts-lms-api/test/`]
 
-- [~] 8. Implement assignments, submissions, comments, and S3-backed files
+- [x] 8. Implement assignments, submissions, comments, and S3-backed files
 
   **What to do**: Implement assignments with text-entry, file-upload, and
   no-submission modes; submission timestamps; comments; S3-compatible
@@ -644,7 +644,7 @@ gate after all prior tasks.
   | Files: [`wts-lms-api/lib/wts_lms/assignments/`,
   `wts-lms-api/lib/wts_lms/files/`, `wts-lms-api/test/`]
 
-- [~] 9. Implement gradebook engine and CSV export
+- [x] 9. Implement gradebook engine and CSV export
 
   **What to do**: Implement points + weighted assignment groups, final
   percentage/letter display, manual grading/comments, grade visibility rules,
@@ -691,7 +691,7 @@ gate after all prior tasks.
   **Commit**: YES | Message: `feat(wts): implement weighted gradebook` | Files:
   [`wts-lms-api/lib/wts_lms/gradebook/`, `wts-lms-api/test/`]
 
-- [~] 10. Implement Oban-backed notifications and email/in-app delivery
+- [x] 10. Implement Oban-backed notifications and email/in-app delivery
 
   **What to do**: Add notification context, Oban workers, email adapter config,
   in-app unread notifications, and events for announcements, due-date changes,
@@ -737,7 +737,7 @@ gate after all prior tasks.
   [`wts-lms-api/lib/wts_lms/notifications/`, `wts-lms-api/lib/wts_lms/workers/`,
   `wts-lms-api/test/`]
 
-- [~] 11. Implement Canvas import pipeline and automated diff harness
+- [x] 11. Implement Canvas import pipeline and automated diff harness
 
   **What to do**: Implement import staging, transforms from
   DAP/API/course-export fixtures to domain schema, file import manifest
@@ -784,7 +784,7 @@ gate after all prior tasks.
   Files: [`wts-lms-api/lib/wts_lms/imports/`, `wts-lms-api/test/fixtures/`,
   `wts-lms-api/test/`]
 
-- [~] 12. Implement React/TypeScript Student Teacher Admin workflows
+- [x] 12. Implement React/TypeScript Student Teacher Admin workflows
 
   **What to do**: Build SPA workflows for login redirect/session handling,
   dashboard, course home, syllabus/modules/pages/files, announcements,
@@ -908,7 +908,7 @@ gate after all prior tasks.
   **Commit**: YES | Message: `docs(wts): select Postmark email` | Files:
   [`wts-lms-specs/ops/`, `wts-lms-specs/`]
 
-- [~] 14. Add privacy, audit, security, and accessibility gates
+- [x] 14. Add privacy, audit, security, and accessibility gates
 
   **What to do**: Add FERPA-conscious privacy rules, audit logs for
   login/import/grade/submission/file events, secure logging constraints, admin
@@ -954,7 +954,7 @@ gate after all prior tasks.
   | Files: [`wts-lms-api/`, `wts-lms-web/`,
   `wts-lms-specs/privacy_accessibility.md`]
 
-- [~] 15. Run pilot readiness rehearsal with 2-3 real-course fixtures
+- [x] 15. Run pilot readiness rehearsal with 2-3 real-course fixtures
 
   **What to do**: Select 2-3 low-risk real pilot courses, sanitize fixtures,
   create `scripts/wts_pilot_rehearsal.sh`, import the fixtures, run diff
