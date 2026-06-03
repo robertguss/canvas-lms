@@ -1,7 +1,3 @@
-# dap Source Placeholder
+# DAP Source
 
-This directory contains non-sensitive placeholder metadata for the `DAP` source.
-
-Do not add real WTS data without sanitizing it first. The current files only document the expected shape for Task 2.
-
-BLOCKER: replace placeholders with scrubbed DAP extracts for one active course.
+Sanitized DAP baseline summary and legacy ID sets for the pilot course. This committed fixture does not claim to contain full DAP table-row extracts; DAP table-like private evidence remains outside the repository. File bytes are proven separately by the file download manifest.
